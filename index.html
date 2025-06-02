@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home | IELTS WITH UMAR</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            background-image: repeating-linear-gradient(
+                45deg,
+                #e6f0ff 0,
+                #e6f0ff 10px,
+                #f4f9ff 10px,
+                #f4f9ff 20px
+            );
+        }
+
+        header {
+            background-color: rgb(80, 171, 255);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            max-width: 80px;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background-color: rgb(0, 132, 255);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #1100ff;
+        }
+
+        .main-content {
+            max-width: 900px;
+            margin: 30px auto 60px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1,
+        h2 {
+            color: #3456fe;
+            margin-top: 40px;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            margin: 18px 0;
+            color: #444;
+        }
+
+        /* Feature boxes container */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .feature-box {
+            background-color: #e0f0ff;
+            border-left: 6px solid rgb(80, 171, 255);
+            border-radius: 10px;
+            padding: 25px 20px;
+            max-width: 280px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-box h3 {
+            color: rgb(0, 132, 255);
+            margin-bottom: 12px;
+        }
+
+        .feature-box p {
+            font-style: normal;
+            font-weight: 500;
+            color: #234e9c;
+        }
+
+        /* Students' feedback section */
+        .feedback-section {
+            background-color: #eaf4ff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin-top: 60px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        .feedback-section h2 {
+            margin-top: 0;
+        }
+
+        .feedback-quote {
+            font-style: italic;
+            font-size: 1.15rem;
+            color: #2c3e50;
+            margin: 20px auto;
+            max-width: 700px;
+            position: relative;
+            padding: 20px 40px;
+            border-left: 5px solid rgb(80, 171, 255);
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .feedback-author {
+            margin-top: 12px;
+            font-weight: 700;
+            color: rgb(0, 132, 255);
+            font-size: 1rem;
+            text-align: right;
+        }
+
+        /* Inspirational quotes section */
+        .inspiration-section {
+            margin-top: 60px;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: #3456fe;
+            border-left: 6px solid rgb(80, 171, 255);
+            padding-left: 20px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Contact box */
+        .contact-section {
+            margin-top: 60px;
+            background-color: #e0f0ff;
+            border-radius: 12px;
+            padding: 30px 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+            text-align: left;
+        }
+
+        .contact-section h2 {
+            margin-top: 0;
+            color: #234e9c;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #234e9c;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid rgb(80, 171, 255);
+            border-radius: 8px;
+            resize: vertical;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        button {
+            background-color: rgb(80, 171, 255);
+            border: none;
+            color: white;
+            font-weight: 700;
+            padding: 14px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgb(0, 132, 255);
+        }
+
+        footer {
+            background-color: rgb(80, 171, 255);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            /* Increase the font size here */
+            color: white;
+            /* Keep the text white */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo" width="100" height="90"></a>
+        <h1 style="color: white;">Home</h1>
+        <div id="user-info" style="color: white; position: absolute; top: 10px; right: 20px;"></div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="listening.html">Listening</a>
+        <a href="reading.html">Reading</a>
+        <a href="writing.html">Writing</a>
+        <a href="speaking.html">Speaking</a>
+        <a href="um_grammar_test.html">Grammar Test</a>
+        <a href="um_listening_test.html">Listening Test</a>
+        <a href="um_reading_test.html">Reading Test</a>
+        <a href="signup_login.html">Sign up / Log in</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Welcome to IELTS WITH UMAR!</h2>
+        <p>Your friendly guide to mastering the IELTS exam, no matter your level. Explore clear lessons, useful tips, and practice tests to improve your Listening, Reading, Writing, and Speaking skills.</p>
+
+        <div class="features">
+            <div class="feature-box">
+                <h3>Listening</h3>
+                <p>Learn strategies to understand every part of the Listening section and practice with real exam-style audio.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Reading</h3>
+                <p>Build reading skills for different question types with tips and sample passages to boost your speed and accuracy.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Writing</h3>
+                <p>Discover how to organize essays, improve grammar, and score high with effective writing techniques.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Speaking</h3>
+                <p>Practice speaking confidently with common topics, vocabulary ideas, and tips for a natural conversation.</p>
+            </div>
+        </div>
+
+        <section class="feedback-section" aria-label="Students' feedback">
+            <h2>What Students Say</h2>
+
+            <blockquote class="feedback-quote">
+                "Umar’s lessons made IELTS easy to understand. Thanks to his clear explanations, I improved my writing score by 2 bands!"
+                <div class="feedback-author">— Amin from Uzbekistan</div>
+            </blockquote>
+
+            <blockquote class="feedback-quote">
+                "I loved the speaking tips and practice tests. They really helped me gain confidence."
+                <div class="feedback-author">— John from Kenya</div>
+            </blockquote>
+
+            <blockquote class="feedback-quote">
+                "The website’s structure and simplicity made studying IELTS fun and effective!"
+                <div class="feedback-author">— Maria from Brazil</div>
+            </blockquote>
+        </section>
+
+        <section class="inspiration-section" aria-label="Inspirational quote">
+            “Success is not final, failure is not fatal: It is the courage to continue that counts.” — Winston Churchill
+        </section>
+
+        <section class="contact-section" aria-label="Contact Umar">
+            <h2>Contact Me</h2>
+            <form action="https://formspree.io/f/mdkzongk" method="post">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+    <p>_</p>
+    <footer>
+        <p style="color: white;">&copy; 2025 IELTS WITH UMAR | All rights reserved.</p>
+    </footer>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
+            authDomain: "ielts-with-umar.firebaseapp.com",
+            projectId: "ielts-with-umar",
+            storageBucket: "ielts-with-umar.firebasestorage.app",
+            messagingSenderId: "373444526917",
+            appId: "1:373444526917:web:35b7363401de1df815742c"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        const userInfo = document.getElementById('user-info');
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                userInfo.textContent = `${user.displayName || user.email}`;
+            } else {
+                userInfo.textContent = '';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
