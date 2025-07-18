@@ -12,19 +12,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: white;
             color: #333;
-            background-image: repeating-linear-gradient(
-                45deg,
-                #e6f0ff 0,
-                #e6f0ff 10px,
-                #f4f9ff 10px,
-                #f4f9ff 20px
-            );
         }
 
         header {
-            background-color: rgb(80, 171, 255);
+            background-color: rgb(0, 200, 25);
             color: white;
             padding: 10px 20px;
             display: flex;
@@ -45,7 +38,7 @@
         }
 
         nav {
-            background-color: rgb(0, 132, 255);
+            background-color: rgb(0, 175, 25);
             display: flex;
             justify-content: center;
             gap: 10px;
@@ -63,22 +56,18 @@
         }
 
         nav a:hover {
-            background-color: #1100ff;
+            background-color: rgb(0, 150, 25);
         }
 
         .main-content {
             max-width: 900px;
             margin: 30px auto 60px;
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px 40px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         h1,
         h2 {
-            color: #3456fe;
+            color: rgb(0, 200, 25);
             margin-top: 40px;
             letter-spacing: 0.05em;
         }
@@ -100,8 +89,8 @@
         }
 
         .feature-box {
-            background-color: #e0f0ff;
-            border-left: 6px solid rgb(80, 171, 255);
+            background-color: #e4ffe0;
+            border-left: 6px solid rgb(0, 200, 25);
             border-radius: 10px;
             padding: 25px 20px;
             max-width: 280px;
@@ -116,19 +105,19 @@
         }
 
         .feature-box h3 {
-            color: rgb(0, 132, 255);
+            color: rgb(0, 200, 25);
             margin-bottom: 12px;
         }
 
         .feature-box p {
             font-style: normal;
             font-weight: 500;
-            color: #234e9c;
+            color: rgb(0, 175, 25);
         }
 
         /* Students' feedback section */
         .feedback-section {
-            background-color: #eaf4ff;
+            background-color: #e4ffe0;
             border-radius: 12px;
             padding: 30px 40px;
             margin-top: 60px;
@@ -147,7 +136,7 @@
             max-width: 700px;
             position: relative;
             padding: 20px 40px;
-            border-left: 5px solid rgb(80, 171, 255);
+            border-left: 5px solid rgb(0, 200, 25);
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
@@ -156,7 +145,7 @@
         .feedback-author {
             margin-top: 12px;
             font-weight: 700;
-            color: rgb(0, 132, 255);
+            color: rgb(0, 200, 25);
             font-size: 1rem;
             text-align: right;
         }
@@ -166,8 +155,8 @@
             margin-top: 60px;
             font-style: italic;
             font-size: 1.25rem;
-            color: #3456fe;
-            border-left: 6px solid rgb(80, 171, 255);
+            color: rgb(0, 175, 25);
+            border-left: 6px solid rgb(0, 200, 25);
             padding-left: 20px;
             max-width: 750px;
             margin-left: auto;
@@ -177,7 +166,7 @@
         /* Contact box */
         .contact-section {
             margin-top: 60px;
-            background-color: #e0f0ff;
+            background-color: #e4ffe0;
             border-radius: 12px;
             padding: 30px 40px;
             max-width: 700px;
@@ -189,7 +178,7 @@
 
         .contact-section h2 {
             margin-top: 0;
-            color: #234e9c;
+            color: rgb(0, 175, 25);
         }
 
         form {
@@ -200,14 +189,14 @@
 
         label {
             font-weight: 600;
-            color: #234e9c;
+            color: rgb(0, 175, 25);
         }
 
         input,
         textarea {
             padding: 10px;
             font-size: 1rem;
-            border: 2px solid rgb(80, 171, 255);
+            border: 2px solid rgb(0, 200, 25);
             border-radius: 8px;
             resize: vertical;
         }
@@ -217,7 +206,7 @@
         }
 
         button {
-            background-color: rgb(80, 171, 255);
+            background-color: rgb(0, 200, 25);
             border: none;
             color: white;
             font-weight: 700;
@@ -229,16 +218,17 @@
         }
 
         button:hover {
-            background-color: rgb(0, 132, 255);
+            background-color: rgb(0, 175, 25);
         }
 
         footer {
-            background-color: rgb(80, 171, 255);
+            background-color: rgb(0, 175, 25);
             color: white;
             text-align: center;
             padding: 10px;
             position: fixed;
             bottom: 0;
+            font-weight: 600;
             width: 100%;
             font-size: 0.9rem;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
@@ -259,7 +249,7 @@
 
 <body>
     <header>
-        <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo" width="100" height="90"></a>
+        <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo"></a>
         <h1 style="color: white;">Home</h1>
         <div id="user-info" style="color: white; position: absolute; top: 10px; right: 20px;"></div>
     </header>
@@ -276,7 +266,6 @@
         <a href="um_reading_test.html">Reading Test</a>
         <a href="signup_login.html">Sign up / Log in</a>
     </nav>
-
     <div class="main-content">
         <h2>Welcome to IELTS WITH UMAR!</h2>
         <p>Your friendly guide to mastering the IELTS exam, no matter your level. Explore clear lessons, useful tips, and practice tests to improve your Listening, Reading, Writing, and Speaking skills.</p>
