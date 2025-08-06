@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Essay Checker | IELTS WITH UMAR</title>
+    <style>
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        select,
+        textarea,
+        input[type="text"],
+        input[type="email"],
+        button,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #a5d6a7;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: rgb(0, 200, 25);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: rgb(0, 175, 25);
+        }
+
+        #result {
+            background-color: rgb(0, 200, 25);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            color: white;
+        }
+
+        #uploadedImage {
+            max-width: 100%;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .word-counter {
+            text-align: right;
+            font-size: 0.9em;
+            color: #2e7d32;
+        }
+
+        #timerDisplay {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #1b5e20;
+        }
+
+        .timer-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .timer-buttons button {
+            flex: 1;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+        }
+
+        header {
+            background-color: rgb(0, 200, 25);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        header img {
+            max-width: 80px;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background-color: rgb(0, 175, 25);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgb(0, 150, 25);
+        }
+
+        .main-content {
+            max-width: 800px;
+            margin: 30px auto 60px;
+            text-align: center;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: rgb(0, 200, 25);
+            margin-top: 40px;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            margin: 18px 0;
+            color: #444;
+        }
+
+        footer {
+            background-color: rgb(0, 175, 25);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            font-weight: 600;
+            width: 100%;
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* New styles for user info and profile picture */
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo"></a>
+        <h1 style="color: white">Essay Checker</h1>
+        <div id="user-info">
+            <img id="user-photo" src="IELTS WITH UMAR LOGO.png" alt="Profile Photo">
+            <span id="user-display-name"></span>
+        </div>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About Me</a>
+        <a href="listening.html">Listening</a>
+        <a href="reading.html">Reading</a>
+        <a href="writing.html">Writing</a>
+        <a href="speaking.html">Speaking</a>
+        <a href="um_grammar_test.html">Grammar Test</a>
+        <a href="um_listening_test.html">Listening Test</a>
+        <a href="um_reading_test.html">Reading Test</a>
+        <a href="um_writing_check.html">Essay Checker</a>
+        <a href="myprofile.html">My Profile</a>
+    </nav>
+
+    <div class="main-content">
+        <h1>Essay Checker</h1>
+        <h3>Please, scroll down after submitting the essay.</h3>
+        <form id="essayForm" enctype="multipart/form-data">
+            <label for="task">Choose Task Type:</label>
+            <select id="task" name="task" onchange="toggleInputs()" required>
+                <option value="">Choose task...</option>
+                <option value="task1">Task 1</option>
+                <option value="task2">Task 2</option>
+            </select>
+
+            <label for="email">Your Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+
+            <label for="topic">Essay Topic:</label>
+            <input type="text" id="topic" name="topic" placeholder="Enter your IELTS writing topic" required />
+
+            <div id="imageInput" style="display: none;">
+                <label for="image">Upload Task 1 Image (preview only):</label>
+                <input type="file" id="image" name="image" accept="image/*" onchange="previewImage()" />
+                <img id="uploadedImage" src="" alt="Preview" />
+            </div>
+
+            <label for="essay">Your Essay:</label>
+            <textarea id="essay" name="essay" rows="12" placeholder="Write your essay here..." oninput="updateWordCount()"
+                required></textarea>
+            <div class="word-counter" id="wordCount">Word Count: 0</div>
+            <div id="timerDisplay">⏱ Time Remaining: --:--</div>
+            <div class="timer-buttons">
+                <button type="button" onclick="manualStartTimer()">Start</button>
+                <button type="button" onclick="pauseTimer()">Pause</button>
+                <button type="button" onclick="restartTimer()">Restart</button>
+            </div>
+
+            <button type="submit">Check My Essay</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+    <p>_</p>
+    <footer>
+        <p style="color: white;">&copy; 2025 IELTS WITH UMAR | All rights reserved.</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+
+    <script>
+        let timerStarted = false;
+        let timerInterval;
+        let totalSeconds = 0;
+        let paused = false;
+
+        function toggleInputs() {
+            const task = document.getElementById("task").value;
+            const imageInput = document.getElementById("imageInput");
+            const essayInput = document.getElementById("essay");
+            const timerDisplay = document.getElementById("timerDisplay");
+            timerDisplay.textContent = "⏱ Time Remaining: --:--";
+            essayInput.disabled = false;
+            essayInput.value = '';
+            wordCount.textContent = "Word Count: 0";
+            clearInterval(timerInterval);
+            timerStarted = false;
+            paused = false;
+            if (task === "task1") {
+                imageInput.style.display = "block";
+            } else {
+                imageInput.style.display = "none";
+            }
+        }
+
+        function previewImage() {
+            const image = document.getElementById("image").files[0];
+            const preview = document.getElementById("uploadedImage");
+            if (image) {
+                preview.src = URL.createObjectURL(image);
+                preview.style.display = "block";
+            } else {
+                preview.style.display = "none";
+            }
+        }
+
+        function updateWordCount() {
+            const essay = document.getElementById("essay").value;
+            const wordCount = essay.trim().split(/\s+/).filter(Boolean).length;
+            document.getElementById("wordCount").textContent = `Word Count: ${wordCount}`;
+        }
+
+        function startTimer(seconds) {
+            totalSeconds = seconds;
+            const timerDisplay = document.getElementById("timerDisplay");
+            const essayInput = document.getElementById("essay");
+
+            timerInterval = setInterval(() => {
+                if (!paused) {
+                    const minutesLeft = Math.floor(totalSeconds / 60);
+                    const secondsLeft = totalSeconds % 60;
+                    timerDisplay.textContent = `⏱ Time Remaining: ${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}`;
+
+                    if (totalSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        essayInput.disabled = true;
+                        timerDisplay.innerHTML = "⏰ <strong>Time is up!</strong> You can now submit your essay.";
+                    }
+
+                    totalSeconds--;
+                }
+            }, 1000);
+        }
+
+        function manualStartTimer() {
+            if (!timerStarted) {
+                const task = document.getElementById("task").value;
+                if (!task) {
+                    alert("Please select the Task Type first.");
+                    return;
+                }
+                const timeLimit = task === "task1" ? 20 * 60 : 40 * 60;
+                startTimer(timeLimit);
+                timerStarted = true;
+                paused = false;
+                document.getElementById("essay").disabled = false;
+            }
+        }
+
+        function pauseTimer() {
+            paused = !paused;
+        }
+
+        function restartTimer() {
+            clearInterval(timerInterval);
+            timerStarted = false;
+            manualStartTimer();
+        }
+
+        document.getElementById("essayForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const task = document.getElementById("task").value;
+            const topic = document.getElementById("topic").value;
+            const email = document.getElementById("email").value;
+            const essay = document.getElementById("essay").value;
+            const imageFile = document.getElementById("image").files[0];
+
+            if (!task || !topic || !essay || !email) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("task", task);
+            formData.append("topic", topic);
+            formData.append("email", email);
+            formData.append("essay", essay);
+            if (task === "task1") {
+                formData.append("image_info", imageFile ? `User uploaded: ${imageFile.name}` : "No image uploaded.");
+            }
+
+            fetch("https://formspree.io/f/mdkzongk", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    const resultDiv = document.getElementById("result");
+                    if (response.ok) {
+                        resultDiv.innerHTML = `<strong>✅ Your essay has been sent!</strong><br> Your essay will be checked, and the results will be sent to you via email.`;
+                        resultDiv.style.display = "block";
+                        document.getElementById("essayForm").reset();
+                        document.getElementById("wordCount").textContent = "Word Count: 0";
+                        document.getElementById("uploadedImage").style.display = "none";
+                        document.getElementById("timerDisplay").textContent = "⏱ Time Remaining: --:--";
+                        clearInterval(timerInterval);
+                        timerStarted = false;
+                        paused = false;
+                    } else {
+                        resultDiv.innerHTML = `<strong>❌ Failed to send essay.</strong> Please try again later.`;
+                        resultDiv.style.display = "block";
+                    }
+                })
+                .catch(error => {
+                    const resultDiv = document.getElementById("result");
+                    resultDiv.innerHTML = `<strong>❌ Error:</strong> ${error.message}`;
+                    resultDiv.style.display = "block";
+                });
+        });
+
+
+        // Firebase SDK
+        const firebaseConfig = {
+            apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
+            authDomain: "ielts-with-umar.firebaseapp.com",
+            projectId: "ielts-with-umar",
+            storageBucket: "ielts-with-umar.firebasestorage.app",
+            messagingSenderId: "373444526917",
+            appId: "1:373444526917:web:35b7363401de1df815742c"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        const userPhoto = document.getElementById('user-photo');
+        const userDisplayName = document.getElementById('user-display-name');
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                if (user.photoURL) {
+                    userPhoto.src = user.photoURL;
+                    userPhoto.style.display = 'block';
+                } else {
+                    userPhoto.src = "IELTS WITH UMAR LOGO.png"; // Set a default image
+                    userPhoto.style.display = 'block';
+                }
+                userDisplayName.textContent = user.displayName || user.email;
+
+                // Pre-fill email field if user is logged in
+                document.getElementById("email").value = user.email;
+            } else {
+                userPhoto.style.display = 'none';
+                userDisplayName.textContent = '';
+                document.getElementById("email").value = ''; // Clear email field if logged out
+            }
+        });
+    </script>
+</body>
+
+</html>

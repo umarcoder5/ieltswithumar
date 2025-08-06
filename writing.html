@@ -21,6 +21,7 @@
             padding: 10px 20px;
             display: flex;
             align-items: center;
+            position: relative;
         }
 
         header img {
@@ -101,15 +102,29 @@
             font-weight: 600;
         }
 
+        /* New styles for user info and profile picture */
         #user-info {
             position: absolute;
             top: 10px;
             right: 20px;
-            font-weight: bold;
-            font-size: 1.5rem;
-            /* Increase the font size here */
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
             color: white;
-            /* Keep the text white */
+            font-weight: bold;
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -118,9 +133,11 @@
     <header>
         <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo"></a>
         <h1 style="color: white">Writing</h1>
-        <div id="user-info" style="color: white; position: absolute; top: 10px; right: 20px;"></div>
+        <div id="user-info">
+            <img id="user-photo" src="IELTS WITH UMAR LOGO.png" alt="Profile Photo">
+            <span id="user-display-name"></span>
+        </div>
     </header>
-
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About Me</a>
@@ -131,7 +148,8 @@
         <a href="um_grammar_test.html">Grammar Test</a>
         <a href="um_listening_test.html">Listening Test</a>
         <a href="um_reading_test.html">Reading Test</a>
-        <a href="signup_login.html">Sign up / Log in</a>
+        <a href="um_writing_check.html">Essay Checker</a>
+        <a href="myprofile.html">My Profile</a>
     </nav>
     <div class="main-content">
         <h1>Writing Overview, Tips & Common Mistakes</h1>
@@ -308,7 +326,6 @@
     <footer>
         <p style="color: white;">&copy; 2025 IELTS WITH UMAR | All rights reserved.</p>
     </footer>
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 
@@ -324,17 +341,25 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
 
-        const userInfo = document.getElementById('user-info');
+        const userPhoto = document.getElementById('user-photo');
+        const userDisplayName = document.getElementById('user-display-name');
 
         auth.onAuthStateChanged(user => {
             if (user) {
-                userInfo.textContent = `${user.displayName || user.email}`;
+                if (user.photoURL) {
+                    userPhoto.src = user.photoURL;
+                    userPhoto.style.display = 'block';
+                } else {
+                    userPhoto.src = "IELTS WITH UMAR LOGO.png"; // Set a default image
+                    userPhoto.style.display = 'block';
+                }
+                userDisplayName.textContent = user.displayName || user.email;
             } else {
-                userInfo.textContent = '';
+                userPhoto.style.display = 'none';
+                userDisplayName.textContent = '';
             }
         });
     </script>
-
 </body>
 
 </html>
