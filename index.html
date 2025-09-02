@@ -1,21 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="google-site-verification" content="JCntE1RXy86HUkDJIT_m8pjibBIiwundkDTBpyZAiiY" />
     <title>Home | IELTS WITH UMAR</title>
-    <link rel="icon" href="IELTS WITH UMAR LOGO.png" type="image/png">
+    <link rel="icon" href="IELTS WITH UMAR LOGO ORIGINAL.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* General Styles */
+        html, body {
+            width: 100%;
+            height: 100%;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
             background-color: white;
             color: #333;
         }
 
+        /* Loading Screen Styles (UPDATED) */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid rgb(0, 175, 25);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Header section from original code */
         header {
             background-color: rgb(0, 200, 25);
             color: white;
@@ -38,6 +77,7 @@
             letter-spacing: 1px;
         }
 
+        /* Navigation Menu Styles */
         nav {
             background-color: rgb(0, 175, 25);
             display: flex;
@@ -51,7 +91,7 @@
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: background-color 0.3s ease;
             border-radius: 5px;
         }
@@ -60,14 +100,187 @@
             background-color: rgb(0, 150, 25);
         }
 
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown button */
+        .dropdown .dropbtn {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(0, 150, 25);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 700;
+            border-radius: 0;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: rgb(0, 120, 25);
+        }
+
+        .dropdown-content a:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        /* Show the dropdown menu (use this class with JS) */
+        .show {
+            display: block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: white;
+            padding: 14px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: rgb(0, 150, 25);
+        }
+
+        /* Highlight the active page link */
+        .active-link {
+            background-color: rgb(0, 150, 25);
+        }
+
+        /* Banner Styles */
+        .hero-banner {
+            width: 100vw;
+            height: 70vh;
+            background: linear-gradient(135deg, rgb(0, 200, 25) 0%, rgb(0, 150, 25) 50%, rgb(0, 175, 25) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center content horizontally */
+            color: white;
+            padding: 40px 8%;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 60%;
+            text-align: left;
+            z-index: 1;
+        }
+
+        /* Banner Text */
+        .hero-banner h2 {
+            font-size: 3.5rem;
+            margin: 0 0 20px 0;
+            color: white;
+            line-height: 1.1;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
+        }
+
+        .hero-banner p {
+            font-size: 1.2rem;
+            margin: 0 0 40px 0;
+            max-width: 600px;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: bold;
+        }
+
+        /* Remove neon effects */
+        .highlight, .highlight-only-uppercase {
+            color: white;
+            text-shadow: none;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+
+        .hero-buttons .cta-button {
+            display: inline-block;
+            background-color: #9933ff;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-buttons .cta-button:hover {
+            background-color: rgb(0, 200, 25);
+            transform: translateY(-2px);
+        }
+
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+            height: 100%;
+            max-width: 40%;
+        }
+
+        .hero-image-container img {
+            max-height: 90%;
+            width: auto;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            object-fit: cover;
+            transform: translateY(0%);
+            aspect-ratio: 1 / 1;
+        }
+
+        /* Main Content Styles */
         .main-content {
             max-width: 900px;
             margin: 30px auto 60px;
             text-align: center;
         }
 
-        h1,
-        h2 {
+        h1, h2 {
             color: rgb(0, 200, 25);
             margin-top: 40px;
             letter-spacing: 0.05em;
@@ -80,43 +293,35 @@
             color: #444;
         }
 
-        /* Feature boxes container */
-        .features {
+        /* About Section */
+        .about-section {
             display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            margin-top: 40px;
-        }
-
-        .feature-box {
-            background-color: #e4ffe0;
-            border-left: 6px solid rgb(0, 200, 25);
-            border-radius: 10px;
-            padding: 25px 20px;
-            max-width: 280px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            align-items: center;
+            gap: 40px;
             text-align: left;
-            transition: transform 0.3s ease;
+            margin-bottom: 60px;
         }
 
-        .feature-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        .about-section .about-text {
+            flex: 2;
         }
 
-        .feature-box h3 {
-            color: rgb(0, 200, 25);
-            margin-bottom: 12px;
+        .about-section .about-text p {
+            margin-top: 0;
         }
 
-        .feature-box p {
-            font-style: normal;
-            font-weight: 500;
-            color: rgb(0, 175, 25);
+        .about-section .profile-image {
+            flex: 1;
+            max-width: 250px;
         }
 
-        /* Students' feedback section */
+        .about-section .profile-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Feedback Section */
         .feedback-section {
             background-color: #e4ffe0;
             border-radius: 12px;
@@ -200,6 +405,7 @@
             border: 2px solid rgb(0, 200, 25);
             border-radius: 8px;
             resize: vertical;
+            font-family: 'Montserrat', sans-serif;
         }
 
         textarea {
@@ -216,23 +422,101 @@
             cursor: pointer;
             font-size: 1.1rem;
             transition: background-color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
         }
 
         button:hover {
             background-color: rgb(0, 175, 25);
         }
 
-        footer {
-            background-color: rgb(0, 175, 25);
+        /* Footer Styles (UPDATED) */
+        .footer {
+            background-color: rgb(0, 150, 25);
             color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            font-weight: 600;
-            width: 100%;
+            padding: 50px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
             font-size: 0.9rem;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+            gap: 20px;
+            font-family: 'Montserrat', sans-serif;
+            text-align: left;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            border-bottom: 2px solid rgb(0, 200, 25);
+            padding-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, padding-left 0.3s ease;
+            display: inline-block;
+            font-size: 1.05rem;
+            font-weight: bold;
+            padding: 5px 0;
+            border-radius: 3px;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            background-color: rgb(0, 100, 20);
+            transform: translateX(0);
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            content: '>';
+            position: absolute;
+            left: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: white;
+            font-weight: bold;
         }
 
         #user-info {
@@ -242,6 +526,15 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+        }
+
+        .premium-user-info {
+            background-color: #FFD700 !important;
         }
 
         #user-photo {
@@ -258,10 +551,81 @@
             font-weight: bold;
             font-size: 1.1rem;
         }
+
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .hero-banner {
+                flex-direction: column;
+                height: auto;
+                min-height: 600px;
+                padding: 40px 5%;
+                justify-content: flex-start;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .hero-banner h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-banner p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image-container {
+                max-width: 80%;
+                height: auto;
+            }
+
+            .hero-image-container img {
+                max-height: 300px;
+                width: auto;
+                border-radius: 50%;
+            }
+
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-section .profile-image {
+                max-width: 150px;
+            }
+
+            .footer-section {
+                min-width: 100%;
+                text-align: center;
+            }
+
+            .footer-section h3 {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .footer-section ul li a {
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
-
 <body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
     <header>
         <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo"></a>
         <h1 style="color: white;">Home</h1>
@@ -271,34 +635,64 @@
         </div>
     </header>
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active-link">Home</a>
         <a href="about.html">About Me</a>
-        <a href="listening.html">Listening</a>
-        <a href="reading.html">Reading</a>
-        <a href="writing.html">Writing</a>
-        <a href="speaking.html">Speaking</a>
-        <a href="um_grammar_test.html">Grammar Test</a>
-        <a href="um_listening_test.html">Listening Test</a>
-        <a href="um_reading_test.html">Reading Test</a>
-        <a href="um_writing_check.html">Essay Checker</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn" onclick="toggleDropdown('ieltsDropdown')">
+                IELTS Sections <span>▼</span>
+            </a>
+            <div id="ieltsDropdown" class="dropdown-content">
+                <a href="listening.html">Listening</a>
+                <a href="reading.html">Reading</a>
+                <a href="writing.html">Writing</a>
+                <a href="speaking.html">Speaking</a>
+            </div>
+        </div>
+        <a href="essay_checker.html">Essay Checker</a>
+        <a href="listening_tests.html">IELTS Listening Tests</a>
+        <a href="reading_tests.html">IELTS Reading Tests</a>
+        <a href="writing_samples.html">Writing Samples</a>
+        <a href="speaking_topics.html">Speaking Topics</a>
+        <a href="pricing.html">Pricing</a>
         <a href="myprofile.html">My Profile</a>
     </nav>
-    <img src="Website Banner.png" width="100%">
+
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h2>Your Path to <span style="color: rgb(0, 255, 25);">IELTS Success</span></h2>
+            <p>We provide expert guidance, practice materials, and proven strategies to help you achieve your target IELTS band score. Whether you’re aiming for study, work, or migration, we’re here to make your journey easier and more effective. <span style="color: rgb(0, 255, 25);">LEARN. PRACTICE. WIN.</span></p>
+            <div class="hero-buttons">
+                <a href="#" id="banner-cta-button" class="cta-button"></a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="https://s3-eu-west-1.amazonaws.com/alt-cdn/chrysos/images/blog/435/large/chrysos-hr-healthy-happy-while-studying-6523df1110273.jpg" alt="Person studying for IELTS">
+        </div>
+    </section>
+
     <div class="main-content">
+        <section class="about-section">
+            <div class="profile-image">
+                <img src="IELTS WITH UMAR LOGO.png" alt="Umar's Profile Image">
+            </div>
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Hello! I'm Umar, a dedicated IELTS instructor with a mission to help students achieve their dream scores. I've been in the field for over 2 years, and my own experience of scoring a Band 7.0 on the IELTS exam has given me a deep understanding of what it takes to succeed.</p>
+                <p>My passion is to simplify the complexities of the IELTS test. I focus on practical strategies and personalized guidance to help you navigate each section with confidence. Whether you're aiming for a 7.0 or a 9.0, my goal is to equip you with the knowledge and skills needed to ace the exam.</p>
+            </div>
+        </section>
 
         <section class="feedback-section" aria-label="Students' feedback">
             <h2>What Students Say</h2>
-
             <blockquote class="feedback-quote">
-                "Umar’s lessons made IELTS easy to understand. Thanks to his clear explanations, I improved my writing score by 2 bands!"
+                "Umar’s lessons made IELTS easy to understand. Thanks to his clear explanations, I improved my writing
+                score by 2 bands!"
                 <div class="feedback-author">— Amin Yusupov</div>
             </blockquote>
-
             <blockquote class="feedback-quote">
                 "I loved the speaking tips and practice tests. They really helped me gain confidence."
                 <div class="feedback-author">— Ibrohim Jalilov</div>
             </blockquote>
-
             <blockquote class="feedback-quote">
                 "The website’s structure and simplicity made studying IELTS fun and effective!"
                 <div class="feedback-author">— Saidumar Jaxongirov</div>
@@ -314,25 +708,73 @@
             <form action="https://formspree.io/f/mdkzongk" method="post">
                 <label for="name">Your Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your name" required />
-
                 <label for="email">Your Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required />
-
                 <label for="message">Your Message</label>
                 <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-
                 <button type="submit">Send Message</button>
             </form>
         </section>
     </div>
-    <p>_</p>
-    <footer>
-        <p style="color: white;">&copy; 2025 IELTS WITH UMAR | All rights reserved.</p>
+
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>IELTS WITH UMAR</h3>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and comprehensive tools to help you achieve your desired band score.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="myprofile.html">My Profile</a></li>
+                <li><a href="essay_checker.html">Essay Checker</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>IELTS Sections</h3>
+            <ul>
+                <li><a href="listening.html">Listening</a></li>
+                <li><a href="reading.html">Reading</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="speaking.html">Speaking</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 IELTS WITH UMAR. All rights reserved.
+        </div>
     </footer>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-
     <script>
+        // Loading animation script (UPDATED)
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('loadingOverlay').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 500);
+            }, 500);
+        };
+
+        // Dropdown functions
+        function toggleDropdown(id) {
+            document.getElementById(id).classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // Firebase SDK
         const firebaseConfig = {
             apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
             authDomain: "ielts-with-umar.firebaseapp.com",
@@ -344,25 +786,97 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
 
+        const userInfo = document.getElementById('user-info');
         const userPhoto = document.getElementById('user-photo');
         const userDisplayName = document.getElementById('user-display-name');
+        const bannerCtaButton = document.getElementById('banner-cta-button');
+
+        // List of premium user emails, as provided by you.
+        const premiumUsers = [
+            "yusupovumarcr7@gmail.com",
+            "premium@gmail.com",
+            "saidumarjaxongirov@gmail.com",
+            "shoirasayfitdinova567@gmail.com",
+            "dostonbr2@gmail.com",
+            "shoxish@mail.ru",
+            "nozimshavkiev@gmail.com",
+            "nematullayevsaidkamol2@gmail.com"
+        ];
 
         auth.onAuthStateChanged(user => {
+            // Clear any existing badges and classes to prevent duplicates on state change
+            const existingBadge = document.getElementById('premium-badge');
+            if (existingBadge) {
+                existingBadge.remove();
+            }
+            userInfo.classList.remove('premium-user-info');
+
             if (user) {
+                // User is logged in
                 if (user.photoURL) {
                     userPhoto.src = user.photoURL;
                     userPhoto.style.display = 'block';
                 } else {
-                    userPhoto.src = "IELTS WITH UMAR LOGO.png"; // Set a default image
+                    userPhoto.src = "IELTS WITH UMAR LOGO.png";
                     userPhoto.style.display = 'block';
                 }
                 userDisplayName.textContent = user.displayName || user.email;
+
+                // Check for premium access using the provided array
+                if (premiumUsers.includes(user.email)) {
+                    // User is premium
+                    userInfo.classList.add('premium-user-info');
+
+                    const badge = document.createElement('span');
+                    badge.id = 'premium-badge';
+                    badge.innerHTML = '⭐';
+                    badge.className = 'premium-badge';
+                    userDisplayName.appendChild(badge);
+
+                    // If user has premium, button says "PREMIUM ACTIVE" and is disabled
+                    bannerCtaButton.textContent = "PREMIUM ACTIVE";
+                    bannerCtaButton.href = "#";
+                    bannerCtaButton.style.backgroundColor = '#FFD700';
+                    bannerCtaButton.style.color = 'black';
+                    bannerCtaButton.style.cursor = 'not-allowed';
+                    bannerCtaButton.onmouseover = null;
+                    bannerCtaButton.onmouseout = null;
+
+                } else {
+                    // User is logged in but not premium, button says "BUY PREMIUM"
+                    bannerCtaButton.textContent = "BUY PREMIUM";
+                    bannerCtaButton.href = "pricing.html";
+                    bannerCtaButton.style.backgroundColor = '#FFD700';
+                    bannerCtaButton.style.color = '#333';
+                    bannerCtaButton.style.cursor = 'pointer';
+                    bannerCtaButton.onmouseover = function() {
+                        this.style.backgroundColor = '#E5C100';
+                    };
+                    bannerCtaButton.onmouseout = function() {
+                        this.style.backgroundColor = '#FFD700';
+                    };
+                }
+
             } else {
+                // User is not logged in
                 userPhoto.style.display = 'none';
                 userDisplayName.textContent = '';
+                userInfo.classList.remove('premium-user-info');
+
+                // Set button text for guests
+                bannerCtaButton.textContent = "SIGN UP NOW";
+                bannerCtaButton.href = "myprofile.html";
+                bannerCtaButton.style.backgroundColor = 'rgb(0, 150, 25)';
+                bannerCtaButton.style.color = 'white';
+                bannerCtaButton.style.cursor = 'pointer';
+                bannerCtaButton.onmouseover = function() {
+                    this.style.backgroundColor = 'rgb(0, 200, 25)';
+                };
+                bannerCtaButton.onmouseout = function() {
+                    this.style.backgroundColor = 'rgb(0, 150, 25)';
+                };
             }
         });
     </script>
 </body>
-
 </html>

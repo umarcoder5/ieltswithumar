@@ -1,0 +1,1166 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Reading Tests | IELTS WITH UMAR</title>
+    <link rel="icon" href="IELTS WITH UMAR LOGO ORIGINAL.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --passage-bg: #f8f9fa;
+            --questions-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --highlight-color: #90EE90;
+            /* Changed from blue (#87CEEB) to light green */
+            --header-bg: #F0FFF0;
+            /* Changed from light blue (#F0F8FF) to light green */
+            --header-text: #333333;
+            --button-bg: #28a745;
+            /* Changed from blue (#007FFF) to green */
+            --button-hover: #218838;
+            /* Changed from darker blue (#005fbe) to darker green */
+            --correct-color: #28a745;
+            --incorrect-color: #dc3545;
+            --progress-complete: #28a745;
+            /* Changed from blue (#007FFF) to green */
+            --progress-incomplete: #bdbdbd;
+            --timer-bg: #e6ffe6;
+            /* Changed from light blue (#e0f2f7) to light green */
+            --timer-text: #28a745;
+            /* Changed from blue (#0288d1) to green */
+            --footer-bg: #f5f5f5;
+        }
+
+        .night-mode {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --passage-bg: #1e1e1e;
+            --questions-bg: #1e1e1e;
+            --border-color: #424242;
+            --highlight-color: #2e7d32;
+            /* Changed from dark blue (#0047AB) to dark green */
+            --header-bg: #1a1a1a;
+            --header-text: #ffffff;
+            --button-bg: #2e7d32;
+            /* Changed from dark blue (#0047AB) to dark green */
+            --button-hover: #1b5e20;
+            /* Changed from darker blue (#002e70) to darker green */
+            --correct-color: #218838;
+            --incorrect-color: #c82333;
+            --progress-complete: #2e7d32;
+            /* Changed from dark blue (#0047AB) to dark green */
+            --progress-incomplete: #616161;
+            --timer-bg: #1b5e20;
+            /* Changed from dark blue (#002b4d) to dark green */
+            --timer-text: #81c784;
+            /* Changed from light blue (#81d4fa) to light green */
+            --footer-bg: #121212;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .header-logo {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .header-logo a {
+            color: var(--header-text);
+            text-decoration: none;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .timer-container {
+            background-color: var(--timer-bg);
+            color: var(--timer-text);
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .timer-controls button {
+            background: none;
+            border: none;
+            color: var(--timer-text);
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timer-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .night-mode .timer-controls button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .mode-toggle {
+            background: none;
+            border: none;
+            color: var(--header-text);
+            cursor: pointer;
+            font-size: 20px;
+            padding: 6px;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mode-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .night-mode .mode-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .passage-container,
+        .questions-container {
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .passage-container {
+            width: 50%;
+            background-color: var(--passage-bg);
+            border-right: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .questions-container {
+            width: 50%;
+            background-color: var(--questions-bg);
+        }
+
+        .passage-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .passage-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .passage-text {
+            font-size: 17px;
+        }
+
+        .question-text {
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .passage-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight {
+            background-color: var(--highlight-color);
+            cursor: pointer;
+        }
+
+        .highlight-tooltip {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            z-index: 1000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            color: var(--text-color);
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .question-group {
+            margin-bottom: 30px;
+        }
+
+        .question {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--passage-bg);
+            border-left: 4px solid var(--border-color);
+        }
+
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .question-number {
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            background-color: var(--progress-incomplete);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .question.answered .question-number {
+            background-color: var(--progress-complete);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .fill-in-the-blank {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--text-color);
+            width: 150px;
+            font-family: inherit;
+            font-size: 1em;
+            color: inherit;
+            padding: 0 4px 2px 4px;
+            margin: 0 3px;
+            vertical-align: baseline;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .fill-in-the-blank:focus {
+            border-bottom-color: var(--button-bg);
+        }
+
+        .instructions {
+            font-size: 14px;
+            color: #757575;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .matching-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .matching-table th,
+        .matching-table td {
+            border: 1px solid var(--border-color);
+            padding: 10px 15px;
+            text-align: center;
+        }
+
+        .matching-table th {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            font-weight: 600;
+        }
+
+        .matching-table td {
+            background-color: var(--passage-bg);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .matching-table td:hover:not(.question-cell):not(.header-cell) {
+            background-color: rgba(40, 167, 69, 0.1);
+            /* Adjusted for green */
+        }
+
+        .night-mode .matching-table td:hover:not(.question-cell):not(.header-cell) {
+            background-color: rgba(46, 125, 50, 0.2);
+            /* Adjusted for green */
+        }
+
+        .matching-table .question-cell {
+            text-align: left;
+            font-weight: 500;
+            background-color: var(--questions-bg);
+        }
+
+        .matching-table .header-cell {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            font-weight: 600;
+        }
+
+        .matching-table .selected {
+            background-color: var(--highlight-color);
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-container {
+            display: flex;
+            gap: 8px;
+        }
+
+        .progress-item {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--progress-incomplete);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .progress-item:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-item.completed {
+            background-color: var(--progress-complete);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--button-bg);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--button-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--button-bg);
+            color: var(--button-bg);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(40, 167, 69, 0.1);
+            /* Adjusted for green */
+        }
+
+        .night-mode .btn-secondary:hover {
+            background-color: rgba(46, 125, 50, 0.2);
+            /* Adjusted for green */
+        }
+
+        .feedback-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feedback-container {
+            background-color: var(--passage-bg);
+            width: 90%;
+            max-width: 900px;
+            height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feedback-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .feedback-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #close-feedback {
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .score-display {
+            font-size: 24px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .feedback-body {
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .feedback-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--questions-bg);
+        }
+
+        .feedback-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feedback-answer {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .correct {
+            color: var(--correct-color);
+        }
+
+        .incorrect {
+            color: var(--incorrect-color);
+        }
+
+        .feedback-explanation {
+            margin-top: 10px;
+            padding: 10px;
+            border-left: 3px solid var(--button-bg);
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .feedback-passage {
+            margin-top: 8px;
+            font-style: italic;
+            color: #757575;
+        }
+
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+            }
+
+            .passage-container,
+            .questions-container {
+                width: 100%;
+                height: 50%;
+            }
+
+            .passage-container {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .progress-container {
+                flex-wrap: wrap;
+                max-width: 60%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .header-controls {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .progress-container {
+                max-width: 50%;
+            }
+
+            .progress-item {
+                width: 26px;
+                height: 26px;
+                font-size: 12px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .action-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header style="background-color: rgb(0, 175, 0);">
+        <div class="header-controls">
+            <div class="timer-container">
+                <i class="fas fa-clock"></i>
+                <span id="timer">20:00</span>
+                <div class="timer-controls">
+                    <button id="start-timer" title="Start"><i class="fas fa-play"></i></button>
+                    <button id="pause-timer" title="Pause"><i class="fas fa-pause"></i></button>
+                    <button id="reset-timer" title="Reset"><i class="fas fa-redo"></i></button>
+                </div>
+            </div>
+            <button class="mode-toggle" id="night-mode-toggle" title="Toggle Night Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="passage-container" id="passage-container">
+            <div class="passage-content">
+                <div class="passage-title">Socotra Island</div>
+                <div class="passage-text" id="passage-text">
+                    <p>Situated in the Arabian Sea off the Arabian Peninsula is the Socotra archipelago, a remnant of an ancient landmass that became separated from Africa and Arabia 18 million years ago. When scientists began the first substantial exploration of the islands 30 years ago, they found a fascinating collection of unusual plants and animals - a unique combination of 'relict' populations (organisms that have become extinct elsewhere) and species that have evolved to cope with the island's harsh conditions. In fact, almost a third of its plant species and up to 80 percent of its terrestrial animals are found nowhere else.</p>
+                    <p>Life in the arid conditions is harsh for the people living there too. Isolated from the mainland by hundreds of kilometres, and with monsoons that rage for several months every year, the islanders were historically self-sufficient - relying only on what they themselves could produce to survive. There are floods and droughts, and many islanders lack adequate water resources and nutrition. Medical care and education are limited.</p>
+                    <p>However, the main island, Socotra, is experiencing significant change. A rapid development programme has been instituted that will have far-reaching impacts on the island's people and the environment for decades to come. In the past, the only way to get to Socotra was by travelling for several days on a boat, but irregular flights began touching down on dirt landing strips during the late 1960s. By 1999, a runway had been constructed on Socotra that was capable of taking larger aircraft all year round, and since 2000 the capital, Hadibo, has seen huge expansion. New schools have been built, and a modern terminal was added to the airport, through which an increasing number of tourists are beginning to pass. And there are plans to construct new harbour facilities that will enable fishermen to sell their catch more easily, and also make it simpler for local people to have food, and bricks and timber for construction projects brought to the island.</p>
+                    <p>However, although these improvements are significant, it's the continuing development of Socotra's road system that is having the greatest impact on the islanders. Until 1991, a few dirt tracks, navigable only by four-wheel drive, gave access to part of the island. Otherwise it was only possible to reach most areas on foot, or with a donkey. By 2001, however, there was an extensive network of unpaved car tracks, and the following year a tarmac road, the first of its kind on Socotra, connecting the airport to Hadibo, was completed. Now, a road traverses the Diksam plateau and continues on to the south coast, making essential services more accessible to a large number of villagers.</p>
+                    <p>There is no doubt that the development of Socotra's infrastructure has brought many benefits to the island's inhabitants, but there is growing concern that the speed with which it is taking place is so rapid that it will be difficult for local people to maintain certain traditions. There is also the fear that the developments will threaten the island's unique ecosystems. Building new roads and harbours may lead to the introduction of alien species to Socotra Island (as has already happened with the Indian house crow), damage to the sea's biodiversity through the increased collection and sale of coral, and tourist developments on an inappropriate and unsustainable scale.</p>
+                    <p>Problems were also caused by increasing access to sensitive areas. For example, cutting the road along the coast caused considerable damage to the stunning scenery. However, some steps were then taken to limit the damage caused by further development. For example, biodiversity project officers were consulted in the planning stages of the road that crosses the centre of Socotra, so it avoids some of the most scenic areas and sites that contain plants only found in a limited number of locations. It is an area which is also home to the greatest concentrations of dragon's blood trees and supports many endemic animals.</p>
+                    <p>An agreement has now been reached about all future construction of roads. To protect the island's ecologically sensitive areas, any proposed road will be subject to a report assessing its environmental impact prior to construction. The challenge has been to bring the benefits of development to Socotra without damaging the environment, which supports the people's way of life and will form the basis of future development on the island.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="questions-container" id="questions-container">
+            <div class="section-title">Questions 1–5</div>
+            <div class="instructions">Do the following statements agree with the information given in Reading Passage 1?<br>In boxes 1-5 on your answer sheet, write<br>TRUE                        if the statement agrees with the information<br>FALSE                          if the statement contradicts the information<br>NOT GIVEN            if there is no information on this</div>
+            
+            <div class="question-group">
+                <div class="question" id="q1">
+                    <div class="question-title">
+                        <div class="question-number">1</div>
+                        <div class="question-text">Scientists found species on the islands that had died out in other countries.</div>
+                    </div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q1" value="TRUE"> TRUE</label>
+                        <label class="option"><input type="radio" name="q1" value="FALSE"> FALSE</label>
+                        <label class="option"><input type="radio" name="q1" value="NOT GIVEN"> NOT GIVEN</label>
+                    </div>
+                </div>
+                
+                <div class="question" id="q2">
+                    <div class="question-title">
+                        <div class="question-number">2</div>
+                        <div class="question-text">The inhabitants used to be dependent on the mainland.</div>
+                    </div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q2" value="TRUE"> TRUE</label>
+                        <label class="option"><input type="radio" name="q2" value="FALSE"> FALSE</label>
+                        <label class="option"><input type="radio" name="q2" value="NOT GIVEN"> NOT GIVEN</label>
+                    </div>
+                </div>
+
+                <div class="question" id="q3">
+                    <div class="question-title">
+                        <div class="question-number">3</div>
+                        <div class="question-text">The fact that the first flights to the island were infrequent was because of poor weather conditions.</div>
+                    </div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q3" value="TRUE"> TRUE</label>
+                        <label class="option"><input type="radio" name="q3" value="FALSE"> FALSE</label>
+                        <label class="option"><input type="radio" name="q3" value="NOT GIVEN"> NOT GIVEN</label>
+                    </div>
+                </div>
+
+                <div class="question" id="q4">
+                    <div class="question-title">
+                        <div class="question-number">4</div>
+                        <div class="question-text">Most visitors to the islands stay in the capital city.</div>
+                    </div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q4" value="TRUE"> TRUE</label>
+                        <label class="option"><input type="radio" name="q4" value="FALSE"> FALSE</label>
+                        <label class="option"><input type="radio" name="q4" value="NOT GIVEN"> NOT GIVEN</label>
+                    </div>
+                </div>
+
+                <div class="question" id="q5">
+                    <div class="question-title">
+                        <div class="question-number">5</div>
+                        <div class="question-text">People's lives have been changed more by the airport than any other development.</div>
+                    </div>
+                    <div class="options">
+                        <label class="option"><input type="radio" name="q5" value="TRUE"> TRUE</label>
+                        <label class="option"><input type="radio" name="q5" value="FALSE"> FALSE</label>
+                        <label class="option"><input type="radio" name="q5" value="NOT GIVEN"> NOT GIVEN</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">Questions 6–13</div>
+            <div class="instructions">Complete the notes below.<br>Choose ONE WORD AND/OR A NUMBER from the passage for each answer.<br>Write your answers in boxes 6-13 on your answer sheet.</div>
+            
+            <div class="question-group">
+                <div class="question" id="q6">
+                    <div class="question-title">
+                        <div class="question-number">6</div>
+                        <div class="question-text">Transportation<br>At one time, it was only possible to reach Socotra by <input type="text" name="q6" class="fill-in-the-blank"></div>
+                    </div>
+                </div>
+                
+                <div class="question" id="q7">
+                    <div class="question-title">
+                        <div class="question-number">7</div>
+                        <div class="question-text">In <input type="text" name="q7" class="fill-in-the-blank"> the airport runway was finished.</div>
+                    </div>
+                </div>
+
+                <div class="question" id="q8">
+                    <div class="question-title">
+                        <div class="question-number">8</div>
+                        <div class="question-text">The airport was further expanded with an up-to-date <input type="text" name="q8" class="fill-in-the-blank">.</div>
+                    </div>
+                </div>
+
+                <div class="question" id="q9">
+                    <div class="question-title">
+                        <div class="question-number">9</div>
+                        <div class="question-text">Harbour improvements have made it easier to import <input type="text" name="q9" class="fill-in-the-blank"> and building materials.</div>
+                    </div>
+                </div>
+
+                <div class="question" id="q10">
+                    <div class="question-title">
+                        <div class="question-number">10</div>
+                        <div class="question-text">Before the new road system, parts of Socotra were only accessible on foot, by <input type="text" name="q10" class="fill-in-the-blank"> or in a four-wheel drive.</div>
+                    </div>
+                </div>
+
+                <div class="question" id="q11">
+                    <div class="question-title">
+                        <div class="question-number">11</div>
+                        <div class="question-text">Impact on local people and the environment<br>Fewer <input type="text" name="q11" class="fill-in-the-blank"> will be continued by local inhabitants because of the speed of development.</div>
+                    </div>
+                </div>
+
+                <div class="question" id="q12">
+                    <div class="question-title">
+                        <div class="question-number">12</div>
+                        <div class="question-text">Biodiversity officers ensured the new road did not pass through places with rare <input type="text" name="q12" class="fill-in-the-blank">.</div>
+                    </div>
+                </div>
+
+                <div class="question" id="q13">
+                    <div class="question-title">
+                        <div class="question-number">13</div>
+                        <div class="question-text">In future, environmental damage by road construction will be evaluated in a <input type="text" name="q13" class="fill-in-the-blank">.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="progress-container" id="progress-container">
+        </div>
+        <div class="action-buttons">
+            <button class="btn-secondary" id="reset-btn">Reset Answers</button>
+            <button class="btn-primary" id="submit-btn">Submit Answers</button>
+        </div>
+    </footer>
+
+    <div class="feedback-overlay" id="feedback-overlay">
+        <div class="feedback-container" id="feedback-container">
+            <div class="feedback-header">
+                <div class="feedback-title">
+                    <i class="fas fa-chart-bar"></i> Your Results
+                    <span class="score-display" id="score-display">0/13</span>
+                </div>
+                <button id="close-feedback" title="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="feedback-body" id="feedback-body">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Timer functionality
+        let timerInterval;
+        let seconds = 1200; // 20 minutes
+        let timerRunning = false;
+        
+        const timerDisplay = document.getElementById('timer');
+        const startTimer = document.getElementById('start-timer');
+        const pauseTimer = document.getElementById('pause-timer');
+        const resetTimer = document.getElementById('reset-timer');
+        
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+            const secs = (seconds % 60).toString().padStart(2, '0');
+            return `${mins}:${secs}`;
+        }
+        
+        function updateTimer() {
+            timerDisplay.textContent = formatTime(seconds);
+            if (seconds <= 0) {
+                clearInterval(timerInterval);
+                timerRunning = false;
+                document.getElementById('submit-btn').click();
+            }
+        }
+        
+        startTimer.addEventListener('click', () => {
+            if (!timerRunning) {
+                timerRunning = true;
+                timerInterval = setInterval(() => {
+                    seconds--;
+                    updateTimer();
+                }, 1000);
+            }
+        });
+        
+        pauseTimer.addEventListener('click', () => {
+            if (timerRunning) {
+                clearInterval(timerInterval);
+                timerRunning = false;
+            }
+        });
+        
+        resetTimer.addEventListener('click', () => {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            seconds = 1200;
+            updateTimer();
+        });
+        
+        // Night mode toggle
+        const nightModeToggle = document.getElementById('night-mode-toggle');
+        nightModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('night-mode');
+            const icon = nightModeToggle.querySelector('i');
+            if (document.body.classList.contains('night-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+        
+        // Create progress indicators for questions 1-13
+        const progressContainer = document.getElementById('progress-container');
+        for (let i = 1; i <= 13; i++) { 
+            const progressItem = document.createElement('div');
+            progressItem.className = 'progress-item';
+            progressItem.textContent = i;
+            progressItem.dataset.question = i;
+            progressContainer.appendChild(progressItem);
+            
+            progressItem.addEventListener('click', () => {
+                const questionElement = document.getElementById(`q${i}`);
+                if (questionElement) {
+                    questionElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+        
+        // Text highlighting functionality
+        let highlightTooltip = null;
+
+        function handleMouseUp(e) {
+            const container = e.currentTarget;
+            const selection = window.getSelection();
+            if (selection.toString().trim() !== '' && container.contains(selection.anchorNode)) {
+                const range = selection.getRangeAt(0);
+                const rect = range.getBoundingClientRect();
+
+                if (highlightTooltip) {
+                    highlightTooltip.remove();
+                    highlightTooltip = null;
+                }
+
+                highlightTooltip = document.createElement('div');
+                highlightTooltip.className = 'highlight-tooltip';
+                highlightTooltip.innerHTML = '<i class="fas fa-highlighter"></i> Highlight';
+                highlightTooltip.style.position = 'fixed';
+                highlightTooltip.style.top = `${rect.top - 40}px`;
+                highlightTooltip.style.left = `${rect.left}px`;
+                document.body.appendChild(highlightTooltip);
+
+                highlightTooltip.addEventListener('click', () => {
+                    const span = document.createElement('span');
+                    span.className = 'highlight';
+                    span.appendChild(range.extractContents());
+                    range.insertNode(span);
+                    selection.removeAllRanges();
+                    highlightTooltip.remove();
+                    highlightTooltip = null;
+                });
+            }
+        }
+
+        document.getElementById('passage-text').addEventListener('mouseup', handleMouseUp);
+        document.getElementById('questions-container').addEventListener('mouseup', handleMouseUp);
+        
+        document.addEventListener('mousedown', (e) => {
+            if (highlightTooltip && !highlightTooltip.contains(e.target)) {
+                highlightTooltip.remove();
+                highlightTooltip = null;
+                window.getSelection().removeAllRanges();
+            }
+        });
+        
+        // Store user answers for all questions
+        const userAnswers = {};
+
+        // Track answered questions and update progress bar
+        const progressItems = document.querySelectorAll('.progress-item');
+        
+        function updateProgress() {
+            let answeredCount = 0;
+            
+            for (let i = 1; i <= 13; i++) {
+                const questionNumber = i;
+                let answered = false;
+
+                if (questionNumber >= 1 && questionNumber <= 5) { // True/False/Not Given
+                    const selectedOption = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+                    answered = selectedOption !== null;
+                    if (answered) {
+                        userAnswers[questionNumber] = selectedOption.value;
+                    } else {
+                        delete userAnswers[questionNumber];
+                    }
+                } else if (questionNumber >= 6 && questionNumber <= 13) { // Fill-in-the-blank
+                    const input = document.querySelector(`input[name="q${questionNumber}"]`);
+                    answered = input.value.trim() !== '';
+                    if (answered) {
+                        userAnswers[questionNumber] = input.value.trim();
+                    } else {
+                        delete userAnswers[questionNumber];
+                    }
+                }
+                
+                const progressItem = progressItems[questionNumber - 1];
+                if (answered) {
+                    progressItem.classList.add('completed');
+                    answeredCount++;
+                } else {
+                    progressItem.classList.remove('completed');
+                }
+            }
+            return answeredCount;
+        }
+        
+        // Listen for changes on radio button inputs
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', updateProgress);
+        });
+
+        // Listen for input on fill-in-the-blank fields
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('input', updateProgress);
+        });
+        
+        // Reset button
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+                input.value = '';
+            });
+            
+            for (let key in userAnswers) {
+                delete userAnswers[key];
+            }
+
+            document.querySelectorAll('.highlight').forEach(highlight => {
+                const parent = highlight.parentNode;
+                while (highlight.firstChild) {
+                    parent.insertBefore(highlight.firstChild, highlight);
+                }
+                parent.removeChild(highlight);
+                parent.normalize();
+            });
+            
+            updateProgress();
+            document.getElementById('feedback-overlay').style.display = 'none';
+        });
+        
+        // Submit and Feedback functionality
+        const feedbackOverlay = document.getElementById('feedback-overlay');
+        const closeFeedbackBtn = document.getElementById('close-feedback');
+
+        document.getElementById('submit-btn').addEventListener('click', () => {
+            pauseTimer.click();
+            
+            const answers = {
+                1: 'TRUE',
+                2: 'FALSE',
+                3: 'NOT GIVEN',
+                4: 'NOT GIVEN',
+                5: 'FALSE',
+                6: 'boat',
+                7: '1999',
+                8: 'terminal',
+                9: 'food',
+                10: 'donkey',
+                11: 'traditions',
+                12: 'plants',
+                13: 'report'
+            };
+            
+            const explanations = {
+                1: "The passage states that scientists found 'relict' populations, defined as 'organisms that have become extinct elsewhere,' confirming that species found on Socotra had died out in other places.",
+                2: "The passage states that islanders 'were historically self-sufficient - relying only on what they themselves could produce to survive,' which contradicts dependency on the mainland.",
+                3: "The passage mentions that 'irregular flights began touching down on dirt landing strips during the late 1960s,' but does not specify poor weather as the reason for infrequency.",
+                4: "The passage notes an 'increasing number of tourists' passing through the airport in Hadibo, but does not provide information on where most visitors stay.",
+                5: "The passage states that 'the continuing development of Socotra's road system is having the greatest impact on the islanders,' contradicting the claim that the airport had the most impact.",
+                6: "The passage states, 'In the past, the only way to get to Socotra was by travelling for several days on a boat.'",
+                7: "The passage mentions, 'By 1999, a runway had been constructed on Socotra.'",
+                8: "The passage notes, 'a modern terminal was added to the airport.'",
+                9: "The passage states that new harbour facilities will 'make it simpler for local people to have food, and bricks and timber for construction projects brought to the island.'",
+                10: "The passage states, 'Otherwise it was only possible to reach most areas on foot, or with a donkey.'",
+                11: "The passage mentions 'concern that the speed with which it is taking place is so rapid that it will be difficult for local people to maintain certain traditions.'",
+                12: "The passage notes that biodiversity officers ensured the road 'avoids some of the most scenic areas and sites that contain plants only found in a limited number of locations.'",
+                13: "The passage states, 'any proposed road will be subject to a report assessing its environmental impact prior to construction.'"
+            };
+            
+            let correctCount = 0;
+            const feedbackBody = document.getElementById('feedback-body');
+            feedbackBody.innerHTML = '';
+            
+            for (let i = 1; i <= 13; i++) {
+                let userAnswer, isCorrect, questionHTML, actualQuestionText;
+                const feedbackItem = document.createElement('div');
+                feedbackItem.className = 'feedback-item';
+                
+                if (i >= 1 && i <= 5) {
+                    const questionDiv = document.getElementById(`q${i}`);
+                    actualQuestionText = questionDiv.querySelector('.question-text').textContent;
+                    userAnswer = userAnswers[i] || 'Not answered';
+                    isCorrect = userAnswer === answers[i];
+                    
+                    let optionsHTML = '';
+                    questionDiv.querySelectorAll('.options label').forEach(label => {
+                        const value = label.querySelector('input').value;
+                        const optionText = label.textContent.trim();
+                        let optionClass = '';
+                        if (value === userAnswer && !isCorrect) {
+                            optionClass = 'incorrect';
+                        } else if (value === answers[i]) {
+                            optionClass = 'correct';
+                        }
+                        optionsHTML += `<span class="${optionClass}">${optionText}</span><br>`;
+                    });
+                    
+                    questionHTML = `<div class="question-title-text">${actualQuestionText}</div><div class="options-feedback">${optionsHTML}</div>`;
+
+                } else if (i >= 6 && i <= 13) {
+                    const questionDiv = document.getElementById(`q${i}`);
+                    actualQuestionText = questionDiv.querySelector('.question-text').textContent.replace(/<input[^>]*>/, '_______');
+                    userAnswer = userAnswers[i] || 'Not answered';
+                    isCorrect = userAnswer.toLowerCase() === answers[i].toLowerCase();
+
+                    questionHTML = `<div class="question-title-text">${actualQuestionText.replace('_______', `<strong><em>${userAnswer}</em></strong>`)}</div>`;
+                }
+                
+                if (isCorrect) correctCount++;
+                
+                feedbackItem.innerHTML = `
+                    <div class="feedback-question">
+                        <span class="${isCorrect ? 'correct' : 'incorrect'}">Question ${i}:</span>
+                        ${isCorrect ? `<i class="fas fa-check correct" style="margin-left: 5px;"></i>` : `<i class="fas fa-times incorrect" style="margin-left: 5px;"></i>`}
+                    </div>
+                    <p>${questionHTML}</p>
+                    <div class="feedback-answer">
+                        <strong>Your answer:</strong> ${userAnswer || 'Not answered'}<br>
+                        ${!isCorrect ? `<strong>Correct answer:</strong> ${answers[i]}` : ''}
+                    </div>
+                    <div class="feedback-explanation">
+                        <strong>Explanation:</strong> ${explanations[i]}
+                    </div>
+                `;
+                
+                feedbackBody.appendChild(feedbackItem);
+            }
+            
+            document.getElementById('score-display').textContent = `${correctCount}/13`;
+            feedbackOverlay.style.display = 'flex';
+        });
+
+        closeFeedbackBtn.addEventListener('click', () => {
+            feedbackOverlay.style.display = 'none';
+        });
+
+        feedbackOverlay.addEventListener('click', (e) => {
+            if (e.target === feedbackOverlay) {
+                feedbackOverlay.style.display = 'none';
+            }
+        });
+
+        updateTimer();
+        updateProgress();
+    </script>
+</body>
+</html>

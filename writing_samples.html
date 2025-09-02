@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing Samples | IELTS WITH UMAR</title>
+    <link rel="icon" href="IELTS WITH UMAR LOGO ORIGINAL.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+        }
+
+        /* Loading Screen Styles (UPDATED) */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid rgb(0, 175, 25);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .site-container {
+            flex-grow: 1;
+        }
+
+        header {
+            background-color: rgb(0, 200, 25);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        header img {
+            max-width: 80px;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation Menu Styles */
+        nav {
+            background-color: rgb(0, 175, 25);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgb(0, 150, 25);
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown .dropbtn {
+            background-color: transparent;
+            color: white;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown .dropbtn:hover {
+            background-color: rgb(0, 150, 25);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(0, 150, 25);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgb(0, 125, 25);
+        }
+
+        .show {
+            display: block;
+        }
+
+        .dropdown .dropbtn span {
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* Highlight the active page link */
+        .active-link {
+            background-color: rgb(0, 150, 25);
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto 0;
+            text-align: center;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        h1,
+        h2 {
+            color: rgb(0, 200, 25);
+            margin-top: 40px;
+            letter-spacing: 0.05em;
+        }
+
+        /* Tabbed Interface Styles */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .tab-button {
+            background-color: transparent;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #555;
+            position: relative;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: -2px;
+        }
+        
+        .tab-button:hover {
+            color: rgb(0, 150, 25);
+        }
+        
+        .tab-button.active {
+            color: rgb(0, 175, 25);
+            border-bottom: 4px solid rgb(0, 175, 25);
+            background-color: #f8f8f8;
+        }
+
+        /* Premium Content Styles */
+        .writing-samples-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .sample-card {
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 450px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .sample-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .sample-card h3 {
+            margin: 0;
+            color: rgb(0, 175, 25);
+            font-size: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .sample-card p {
+            text-align: left; /* Overrides the generic p style */
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+            margin: 0;
+        }
+
+        .sample-card p b {
+            color: #333;
+            font-size: 1.05rem;
+        }
+        
+        .sample-card hr {
+            border-color: #ddd;
+            margin: 10px 0;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Non-Premium Content Styles */
+        .premium-required-container {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 30px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .premium-required-container h2 {
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+
+        .premium-required-container p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .premium-required-container button {
+            background-color: rgb(0, 175, 25);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .premium-required-container button:hover {
+            background-color: rgb(0, 150, 25);
+        }
+
+        /* Footer Styles (UPDATED) */
+        .footer {
+            background-color: rgb(0, 150, 25);
+            color: white;
+            padding: 50px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            position: relative;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+            gap: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            border-bottom: 2px solid rgb(0, 200, 25);
+            padding-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, padding-left 0.3s ease;
+            display: inline-block;
+            font-size: 1.05rem;
+            font-weight: bold;
+            padding: 5px 0;
+            border-radius: 3px;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            background-color: rgb(0, 100, 20);
+            transform: translateX(0);
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            content: '>';
+            position: absolute;
+            left: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+        }
+
+        .premium-user-info {
+            background-color: #FFD700 !important;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            margin: 18px 0;
+            color: #444;
+            text-align: center;
+        }
+        
+        footer p {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="site-container">
+        <header>
+            <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo"></a>
+            <h1 style="color: white">Writing Samples</h1>
+            <div id="user-info">
+                <img id="user-photo" src="IELTS WITH UMAR LOGO.png" alt="Profile Photo">
+                <span id="user-display-name"></span>
+            </div>
+        </header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn" onclick="toggleDropdown('ieltsDropdown')">
+                    IELTS Sections <span>▼</span>
+                </a>
+                <div id="ieltsDropdown" class="dropdown-content">
+                    <a href="listening.html">Listening</a>
+                    <a href="reading.html">Reading</a>
+                    <a href="writing.html">Writing</a>
+                    <a href="speaking.html">Speaking</a>
+                </div>
+            </div>
+            <a href="essay_checker.html">Essay Checker</a>
+            <a href="listening_tests.html">IELTS Listening Tests</a>
+            <a href="reading_tests.html">IELTS Reading Tests</a>
+            <a href="writing_samples.html" class="active-link">Writing Samples</a>
+            <a href="speaking_topics.html">Speaking Topics</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="myprofile.html">My Profile</a>
+        </nav>
+        <div class="main-content">
+            <div id="content-container">
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>IELTS WITH UMAR</h3>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and comprehensive tools to help you achieve your desired band score.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="myprofile.html">My Profile</a></li>
+                <li><a href="essay_checker.html">Essay Checker</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>IELTS Sections</h3>
+            <ul>
+                <li><a href="listening.html">Listening</a></li>
+                <li><a href="reading.html">Reading</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="speaking.html">Speaking</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 IELTS WITH UMAR. All rights reserved.
+        </div>
+    </footer>
+    </body>
+</html>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script>
+        // Loading animation script (UPDATED)
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('loadingOverlay').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 500);
+            }, 500);
+        };
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
+            authDomain: "ielts-with-umar.firebaseapp.com",
+            projectId: "ielts-with-umar",
+            storageBucket: "ielts-with-umar.firebasestorage.app",
+            messagingSenderId: "373444526917",
+            appId: "1:373444526917:web:35b7363401de1df815742c"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        const userInfo = document.getElementById('user-info');
+        const userPhoto = document.getElementById('user-photo');
+        const userDisplayName = document.getElementById('user-display-name');
+        const contentContainer = document.getElementById('content-container');
+
+        // List of premium user emails, as provided by you.
+        const premiumUsers = [
+            "yusupovumarcr7@gmail.com",
+            "premium@gmail.com",
+            "saidumarjaxongirov@gmail.com",
+            "shoirasayfitdinova567@gmail.com",
+            "dostonbr2@gmail.com",
+            "shoxish@mail.ru",
+            "nozimshavkiev@gmail.com",
+            "nematullayevsaidkamol2@gmail.com"
+        ];
+
+        auth.onAuthStateChanged(user => {
+            const existingBadge = document.getElementById('premium-badge');
+            if (existingBadge) {
+                existingBadge.remove();
+            }
+            userInfo.classList.remove('premium-user-info');
+
+            if (user) {
+                if (user.photoURL) {
+                    userPhoto.src = user.photoURL;
+                    userPhoto.style.display = 'block';
+                } else {
+                    userPhoto.src = "IELTS WITH UMAR LOGO.png";
+                    userPhoto.style.display = 'block';
+                }
+                userDisplayName.textContent = user.displayName || user.email;
+
+                if (premiumUsers.includes(user.email)) {
+                    userInfo.classList.add('premium-user-info');
+
+                    const badge = document.createElement('span');
+                    badge.id = 'premium-badge';
+                    badge.innerHTML = '⭐';
+                    badge.className = 'premium-badge';
+                    userDisplayName.appendChild(badge);
+
+                    showPremiumContent();
+                } else {
+                    showPremiumRequiredMessage();
+                }
+            } else {
+                userPhoto.style.display = 'none';
+                userDisplayName.textContent = '';
+                userInfo.classList.remove('premium-user-info');
+                showPremiumRequiredMessage();
+            }
+        });
+
+        function showPremiumContent() {
+            contentContainer.innerHTML = `
+                <h2>Exclusive Writing Samples</h2>
+                <div class="writing-samples-container">
+        <div class="sample-card">
+            <h3>Writing Task 2 - Sample 1</h3>
+            <p>
+                <b>Topic:</b> Some people think that parents should teach their children how to be good members of society. Others, however, believe that school is the best place to learn this. Discuss both views and give your own opinion.
+            </p>
+            <hr>
+            <p>Some people believe that children should be taught by their parents about how to function as useful members of society, while others believe that sending children to educational institutions is the best way for them to study this. Although the latter opinion can be beneficial in some cases, I believe that family upbringing plays a more important role in educating children to be good parts of the community.
+            <br><br>
+            Schools can be considered suitable places for children to learn to be good citizens. With standardized educational methods, schools can foster children’s cognitive development so that they are able to contribute to society in the future. For example, Trung Vuong school and Vinschool are well known for having nurtured successful alumni such as Professor Ngo Bao, Professor Nguyen Hung who have devoted their talents to the development of the country. However, these people only represent a small fraction of the total number of students attending schools, and thus sending children to schools cannot be the best method of educating them to be good members of society.
+            <br><br>
+            I believe that parents play a more important role in teaching them how to be good citizens. In Vietnam, the average class size is 20 students, which makes it difficult for educators to provide proper schooling for each student. One to one lessons at home, on the other hand, allow children to progress faster. Furthermore, parents form stronger bonds with their offspring and thus, it is easier for them to shape children’s personalities at an early age. For example, by telling stories such as Robin Hood, Cinderella before bedtime, parents can instil a sense of compassion and integrity into them. These children are likely to become good members of society when they grow up.
+            <br><br>
+            In conclusion, although sending children to schools can be seen as a way of teaching them how to be good citizens, I believe that domestic upbringing has a bigger impact on determining who they are in the future.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 2 - Sample 2</h3>
+            <p>
+                <b>Topic:</b> Details of politicians’ private lives should not be published in newspapers. To what extent do you agree or disagree?
+            </p>
+            <hr>
+            <p>It is thought that the information regarding politicians’ personal lives should not be shared in print media. This essay strongly agrees with this suggestion because publishing these details could be harmful to their families, and obtaining this type of information might require breaking the law.
+            <br><br>
+            First and foremost, what makes that the details related to private aspects of politicians’ lives should not be shared in newspapers is that it could be harmful not only to these individuals but also to their families. This is because revealing some details from their personal lives could expose them to unwanted comments or allegations, which might lead to a great deal of distress. In Poland, for instance, in 2015, the vice-prime minister committed suicide due to not handling the pressure caused by the paparazzi invading his and his family’s private life.
+            <br><br>
+            Furthermore, obtaining this type of information, in most cases, means breaking the law. This is because the right to privacy is one of the most fundamental policies in society, and anyone who wants to access the lives of politicians must obtain their consent. However, not only are paparazzi hired to invade properties belonging to politicians to take photos without their permission, but also politicians’ colleagues and relatives are bribed to share confidential facts from their lives. For instance, an accident in which Princess Diana was killed was partly caused by the paparazzi who followed her car, trying to take photos of her and her boyfriend against their will.
+            <br><br>
+            In conclusion, I strongly support the suggestion that politicians’ lives should not be subject to the interest of newspapers because revealing personal facts from politicians lives could destroy their family life and the process of obtaining these details often required wrongdoing.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 2 - Sample 3</h3>
+            <p>
+                <b>Topic:</b> There is an increasing trend around the world of married couples deciding not to have children. Discuss the advantages and disadvantages for couples who decide to do this.
+            </p>
+            <hr>
+            <p>An increasing number of married couples around the world are choosing to remain childless. The main benefits of not having a child for couples are that they can focus on their careers and have more time for themselves. The main drawbacks are that they could not fit into their peers’ group and have no one to look after them when they get old.
+            <br><br>
+            One primary advantage of remaining childless for married couples is that they can focus on their work. This is because they have less responsibility and distractions in their lives compared to the couples that have a child. Another advantage of this is that they have more spare time. Looking after a child is a full-time job for parents and taking most of their time, while child-free couples have lots of free time after work. For example, many couples stop going out late with their friends after having a child as they have to stay at home for looking after their children.
+            <br><br>
+            One disadvantage of couples deciding not to have children is that they can struggle to hang with their peers after most of them have children. Most parents prefer to spend more time with other couples that have children as well. Moreover, not having anyone to look after them in their elderliness is another disadvantage. Children are the ones who take care of their parents when they get old because their parents did the same for them when they were young. For instance, the vast majority of the people who live in care homes have no child.
+            <br><br>
+            In conclusion, the main benefits of staying child-free for couples are that they can be more career-oriented and have more free time for themselves, and the main drawbacks are that they could have problems about fitting into their friends’ group and having no one to take care of them when they become older.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 2 - Sample 4</h3>
+            <p>
+                <b>Topic:</b> In many professional sports, there is an increase in the number of athletes using banned substances to improve their performance. What are the causes of the phenomenon and what are some of the possible solutions?
+            </p>
+            <hr>
+            <p>In many professional sports, it is becoming commonplace for athletes to abuse prohibited substances to boost their overall performance. This essay will discuss how stiff competition and lax testing systems are the main cause of this problem, and the most suitable solutions are imposing heavier punishments on violators and revamping testing facilities.
+            <br><br>
+            The main cause of this problem is the fierce competition that exists in any sports. In other words, most many professional athletes feel that they have to take substances like steroids to give themselves an advantage over other strong opponents. Another reason is the lack of strictness in testing procedures. Many athletes who take advantage of banned substances can still get off scot-free due to the holes in testing systems. For example, a high-profile mix martial artist named Jon John who is notorious for using PED described how easy it was to get away with cheating in an interview in 2015.
+            <br><br>
+            A viable solution is to heavily punish lawbreakers. If sports clubs and establishments raise the fine for using banned substances, many athletes will think twice before making attempt to cheat. Another the way to deal with this issue is to upgrade testing amenities. This will eradicate any holes existing in the system and ensure that the test result is highly accurate. For instance, after the UFC had made major investments to provide their staff with the latest testing equipment, many fighters in their organization got caught.
+            <br><br>
+            In conclusion, strong competition and ineffective testing systems are the main cause of this problem, and the most suitable solutions are enforcing harsher punishments on violators and reforming testing facilities.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 2 - Sample 5</h3>
+            <p>
+                <b>Topic:</b> Being a celebrity, such as a famous film star or sports personality, brings problems as well as benefits. Do you think that being a celebrity brings more benefits or more problems?
+            </p>
+            <hr>
+            <p>Being a famous person, such as a movie star or sports athlete, has many disadvantages and advantages. Although famous people will earn more money, I believe that there are more drawbacks because famous people will not be safe in public places.
+            <br><br>
+            The biggest advantage is that well-known individuals will earn loads of money. This is because they will get colossal amounts of money from their sponsors for promoting their products, such as mobile phones, laptops or cars. As a result, notable individuals will become affluent around the nation. Floyd Mayweather, for instance, is a famous boxer as well as a wealthy person in the United States of America. Each year he gets around millions of dollars from Burger Kings and Rolls Royal sponsors for promoting their products during boxing matches. However, I believe that famous celebrities face huge problems whenever they go out because their frenzied fans will annoy them.
+            <br><br>
+            The major drawback is that famous individuals’ lives will be in danger in common places. This is because their foes will try to harm them whenever they go out either alone or with their family members, such as in parks or malls. As a result, they will have to hire some security guards to protect themselves against vicious-minded individuals. Jennifer Lopez, for instance, always goes out with five bodyguards. The reason is that in the past, some deranged fans attacked her in New York park and broke her left arm. Therefore, I believe that celebrities always face difficulties in common places because someone will assault them.
+            <br><br>
+            In conclusion, although well-known individuals earn big amounts of money from sponsors, notable people’s lives will be in danger because evil-minded people will harm them. For these reasons, I believe that drawbacks are more than benefits.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 1 - Sample 1</h3>
+            <p>
+                <b>Topic:</b> The bar chart below shows the average rainfall for Australia by month for last year. The line shows the average rainfall for Australia by month for the last 40 years. Summarize the information by selecting and reporting the main features, and make comparisons where relevant.
+            </p>
+            <hr>
+            <p>This report will describe a bar chart showing the average rainfall for Australia last year by month and the average rainfall in Australia for the past forty years.
+            <br><br>
+            Overall, it can be seen that the average rainfall for Australia last year was a little lower than the average rainfall in Australia for the past forty years but generally followed the same pattern.
+            <br><br>
+            The average rainfall of the last forty years in Australia decreased from a peak at the beginning of the year to lows in the months in the middle of the year. Towards the end of the year rainfall rose again. Rainfall data for last year generally followed the same trend as the last forty years’ average.
+            <br><br>
+            Although the general pattern of the two sets of data is similar, there are some differences. The line representing the accumulation of the average rainfall from the past forty years begins at around eighty millimeters in January and then drops sharply to around thirty millimeters in April. Rainfall then drops slowly to around thirteen millimeters in September and then again rises steadily to just under sixty millimeters in December. Average rainfall for the last year was a little lower than the forty-year average for most months, except for March, May, June, and November, when the rainfall was a little heavier. August and October were particularly dry when compared with the forty-year average, at around five millimeters each compared with about fifteen and twenty millimeters each, respectively, for the forty-year average.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 1 - Sample 2</h3>
+            <p>
+                <b>Topic:</b> The two tables below show statistics of workers of foreign and US birth in the United States last year. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+            </p>
+            <hr>
+            <p>The two tables compare from last year the number of workers in the US that were of US birth to the number of workers who were of foreign birth. The tables include divisions of the workforce by gender and by age, summarising the total number of workers in the workforce, the number of employed and unemployed workers and finally the unemployment rate. All figures are in thousands.
+            <br><br>
+            Overall, it can be seen that in spite of the much larger numbers involved with the US birth workforce, the total unemployment rates were quite similar for the two cohorts.
+            <br><br>
+            When looking at the breakdown of the figures by gender, the male foreign birth workforce suffered a lower unemployment rate (8.9%) than the male US birth workforce (10.6%), whereas the female foreign birth workforce suffered a higher unemployment rate (11.1%) than the female US birth workforce (8.5%). Overall, the foreign birth workforce suffered a marginally higher rate of unemployment (9.8%) than the US birth workforce (9.6%). The total US birth workforce in size was significantly larger (129,533 people) than the total foreign birth workforce (24,357 people).
+            <br><br>
+            When looking at the breakdown of the figures by age, the younger of the foreign birth workforce (16 – 24 and 25 – 34) suffered from lower unemployment rates than the workforce of native birth, however, the foreign workforce older than these bands suffered higher unemployment rates.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 1 - Sample 3</h3>
+            <p>
+                <b>Topic:</b> The images below explain the process of how pollutants from modern life become acid rain that in turn pollutes the environment and the food chain. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+            </p>
+            <hr>
+            <p>This diagram shows the cycle of pollution that contributes to the development of acid rain and how it affects the environment on which human life is dependent.
+            <br><br>
+            The majority of the pollutants created come from housing, transport, factories and power stations. These sources release various compounds such as carbon dioxide, sulphur dioxide, different nitrogen oxides, mercury and other compounds. These pollutants then rise up into the air and are absorbed by clouds, which then become contaminated in turn and travel across countries and continents. Then, once condensation occurs, water containing the pollutants in the clouds will condense and fall to the Earth in the form of precipitation, namely acid rain.
+            <br><br>
+            The acid rain will fall onto hills, fields, trees, plants and into rivers and lakes, contaminating them. This leads to the pollution of the environment and the food chain, as the pollutants are absorbed into the Earth or plants, which either act as a habitat or a food source for animals, destroying them or affecting their biological processes. This in turn will lead to the dying out of the animals, which will then lead to imbalance in the food chain, greatly impacting the ecosystem.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 1 - Sample 4</h3>
+            <p>
+                <b>Topic:</b> The graph below shows the percentage of New Zealand primary school students learning a second language by language learned for the years 2006 to 2014. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+            </p>
+            <hr>
+            <p>The graph shows the percentages of New Zealand primary school students who were learning a second language for the years 2006 to 2014.
+            <br><br>
+            It can be clearly seen that the popularity of various languages amongst school children changed over the years. Even languages that started off as equally popular in 2006 experienced a change in demand by 2014.
+            <br><br>
+            In 2006, the most common second language students learned in New Zealand primary schools was French (29%), with Japanese (28%) following very close behind. In 2014, the most common second language learned in primary school was still French at around the same percentage, however, the second most common had switched to Spanish (23%). Japanese dropped from its 2006 high of 28% to 17% in 2014.
+            <br><br>
+            The two least commonly learned second languages were German and Chinese. Chinese, which in 2006 had been the least commonly learned language at under 5%, dramatically increased and reached around 12% in 2014. German, which in 2006 had been the most common of the bottom three of the results given with 12%, steadily decreased to around 6% in 2014. “Other languages” groups various languages that are not stated. These were at 7% in 2006, but became more popular over the years, reaching around 9% in 2014 after having peaked in the previous year.</p>
+        </div>
+        <div class="sample-card">
+            <h3>Writing Task 1 - Sample 5</h3>
+            <p>
+                <b>Topic:</b> The maps below illustrates how Frenton changed from 1990 to 2012. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.
+            </p>
+            <hr>
+            <p>The maps illustrate the transformation of Frenton over a span of twenty-two years, from 1990 to 2012.
+            <br><br>
+            It is evident that significant modifications occurred in the land use types, including the introduction of new commercial and residential structures, while certain amenities remained unchanged throughout the period.
+            <br><br>
+            In 1990, the eastern side of High Street featured a café and a park; however, by 2012, this area had been redeveloped into a hotel and golf course. Additionally, residential zones were replaced by new blocks of flats, highlighting a shift towards urbanization. The original theater and shops were remodeled into a modern cinema and a supermarket, respectively. Notably, new residential flats were constructed to the north near the main road, marking a considerable expansion in housing availability.
+            <br><br>
+            Conversely, the western side of High Street saw the demolition of a bank, giving rise to a contemporary restaurant and a technology park. The school and library, however, retained their positions without any alterations during this period. Notably, the northern section of the town, which previously housed playgrounds and trees, witnessed a complete transformation as these recreational spaces were supplanted by additional blocks of flats. The hospital, while unchanged in its function, underwent significant structural expansion, reflecting a growing emphasis on healthcare facilities in the evolving urban landscape.</p>
+        </div>
+    </div>
+    <br><br><br><br>
+            `;
+        }
+
+        function showPremiumRequiredMessage() {
+            contentContainer.innerHTML = `
+                <div class="premium-required-container">
+                    <h2>Access Restricted</h2>
+                    <p>To view the exclusive IELTS Writing Samples, you must have a premium membership.</p>
+                    <button onclick="contactTelegram()">Upgrade to Premium</button>
+                </div>
+            `;
+        }
+
+        function toggleDropdown(id) {
+            document.getElementById(id).classList.toggle("show");
+        }
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function contactTelegram() {
+            const telegramUsername = 'galaxy_u7';
+            const message = encodeURIComponent("I would like to purchase one of your premium plans. Please provide me with more details.");
+            const telegramURL = `https://t.me/${telegramUsername}?text=${message}`;
+            window.open(telegramURL, '_blank');
+        }
+    </script>
+</body>
+
+</html>

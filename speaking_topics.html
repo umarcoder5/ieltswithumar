@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking Topics | IELTS WITH UMAR</title>
+    <link rel="icon" href="IELTS WITH UMAR LOGO ORIGINAL.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+        }
+
+
+        /* Loading Screen Styles (UPDATED) */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid rgb(0, 175, 25);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .site-container {
+            flex-grow: 1;
+        }
+
+        header {
+            background-color: rgb(0, 200, 25);
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        header img {
+            max-width: 80px;
+            margin-right: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation Menu Styles */
+        nav {
+            background-color: rgb(0, 175, 25);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgb(0, 150, 25);
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown .dropbtn {
+            background-color: transparent;
+            color: white;
+            padding: 14px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown .dropbtn:hover {
+            background-color: rgb(0, 150, 25);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(0, 150, 25);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgb(0, 125, 25);
+        }
+
+        .show {
+            display: block;
+        }
+
+        .dropdown .dropbtn span {
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* Highlight the active page link */
+        .active-link {
+            background-color: rgb(0, 150, 25);
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto 0;
+            text-align: center;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        h1,
+        h2 {
+            color: rgb(0, 200, 25);
+            margin-top: 40px;
+            letter-spacing: 0.05em;
+        }
+
+        /* Premium Content Styles */
+        .test-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .test-card {
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .test-card h3 {
+            margin: 0;
+            color: rgb(0, 175, 25);
+        }
+
+        .test-card p {
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Non-Premium Content Styles - Unified to match writing_samples.html */
+        .premium-required-container {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 30px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .premium-required-container h2 {
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+
+        .premium-required-container p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .premium-required-container button {
+            background-color: rgb(0, 175, 25);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .premium-required-container button:hover {
+            background-color: rgb(0, 150, 25);
+        }
+
+
+        /* Footer Styles (UPDATED) */
+        .footer {
+            background-color: rgb(0, 150, 25);
+            color: white;
+            padding: 50px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            position: relative;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+            gap: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            border-bottom: 2px solid rgb(0, 200, 25);
+            padding-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, padding-left 0.3s ease;
+            display: inline-block;
+            font-size: 1.05rem;
+            font-weight: bold;
+            padding: 5px 0;
+            border-radius: 3px;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            background-color: rgb(0, 100, 20);
+            transform: translateX(0);
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            content: '>';
+            position: absolute;
+            left: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+        }
+
+        .premium-user-info {
+            background-color: #FFD700 !important;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            margin: 18px 0;
+            color: #444;
+            text-align: center;
+        }
+
+        /* Loading Screen Styles (UPDATED) */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid rgb(0, 175, 25);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        footer p {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+    <div class="site-container">
+        <header>
+            <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo"></a>
+            <h1 style="color: white">Speaking Topics</h1>
+            <div id="user-info">
+                <img id="user-photo" src="IELTS WITH UMAR LOGO.png" alt="Profile Photo">
+                <span id="user-display-name"></span>
+            </div>
+        </header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Me</a>
+            <div class="dropdown">
+                <a href="#" class="dropbtn" onclick="toggleDropdown('ieltsDropdown')">
+                    IELTS Sections <span>▼</span>
+                </a>
+                <div id="ieltsDropdown" class="dropdown-content">
+                    <a href="listening.html">Listening</a>
+                    <a href="reading.html">Reading</a>
+                    <a href="writing.html">Writing</a>
+                    <a href="speaking.html">Speaking</a>
+                </div>
+            </div>
+            <a href="essay_checker.html">Essay Checker</a>
+            <a href="listening_tests.html">IELTS Listening Tests</a>
+            <a href="reading_tests.html">IELTS Reading Tests</a>
+            <a href="writing_samples.html">Writing Samples</a>
+            <a href="speaking_topics.html" class="active-link">Speaking Topics</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="myprofile.html">My Profile</a>
+        </nav>
+        <div class="main-content">
+            <div id="content-container">
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>IELTS WITH UMAR</h3>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and
+                comprehensive tools to help you achieve your desired band score.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="myprofile.html">My Profile</a></li>
+                <li><a href="essay_checker.html">Essay Checker</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>IELTS Sections</h3>
+            <ul>
+                <li><a href="listening.html">Listening</a></li>
+                <li><a href="reading.html">Reading</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="speaking.html">Speaking</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 IELTS WITH UMAR. All rights reserved.
+        </div>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script>
+        // Loading animation script (UPDATED)
+        window.onload = function () {
+            setTimeout(function () {
+                document.getElementById('loadingOverlay').style.opacity = '0';
+                setTimeout(function () {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 500);
+            }, 500);
+        };
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
+            authDomain: "ielts-with-umar.firebaseapp.com",
+            projectId: "ielts-with-umar",
+            storageBucket: "ielts-with-umar.firebasestorage.app",
+            messagingSenderId: "373444526917",
+            appId: "1:373444526917:web:35b7363401de1df815742c"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        const userInfo = document.getElementById('user-info');
+        const userPhoto = document.getElementById('user-photo');
+        const userDisplayName = document.getElementById('user-display-name');
+        const contentContainer = document.getElementById('content-container');
+
+        // List of premium user emails, as provided by you.
+        const premiumUsers = [
+            "yusupovumarcr7@gmail.com",
+            "premium@gmail.com",
+            "saidumarjaxongirov@gmail.com",
+            "shoirasayfitdinova567@gmail.com",
+            "dostonbr2@gmail.com",
+            "shoxish@mail.ru",
+            "nozimshavkiev@gmail.com",
+            "nematullayevsaidkamol2@gmail.com"
+        ];
+
+        auth.onAuthStateChanged(user => {
+            const existingBadge = document.getElementById('premium-badge');
+            if (existingBadge) {
+                existingBadge.remove();
+            }
+            userInfo.classList.remove('premium-user-info');
+
+            if (user) {
+                if (user.photoURL) {
+                    userPhoto.src = user.photoURL;
+                    userPhoto.style.display = 'block';
+                } else {
+                    userPhoto.src = "IELTS WITH UMAR LOGO.png";
+                    userPhoto.style.display = 'block';
+                }
+                userDisplayName.textContent = user.displayName || user.email;
+
+                if (premiumUsers.includes(user.email)) {
+                    userInfo.classList.add('premium-user-info');
+
+                    const badge = document.createElement('span');
+                    badge.id = 'premium-badge';
+                    badge.innerHTML = '⭐';
+                    badge.className = 'premium-badge';
+                    userDisplayName.appendChild(badge);
+
+                    showPremiumContent();
+                } else {
+                    showPremiumRequiredMessage();
+                }
+            } else {
+                userPhoto.style.display = 'none';
+                userDisplayName.textContent = '';
+                userInfo.classList.remove('premium-user-info');
+                showPremiumRequiredMessage();
+            }
+        });
+
+        // Functions to show content
+        function showPremiumContent() {
+            contentContainer.innerHTML = `
+                <h2>Exclusive Speaking Topics</h2>
+                <div class="test-container">
+        <div class="test-card">
+            <h3>Set 1: Hometown</h3>
+            <h4>Part 1: Hometown</h4>
+            <p>
+                <b>1. Where is your hometown?</b><br>
+                - My hometown is located in a rural area, about two hours from the capital city.
+            </p>
+            <p>
+                <b>2. What do you like most about your hometown?</b><br>
+                - I love the peaceful atmosphere and the strong sense of community. Everyone knows everyone, and people are always willing to help each other out.
+            </p>
+            <p>
+                <b>3. Is there anything you don't like about it?</b><br>
+                - The main thing I don't like is the lack of public transport. It's difficult to get around without a car, and there aren't many opportunities for young people.
+            </p>
+            <p>
+                <b>4. Has your hometown changed much since you were a child?</b><br>
+                - Not drastically, but it has changed a bit. Some of the small family-run shops have closed and been replaced by chain stores. There's also more traffic on the roads now.
+            </p>
+            <p>
+                <b>5. Would you prefer to live in a city or a small town?</b><br>
+                - I think I prefer a city. While I appreciate the quiet of a small town, I like the excitement, the variety of things to do, and the career opportunities that a city offers.
+            </p>
+            <br>
+            <h4>Part 2: A Place You'd Like to Visit</h4>
+            <p>
+                <b>Describe a place in your country that you would like to visit.</b><br>
+                - I'd love to visit the ancient city of Kyoto. It's famous for its beautiful temples, traditional wooden houses, and stunning gardens. I'm fascinated by the historical and cultural aspects of the city. I would spend my time visiting the famous temples, like Kinkaku-ji and Fushimi Inari-taisha, and maybe even try to take part in a traditional tea ceremony. I'd also love to walk through the Arashiyama Bamboo Grove. I have a deep interest in Japanese history and culture, and Kyoto is considered the cultural heart of the country. I've seen so many beautiful pictures and documentaries about it, and I feel like experiencing it in person would be an amazing and enriching experience. I think visiting it would give me a better understanding of my country's rich heritage.
+            </p>
+            <br>
+            <h4>Part 3: Tourism</h4>
+            <p>
+                <b>1. What are the benefits of tourism for a country?</b><br>
+                - Tourism brings significant economic benefits. It creates jobs, boosts local businesses, and generates revenue for the government through taxes. It also promotes cultural exchange and helps preserve historical sites and traditions.
+            </p>
+            <p>
+                <b>2. What are some of the disadvantages of having a lot of tourists?</b><br>
+                - Heavy tourism can lead to over-crowding and damage to historical sites. It can also cause an increase in the cost of living for local residents and sometimes leads to the commercialization of local cultures, turning them into a performance for tourists.
+            </p>
+            <p>
+                <b>3. Do you think it's important for people to travel to other countries?</b><br>
+                - Yes, I think it's very important. Traveling to other countries broadens our perspective. It helps us understand different cultures, challenges our assumptions, and gives us a better appreciation of the world. It's a very educational experience.
+            </p>
+            <p>
+                <b>4. How has technology changed the way people plan their holidays?</b><br>
+                - Technology has made holiday planning much easier. People can now book flights and accommodation online, read reviews from other travelers, and use apps to navigate new places. This has given people more control and flexibility over their travel plans.
+            </p>
+            <p>
+                <b>5. What can a government do to encourage more tourists to visit a country?</b><br>
+                - Governments can invest in infrastructure, such as airports and roads. They can also promote the country internationally through advertising campaigns and make the visa process simpler. They could also focus on developing niche tourism, like eco-tourism or cultural tourism, to attract specific types of visitors.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 2: Study</h3>
+            <h4>Part 1: Study</h4>
+            <p>
+                <b>1. Do you study or work?</b><br>
+                - I'm a student. I'm currently in my final year of university.
+            </p>
+            <p>
+                <b>2. What subject are you studying?</b><br>
+                - I'm studying Computer Science. I've always been fascinated by how technology works and I'm really enjoying the course.
+            </p>
+            <p>
+                <b>3. Why did you choose that subject?</b><br>
+                - I chose it because I believe it's the future. There are so many career opportunities and I'm passionate about problem-solving and coding.
+            </p>
+            <p>
+                <b>4. Is it a popular subject in your country?</b><br>
+                - Yes, it's very popular. The tech industry is booming here, so a lot of young people are choosing to study Computer Science or related fields.
+            </p>
+            <p>
+                <b>5. What do you hope to do after you finish your studies?</b><br>
+                - I hope to get a job as a software developer. I'd love to work for a company that is developing innovative new technologies.
+            </p>
+            <br>
+            <h4>Part 2: A Favorite Teacher</h4>
+            <p>
+                <b>Describe a teacher who has had a positive influence on you.</b><br>
+                - I'd like to talk about my high school chemistry teacher, Mr. Jones. He taught me for two years. He wasn't just knowledgeable about chemistry; he had a fantastic way of making complex topics easy to understand. He was a very patient and kind person. He would always take extra time to help students who were struggling, never making us feel foolish for not getting something. He was passionate about his subject, and his enthusiasm was infectious. He saw potential in me even when I didn't see it myself and encouraged me to pursue science. He taught me that learning isn't just about memorizing facts, but about understanding concepts. He gave me the confidence to believe in my abilities, and because of him, I actually considered a career in science. He made a huge difference in my life, not just academically but also by showing me the importance of having a good attitude and a love for learning.
+            </p>
+            <br>
+            <h4>Part 3: Education System</h4>
+            <p>
+                <b>1. What are the advantages of learning in a small class?</b><br>
+                - A small class size allows for more individual attention from the teacher. It's easier to ask questions and get help. Students can also build better relationships with their peers, creating a more supportive learning environment.
+            </p>
+            <p>
+                <b>2. Should students be allowed to use mobile phones in class?</b><br>
+                - I don't think they should be allowed. Phones can be a major distraction, both for the person using it and for others. It can disrupt the flow of the lesson. However, they could be used for specific educational purposes, like research, if the teacher manages it carefully.
+            </p>
+            <p>
+                <b>3. How has technology changed the way we learn today?</b><br>
+                - Technology has fundamentally changed education. We now have access to an incredible amount of information online. We can take courses from anywhere in the world, and tools like educational apps and videos make learning more interactive and engaging. It has made learning more accessible and flexible.
+            </p>
+            <p>
+                <b>4. What role do you think teachers will have in the future?</b><br>
+                - I think the role of teachers will shift from being the primary source of information to being facilitators and guides. With so much information available online, a teacher's job will be to help students navigate that information, think critically, and develop problem-solving skills.
+            </p>
+            <p>
+                <b>5. How important is it for children to learn a second language?</b><br>
+                - It's very important. Learning a second language has cognitive benefits, like improving memory and problem-solving skills. It also opens up cultural opportunities, helping children to understand different societies and communicate with people from other countries.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 3: Friends</h3>
+            <h4>Part 1: Friends</h4>
+            <p>
+                <b>1. Do you have a lot of friends?</b><br>
+                - I have a small group of very close friends, rather than a large circle of acquaintances.
+            </p>
+            <p>
+                <b>2. Who is your best friend?</b><br>
+                - My best friend is a guy named Tom. We've known each other since we were kids, and we've been through a lot together.
+            </p>
+            <p>
+                <b>3. How do you usually spend time with your friends?</b><br>
+                - We often go for hikes or just hang out at a cafe and talk. We also enjoy cooking together and having dinner parties.
+            </p>
+            <p>
+                <b>4. Do you prefer to have a few close friends or many friends?</b><br>
+                - I definitely prefer having a few close friends. I value deep, meaningful connections over a large number of superficial ones. I think it's better to have a few people you can truly rely on.
+            </p>
+            <p>
+                <b>5. How is friendship different for children and adults?</b><br>
+                - For children, friendships are often based on proximity and shared activities. They can make friends easily at school or in a park. For adults, friendships are more often based on shared values and life experiences. It can be harder for adults to make new friends because they have more responsibilities and less free time.
+            </p>
+            <br>
+            <h4>Part 2: An Old Friend</h4>
+            <p>
+                <b>Describe a friend you have known for a long time.</b><br>
+                - I'd like to talk about my friend, David. We met on the very first day of high school, sitting next to each other in class. We've been friends for about fifteen years now. We've always had a lot in common; we both love hiking, camping, and reading science fiction. We used to spend our weekends exploring the local parks and forests. Even though we live in different cities now, we still try to meet up a few times a year for a big hike, and we talk on the phone regularly. He is important to me because he is one of the most reliable and supportive people I know. He has always been there for me, celebrating my successes and helping me through tough times. He knows me better than almost anyone else, and I feel like I can be completely myself around him without any judgment. He's a true friend in every sense of the word.
+            </p>
+            <br>
+            <h4>Part 3: Social Relationships</h4>
+            <p>
+                <b>1. How has social media affected friendships?</b><br>
+                - Social media has changed friendships in a few ways. It makes it easier to stay in touch with people who live far away. However, it can also lead to a more superficial kind of connection, where people have hundreds of 'friends' but no real deep connections. It can also create a lot of social pressure.
+            </p>
+            <p>
+                <b>2. Is it easier to make friends now than it was in the past?</b><br>
+                - I think it's both easier and harder. It's easier in the sense that social media and apps connect us with people from all over the world. But it's harder to form genuine, face-to-face friendships in the real world because people are often more isolated and distracted by their screens.
+            </p>
+            <p>
+                <b>3. How do people maintain long-distance friendships?</b><br>
+                - People use a variety of methods. They use video calls, messaging apps, and social media to stay connected. I think the key is to make a conscious effort to regularly check in with each other, rather than just waiting for the other person to reach out. Making an effort to meet up in person whenever possible is also crucial.
+            </p>
+            <p>
+                <b>4. What are the qualities of a good friend?</b><br>
+                - A good friend is loyal, trustworthy, and supportive. They should be a good listener and be able to give honest advice, even if it's not what you want to hear. A good friend should also be someone you can have fun with and who accepts you for who you are.
+            </p>
+            <p>
+                <b>5. Do you think it is possible for men and women to be just friends?</b><br>
+                - Yes, absolutely. I think the idea that men and women can't be friends is a bit outdated. People's friendships are based on shared interests, trust, and mutual respect, and gender doesn't have to be a factor in that. I have several close friends who are the opposite gender, and our friendship is purely platonic.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 4: Free Time</h3>
+            <h4>Part 1: Free Time</h4>
+            <p>
+                <b>1. What do you usually do in your free time?</b><br>
+                - In my free time, I love to read books, especially fantasy and historical fiction. I also enjoy going for walks in the park to relax.
+            </p>
+            <p>
+                <b>2. Do you think it is important to have hobbies?</b><br>
+                - Yes, I think it's very important. Hobbies give us a chance to de-stress, learn new skills, and connect with people who have similar interests. They add richness and balance to our lives.
+            </p>
+            <p>
+                <b>3. Have your hobbies changed since you were a child?</b><br>
+                - Yes, they have. As a child, I was very into playing video games and collecting trading cards. Now, my hobbies are more centered around reading and outdoor activities.
+            </p>
+            <p>
+                <b>4. What is a popular hobby in your country?</b><br>
+                - Hiking is very popular, especially in the mountains. A lot of people also enjoy things like playing soccer, fishing, and gardening.
+            </p>
+            <p>
+                <b>5. Do you think that spending too much time on hobbies is a bad thing?</b><br>
+                - It can be. If a hobby starts to consume all of your time and attention and gets in the way of your work, your studies, or your relationships, then it can become a problem. It's all about finding a balance.
+            </p>
+            <br>
+            <h4>Part 2: A Hobby You'd Like to Start</h4>
+            <p>
+                <b>Describe a new hobby you would like to try.</b><br>
+                - I would love to learn how to play the piano. I've always been fascinated by the sound of the piano and the way people can create such beautiful music with it. I'd probably start by taking lessons from a private tutor, or maybe even use an online program. I would need a piano, of course, and a good instruction book to get started. The reason I want to start this hobby is that I've always wanted to be able to play a musical instrument, and the piano is my first choice. It would be a great creative outlet and a way to relax after a long day of work. I think it's a beautiful skill to have, and I imagine it would be very rewarding to be able to play my favorite songs.
+            </p>
+            <br>
+            <h4>Part 3: Work-Life Balance</h4>
+            <p>
+                <b>1. Why do some people have very little free time?</b><br>
+                - Many people have very demanding jobs and long working hours. Others may have family responsibilities, like taking care of children or elderly parents. The pressure to succeed and the high cost of living can also contribute to a lack of free time.
+            </p>
+            <p>
+                <b>2. How important is it for people to have a good work-life balance?</b><br>
+                - It's extremely important for both physical and mental health. A good work-life balance helps to prevent burnout, reduces stress, and allows people to pursue their interests and spend time with their loved ones. It makes people more productive in the long run.
+            </p>
+            <p>
+                <b>3. Do you think that technology has given us more or less free time?</b><br>
+                - I think it's given us more free time in some ways, but also taken it away in others. Technology has automated many tasks, making things more efficient. However, it has also blurred the lines between work and home, as people are now expected to be available 24/7 through emails and phones. This can make it hard to truly switch off and relax.
+            </p>
+            <p>
+                <b>4. What are the benefits of having a hobby?</b><br>
+                - Hobbies have many benefits. They provide a creative outlet, help to reduce stress, and can improve our mental health. They also give us an opportunity to learn new things and meet new people who share our passions.
+            </p>
+            <p>
+                <b>5. How do people in your country usually spend their weekends?</b><br>
+                - On the weekends, people in my country usually try to relax. They might spend time with their family and friends, go to a park, go shopping, or watch movies. In the summer, people often go to the beach or go hiking.
+            </p>
+        </div>
+        
+        <div class="test-card">
+            <h3>Set 5: Food and Cooking</h3>
+            <h4>Part 1: Food and Cooking</h4>
+            <p>
+                <b>1. What kinds of food do you like to eat?</b><br>
+                - I love a variety of foods, but I particularly enjoy traditional dishes from my country. I also like Italian food, especially pasta and pizza.
+            </p>
+            <p>
+                <b>2. Do you like cooking?</b><br>
+                - I enjoy cooking, but I'm not an expert. I can make some simple meals, but I prefer to cook for other people rather than just for myself.
+            </p>
+            <p>
+                <b>3. Who usually cooks in your family?</b><br>
+                - My mother is the main cook in our family. She is an amazing cook and she loves to prepare different meals for us.
+            </p>
+            <p>
+                <b>4. How often do you eat out?</b><br>
+                - I eat out once or twice a week, usually with friends on the weekend. We like to try new restaurants and cuisines.
+            </p>
+            <p>
+                <b>5. Is it important for children to learn how to cook?</b><br>
+                - Yes, I think it's a very important life skill. Learning to cook helps children to be more independent and to eat a healthier diet.
+            </p>
+            <br>
+            <h4>Part 2: A Favorite Meal</h4>
+            <p>
+                <b>Describe a meal you would like to cook for your friends.</b><br>
+                - I would love to cook a traditional Japanese meal for my friends, specifically, a bento box. It's a single-portion takeout or home-packed meal common in Japanese cuisine. It usually consists of rice, fish or meat, and various pickled or cooked vegetables. It's not particularly easy to make, and it requires a lot of preparation. I would need to find a few good recipes for each of the dishes and I would have to make sure I had all the ingredients. I would also need to buy some authentic bento boxes to serve the food in. The reason I want to cook this is that I think my friends would really appreciate the effort. It's a very visually appealing meal and it's a way to introduce them to a new cuisine in a fun and authentic way. I've been wanting to try to make it myself for a while, and it would be a great way to show my friends how much I appreciate them.
+            </p>
+            <br>
+            <h4>Part 3: Food and Society</h4>
+            <p>
+                <b>1. What are the health benefits of cooking at home?</b><br>
+                - Cooking at home gives you more control over the ingredients you use, such as the amount of salt, sugar, and oil. This allows you to prepare healthier meals. It is also often more hygienic than eating out.
+            </p>
+            <p>
+                <b>2. How has the availability of fast food changed our eating habits?</b><br>
+                - Fast food has made our eating habits less healthy. People often choose the convenience of fast food over cooking a proper meal at home, which can lead to health problems like obesity and heart disease.
+            </p>
+            <p>
+                <b>3. Do you think people should be encouraged to eat organic food?</b><br>
+                - Yes, I think so. Organic food is grown without the use of chemical pesticides and fertilizers, which is better for our health and for the environment. It may be more expensive, but the long-term benefits are worth it.
+            </p>
+            <p>
+                <b>4. What role does food play in different cultures?</b><br>
+                - Food plays a huge role in culture. It is at the center of most celebrations, holidays, and social gatherings. It helps to define a culture's identity and is a way for people to share their heritage with others.
+            </p>
+            <p>
+                <b>5. Why do some people prefer to be vegetarian?</b><br>
+                - People become vegetarian for a variety of reasons. Some do it for health reasons, as a vegetarian diet can be very healthy. Others do it for ethical reasons, as they are against the killing of animals for food. And some people become vegetarian for environmental reasons, as the meat industry has a big impact on the environment.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 6: Technology</h3>
+            <h4>Part 1: Technology</h4>
+            <p>
+                <b>1. Do you use a computer often?</b><br>
+                - Yes, I use a computer every day for my studies and for entertainment.
+            </p>
+            <p>
+                <b>2. What do you use the internet for?</b><br>
+                - I use the internet for a lot of things: for research, to stay in touch with friends and family, to watch movies, and to listen to music.
+            </p>
+            <p>
+                <b>3. Is technology important in your life?</b><br>
+                - Yes, it's very important. I use technology for almost everything, from my phone to my laptop. I can't imagine my life without it.
+            </p>
+            <p>
+                <b>4. Do you think social media is a good thing?</b><br>
+                - I think it's a bit of a double-edged sword. It's great for staying connected with people, but it can also be a source of a lot of pressure and can sometimes be a waste of time.
+            </p>
+            <p>
+                <b>5. How has technology changed in your country?</b><br>
+                - It has changed a lot. There are now high-speed internet connections in most places and a lot of people have access to smartphones and laptops.
+            </p>
+            <br>
+            <h4>Part 2: An Important Invention</h4>
+            <p>
+                <b>Describe an important invention that has changed the world.</b><br>
+                - I would like to talk about the invention of the internet. It was invented in the 1960s, but it really became a part of our lives in the 1990s and has since become a global phenomenon. The internet changed the world by making information accessible to everyone. It has allowed people to communicate with each other instantly, no matter where they are in the world. This has led to a globalization of culture and business. The internet has also transformed the way we work, learn, and entertain ourselves. It is a very important invention because it has completely changed the way we live our lives. It has made the world a smaller place and has given us access to an incredible amount of knowledge and resources. I can't imagine living without it.
+            </p>
+            <br>
+            <h4>Part 3: Technology and Society</h4>
+            <p>
+                <b>1. What are the benefits of using technology in education?</b><br>
+                - Technology has made education more accessible and engaging. Students can now access online courses, use educational apps, and watch videos to learn. It also allows for more personalized learning.
+            </p>
+            <p>
+                <b>2. Do you think that technology has made us more or less sociable?</b><br>
+                - It's a bit of both. Technology has made it easier to stay in touch with people from far away, but it has also made us less sociable in person. People often spend more time on their phones than they do talking to each other.
+            </p>
+            <p>
+                <b>3. What are the negative effects of social media?</b><br>
+                - Social media can have a negative impact on mental health. It can lead to feelings of loneliness, anxiety, and depression. It can also be a source of misinformation and cyberbullying.
+            </p>
+            <p>
+                <b>4. What role does technology play in our daily lives?</b><br>
+                - Technology plays a huge role in our daily lives. We use it for communication, for work, for entertainment, and for transportation. It has become an essential part of our modern society.
+            </p>
+            <p>
+                <b>5. What do you think the future of technology will be?</b><br>
+                - I think the future of technology will be very exciting. I think we will see a lot of developments in artificial intelligence, virtual reality, and biotechnology. I think technology will become even more integrated into our lives.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 7: Leisure</h3>
+            <h4>Part 1: Leisure</h4>
+            <p>
+                <b>1. What do you do in your leisure time?</b><br>
+                - In my leisure time, I like to read books and listen to music. I also enjoy going for walks in nature.
+            </p>
+            <p>
+                <b>2. Do you have enough time for leisure?</b><br>
+                - I think I have a good balance. I have enough time to relax and do the things I enjoy, but I'm also busy with work and other responsibilities.
+            </p>
+            <p>
+                <b>3. What is a popular leisure activity in your country?</b><br>
+                - Going to the cinema is very popular. People also love to go to cafes and restaurants to socialize.
+            </p>
+            <p>
+                <b>4. Do you think it's important to have leisure time?</b><br>
+                - Yes, it's very important. Leisure time allows us to relax, recharge, and pursue our interests. It helps to prevent burnout and improves our overall well-being.
+            </p>
+            <p>
+                <b>5. Has the way people spend their leisure time changed over the years?</b><br>
+                - Yes, I think it has changed a lot. In the past, people were more likely to spend their free time outdoors or with friends and family. Now, a lot of people spend their free time on their phones or watching TV.
+            </p>
+            <br>
+            <h4>Part 2: A Leisure Activity</h4>
+            <p>
+                <b>Describe a leisure activity you enjoy doing.</b><br>
+                - I would like to talk about hiking. It's an activity I've enjoyed for many years, and I usually go with my friends or family. We usually go to the mountains near my city, where there are a lot of trails with amazing views. I usually go hiking once a month, whenever I have a free weekend. The reason I enjoy it so much is that it's a great way to exercise and get some fresh air. It's also a great way to escape the hustle and bustle of city life and appreciate the beauty of nature. It's a very calming and peaceful activity, and I always feel refreshed after a long hike. I think it's one of the best ways to spend my free time.
+            </p>
+            <br>
+            <h4>Part 3: Leisure and Society</h4>
+            <p>
+                <b>1. Why do people need leisure time?</b><br>
+                - Leisure time is crucial for our mental and physical health. It provides a break from work and daily stress, allowing us to relax and recharge. It also gives us a chance to pursue hobbies and interests, which can be very fulfilling.
+            </p>
+            <p>
+                <b>2. Is it better for people to spend their leisure time alone or with others?</b><br>
+                - I think it depends on the person. Some people are introverts and need time alone to recharge, while others are extroverts and thrive on social interaction. I think the best thing is to have a mix of both.
+            </p>
+            <p>
+                <b>3. Do you think that the government should encourage people to have more leisure time?</b><br>
+                - Yes, I think so. The government could encourage people to have more leisure time by promoting a better work-life balance. They could also invest in public parks, libraries, and other recreational facilities to give people more options for how to spend their free time.
+            </p>
+            <p>
+                <b>4. How has the internet changed leisure activities?</b><br>
+                - The internet has changed leisure activities in many ways. It has made it easier to find information about hobbies and to connect with people who share our interests. It has also given us new leisure activities, like online gaming and streaming movies.
+            </p>
+            <p>
+                <b>5. What are the most popular leisure activities in your country?</b><br>
+                - I think the most popular leisure activities are watching TV, listening to music, and going out to cafes and restaurants. People also enjoy going to the cinema and playing sports.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 8: The Environment</h3>
+            <h4>Part 1: The Environment</h4>
+            <p>
+                <b>1. Do you think the environment is an important issue?</b><br>
+                - Yes, I think it's one of the most important issues facing the world today.
+            </p>
+            <p>
+                <b>2. What is the biggest environmental problem in your country?</b><br>
+                - I think the biggest problem is pollution, especially air and water pollution. There are a lot of factories and cars, and they are polluting our environment.
+            </p>
+            <p>
+                <b>3. What can you do to protect the environment?</b><br>
+                - I try to do my part by recycling, using less water, and taking public transport whenever I can. I also try to buy products that are environmentally friendly.
+            </p>
+            <p>
+                <b>4. Do you think it's the government's responsibility to protect the environment?</b><br>
+                - Yes, I think it's the government's responsibility to make laws and policies that protect the environment. However, I also think that we all have a role to play.
+            </p>
+            <p>
+                <b>5. How can we encourage more people to care about the environment?</b><br>
+                - We can educate people about the importance of protecting the environment. We can also make it easier for them to do the right thing, for example, by providing more recycling bins and better public transport.
+            </p>
+            <br>
+            <h4>Part 2: An Environmental Problem</h4>
+            <p>
+                <b>Describe an environmental problem in your country.</b><br>
+                - The biggest environmental problem in my country is air pollution. It is mainly caused by industrial factories and the increasing number of cars on our roads. This has been a problem for many years now, and it's getting worse as the country becomes more industrialized. This problem has a huge impact on our health. It can lead to respiratory problems and other serious diseases. It also affects the quality of our air and water. I think the government should take action to solve this problem. They could make stricter laws for factories and encourage people to use public transport. I also think that we all have a role to play by trying to reduce our own carbon footprint.
+            </p>
+            <br>
+            <h4>Part 3: The Future of the Environment</h4>
+            <p>
+                <b>1. What are the most serious environmental problems in the world today?</b><br>
+                - The most serious environmental problems are climate change, pollution, and the loss of biodiversity. These problems are interconnected and pose a great threat to our planet.
+            </p>
+            <p>
+                <b>2. Do you think that technology can solve all of our environmental problems?</b><br>
+                - I think technology can help, but it's not a silver bullet. While new technologies can help us to reduce pollution and use resources more efficiently, we also need to change our behavior and our mindset.
+            </p>
+            <p>
+                <b>3. What role do you think individuals have in protecting the environment?</b><br>
+                - I think individuals have a huge role to play. By making small changes in our daily lives, like recycling, using less water, and using public transport, we can make a big difference. We can also use our voices to demand action from our governments and corporations.
+            </p>
+            <p>
+                <b>4. How can we encourage more people to be environmentally friendly?</b><br>
+                - We can educate people about the importance of protecting the environment and make it easier for them to do the right thing. We can also use social media and advertising to raise awareness about environmental issues.
+            </p>
+            <p>
+                <b>5. Do you think that companies should be held accountable for the environmental damage they cause?</b><br>
+                - Yes, I think so. Companies have a huge impact on the environment, and they should be held accountable for any damage they cause. They should be fined or even shut down if they don't follow environmental regulations.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 9: Communication</h3>
+            <h4>Part 1: Communication</h4>
+            <p>
+                <b>1. How often do you use a mobile phone?</b><br>
+                - I use my mobile phone all the time. I use it for everything from calling friends to checking my emails.
+            </p>
+            <p>
+                <b>2. What is your preferred method of communication?</b><br>
+                - I prefer to communicate in person. I think it's more personal and you can get a better sense of what the other person is thinking and feeling.
+            </p>
+            <p>
+                <b>3. How has communication changed since your childhood?</b><br>
+                - Communication has changed a lot. When I was a child, we didn't have mobile phones or social media. We had to rely on landlines and letters to communicate with people who lived far away.
+            </p>
+            <p>
+                <b>4. Do you think that social media is a good way to communicate?</b><br>
+                - I think social media can be a good way to communicate with a lot of people at once, but it's not a great way to have a deep conversation.
+            </p>
+            <p>
+                <b>5. How do you feel about using emojis when you're communicating?</b><br>
+                - I think emojis are great. They can help to convey emotion and tone in a way that words sometimes can't.
+            </p>
+            <br>
+            <h4>Part 2: An Important Conversation</h4>
+            <p>
+                <b>Describe a conversation you had that was important to you.</b><br>
+                - I'd like to talk about a conversation I had with my dad a few years ago. I was at a crossroads in my life and I wasn't sure what career path I wanted to take. My dad and I were having dinner, and I decided to ask him for his advice. We talked for hours. He didn't tell me what to do, but he listened patiently and asked me a lot of questions. He helped me to see things from a different perspective and to understand what I really wanted. It was an important conversation because it helped me to make a big decision that changed my life for the better. I'm very grateful for his advice and support.
+            </p>
+            <br>
+            <h4>Part 3: Communication and Modern Society</h4>
+            <p>
+                <b>1. How important is it to be a good listener?</b><br>
+                - It's extremely important. Being a good listener shows respect and helps to build trust. It also helps us to understand other people's perspectives, which is essential for effective communication.
+            </p>
+            <p>
+                <b>2. Do you think that people communicate less face-to-face now than in the past?</b><br>
+                - Yes, I think so. With the rise of social media and messaging apps, people are often more comfortable communicating through screens than they are in person. This can lead to a lot of misunderstandings and a feeling of isolation.
+            </p>
+            <p>
+                <b>3. What are the differences between written and spoken communication?</b><br>
+                - Spoken communication is more immediate and personal. You can hear the tone of a person's voice and see their body language. Written communication is more formal and allows for more time to think about what you want to say.
+            </p>
+            <p>
+                <b>4. How do you think communication will change in the future?</b><br>
+                - I think communication will become even more digital. We will see more use of virtual reality and other new technologies to communicate with each other. I also think we will see a lot more use of artificial intelligence in communication.
+            </p>
+            <p>
+                <b>5. Is it important to be a good public speaker?</b><br>
+                - Yes, I think so. Public speaking is a very important skill to have, both in your career and in your personal life. It can help you to build confidence and to communicate your ideas effectively to a large group of people.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 10: Work</h3>
+            <h4>Part 1: Work</h4>
+            <p>
+                <b>1. What is your job?</b><br>
+                - I'm a software developer. I work for a technology company.
+            </p>
+            <p>
+                <b>2. What do you like about your job?</b><br>
+                - I love the challenge. I enjoy solving complex problems and creating new things. I also like that I get to work with a lot of smart and talented people.
+            </p>
+            <p>
+                <b>3. What do you dislike about your job?</b><br>
+                - The long hours can be a bit of a challenge. Sometimes, I have to work late to meet a deadline.
+            </p>
+            <p>
+                <b>4. What are your future career plans?</b><br>
+                - I hope to become a project manager one day. I would like to be responsible for leading a team and managing a project from start to finish.
+            </p>
+            <p>
+                <b>5. How important is it to enjoy your job?</b><br>
+                - It's very important. If you don't enjoy your job, it can be a source of a lot of stress and unhappiness. It's much better to have a job that you are passionate about.
+            </p>
+            <br>
+            <h4>Part 2: A Dream Job</h4>
+            <p>
+                <b>Describe your dream job.</b><br>
+                - My dream job is to be an astronaut. I've been fascinated by space since I was a child, and I've always wanted to explore the cosmos. I know it's a very difficult job to get, but I've been working hard to get there. I'm currently studying aerospace engineering, and I hope to one day work for NASA. I would love to be able to go on a mission to Mars or to the moon. I think it would be the most incredible experience of my life. I think the reason I want this job so much is that it's a way to be a part of something bigger than myself. I want to be a part of the human exploration of space and help us to understand our place in the universe.
+            </p>
+            <br>
+            <h4>Part 3: Work and the Future</h4>
+            <p>
+                <b>1. How has technology changed the workplace?</b><br>
+                - Technology has changed the workplace in many ways. It has automated many tasks, making our jobs more efficient. It has also made it easier for people to work from home, which has given people more flexibility.
+            </p>
+            <p>
+                <b>2. What do you think the future of work will look like?</b><br>
+                - I think the future of work will be more flexible and digital. I think more people will work from home, and we will see more use of artificial intelligence and robotics in the workplace. I think we will also see a lot of new jobs that we can't even imagine today.
+            </p>
+            <p>
+                <b>3. Is it better to have a job with a high salary or a job that you enjoy?</b><br>
+                - I think it's better to have a job that you enjoy. While money is important, a job that you are passionate about is more fulfilling and can be a source of a lot of happiness.
+            </p>
+            <p>
+                <b>4. What are the benefits of having a part-time job?</b><br>
+                - Part-time jobs are great for students, as they can help to pay for their studies and give them some work experience. They are also great for people who have other responsibilities, like taking care of children.
+            </p>
+            <p>
+                <b>5. What are the most important qualities for a leader?</b><br>
+                - A good leader should be a good communicator, a good motivator, and a good decision-maker. They should be able to inspire their team to work together to achieve a common goal. They should also be a good listener and be able to give and receive feedback.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 11: Places</h3>
+            <h4>Part 1: Places</h4>
+            <p>
+                <b>1. Where do you live?</b><br>
+                - I live in an apartment in the city center. It's a great location because I'm close to a lot of shops, restaurants, and public transport.
+            </p>
+            <p>
+                <b>2. Do you like your home?</b><br>
+                - Yes, I love my home. It's small but it's cozy and comfortable. I've decorated it myself, so it feels like my own personal space.
+            </p>
+            <p>
+                <b>3. What is your favorite room in your home?</b><br>
+                - My favorite room is the living room. It's where I relax, read, and watch movies. It's also where I spend time with my friends and family.
+            </p>
+            <p>
+                <b>4. What kind of places do you like to visit?</b><br>
+                - I love to visit historical places, like ancient cities and museums. I'm also a big fan of nature, so I love to go to the mountains or the beach.
+            </p>
+            <p>
+                <b>5. Is it better to live in a big city or a small town?</b><br>
+                - I think it's better to live in a big city. While small towns are peaceful, cities offer a lot of opportunities and things to do.
+            </p>
+            <br>
+            <h4>Part 2: A Place You'd Like to Live</h4>
+            <p>
+                <b>Describe a place you would like to live in the future.</b><br>
+                - I would love to live in a small coastal town in Italy. I've always been drawn to the Mediterranean lifestyle, with its emphasis on good food, family, and a slower pace of life. The place I have in mind is a small fishing village with colorful houses, a beautiful beach, and a lively market. I imagine living in a small house with a balcony overlooking the sea. I'd spend my days swimming, fishing, and eating fresh seafood. The reason I want to live there is that I think it would be a great way to de-stress and escape the fast pace of modern life. It would be a chance to immerse myself in a new culture and learn a new language. I think it would be a very fulfilling and happy life.
+            </p>
+            <br>
+            <h4>Part 3: Urban vs. Rural Life</h4>
+            <p>
+                <b>1. What are the advantages of living in a big city?</b><br>
+                - Big cities offer a lot of job opportunities, educational institutions, and a wide range of entertainment options. They also have good public transport, so you don't need a car to get around.
+            </p>
+            <p>
+                <b>2. What are the disadvantages of living in a big city?</b><br>
+                - Big cities can be very expensive, crowded, and noisy. They also have a lot of pollution, and it can be hard to find a peaceful place to relax.
+            </p>
+            <p>
+                <b>3. Do you think that the government should encourage people to move to rural areas?</b><br>
+                - Yes, I think so. It would help to reduce the pressure on big cities and would also revitalize rural areas. The government could offer incentives like tax breaks or subsidies for people who move to rural areas.
+            </p>
+            <p>
+                <b>4. How has the design of homes changed over the years?</b><br>
+                - Homes have become more modern and functional. In the past, homes were often built with a lot of small rooms, but now people prefer open-plan living. Homes have also become more energy-efficient and environmentally friendly.
+            </p>
+            <p>
+                <b>5. What are the most important factors to consider when choosing a place to live?</b><br>
+                - I think the most important factors are the cost of living, the job opportunities, the quality of life, and the safety of the area. It's also important to consider the community and the people who live there.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 12: Media</h3>
+            <h4>Part 1: Media</h4>
+            <p>
+                <b>1. What kinds of books do you like to read?</b><br>
+                - I love to read fantasy and science fiction books. I also enjoy reading historical fiction.
+            </p>
+            <p>
+                <b>2. How often do you watch movies?</b><br>
+                - I watch movies once or twice a week, usually on the weekend. I love to go to the cinema with my friends.
+            </p>
+            <p>
+                <b>3. Do you prefer to read a newspaper or get your news online?</b><br>
+                - I prefer to get my news online. It's more convenient and I can get a lot of different perspectives on the same story.
+            </p>
+            <p>
+                <b>4. Is it important to be informed about current events?</b><br>
+                - Yes, I think it's very important. Being informed about current events helps us to be better citizens and to make better decisions.
+            </p>
+            <p>
+                <b>5. What are the most popular forms of media in your country?</b><br>
+                - The most popular forms of media are TV, social media, and the internet. A lot of people also listen to the radio and read newspapers.
+            </p>
+            <br>
+            <h4>Part 2: A Favorite Book/Movie</h4>
+            <p>
+                <b>Describe a book or movie that you would like to recommend to others.</b><br>
+                - I would like to recommend the movie "Forrest Gump." It's a classic movie that was released in 1994, and it's a beautiful story about a man with a low IQ who accomplishes great things in his life. The movie is a mix of drama, comedy, and romance, and it's full of heartwarming and inspiring moments. The main character, Forrest, is a very kind and compassionate person, and he teaches us a lot about love, friendship, and perseverance. The reason I would recommend it is that it's a very touching and meaningful movie. It's a movie that makes you laugh and cry, and it stays with you long after you've seen it. It's a great reminder of the power of the human spirit.
+            </p>
+            <br>
+            <h4>Part 3: The Media and Society</h4>
+            <p>
+                <b>1. How has the internet changed the way we consume media?</b><br>
+                - The internet has changed the way we consume media in a big way. We can now get our news and entertainment from a variety of sources, and we can access it from anywhere in the world. This has made media more accessible and personalized.
+            </p>
+            <p>
+                <b>2. Do you think that the media has a big influence on people's opinions?</b><br>
+                - Yes, I think the media has a huge influence on people's opinions. The media can shape our views on politics, social issues, and even our own personal lives. It's important to be critical of the media and to get our news from a variety of sources.
+            </p>
+            <p>
+                <b>3. What are the advantages and disadvantages of social media?</b><br>
+                - The advantages are that it's a great way to stay connected with friends and family, and it can be a source of information and entertainment. The disadvantages are that it can be a source of misinformation, cyberbullying, and it can be bad for our mental health.
+            </p>
+            <p>
+                <b>4. Do you think that children should have access to the internet?</b><br>
+                - I think children should have access to the internet, but with parental supervision. The internet can be a great educational tool, but it can also be a dangerous place. Parents should teach their children how to use the internet safely and responsibly.
+            </p>
+            <p>
+                <b>5. What do you think the future of media will be?</b><br>
+                - I think the future of media will be even more personalized and interactive. We will see more use of virtual reality and augmented reality in media. I also think we will see a lot more use of artificial intelligence to create and distribute media.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 13: Holidays</h3>
+            <h4>Part 1: Holidays</h4>
+            <p>
+                <b>1. Do you like holidays?</b><br>
+                - Yes, I love holidays. They're a great opportunity to relax, spend time with family and friends, and travel to new places.
+            </p>
+            <p>
+                <b>2. What is your favorite holiday?</b><br>
+                - My favorite holiday is New Year's Day. I love the feeling of a new beginning, and it's a great opportunity to reflect on the past year and make plans for the future.
+            </p>
+            <p>
+                <b>3. How do you usually celebrate holidays?</b><br>
+                - We usually celebrate with a big family dinner. We all get together, eat a lot of food, and have a good time.
+            </p>
+            <p>
+                <b>4. Do you think it's important to celebrate holidays?</b><br>
+                - Yes, I think so. Holidays are a great way to bring people together and to celebrate our culture and our traditions. They help us to feel a sense of community.
+            </p>
+            <p>
+                <b>5. What is a popular holiday in your country?</b><br>
+                - The most popular holiday is our Independence Day. We celebrate with parades, concerts, and fireworks. It's a very festive day.
+            </p>
+            <br>
+            <h4>Part 2: A Memorable Holiday</h4>
+            <p>
+                <b>Describe a holiday that you would like to have again.</b><br>
+                - I'd like to talk about a holiday I took with my family a few years ago. We went to a small town in the mountains, and we stayed in a cozy cabin. We spent our days hiking, fishing, and having picnics by the lake. In the evenings, we would sit by the fire and tell stories. It was a very simple and peaceful holiday, but it was one of the most memorable. The reason I would like to have it again is that it was a chance to reconnect with my family and to escape the stress of modern life. It was a reminder of the importance of spending quality time with the people we love.
+            </p>
+            <br>
+            <h4>Part 3: Holidays and Society</h4>
+            <p>
+                <b>1. How have holidays changed over the years?</b><br>
+                - Holidays have become more commercialized and less traditional. In the past, holidays were more about family and community, but now they are more about buying gifts and spending money.
+            </p>
+            <p>
+                <b>2. Do you think that holidays are good for our mental health?</b><br>
+                - Yes, I think so. Holidays give us a chance to relax, de-stress, and recharge. They are a great way to escape the pressures of daily life and to spend time with the people we love.
+            </p>
+            <p>
+                <b>3. What are the benefits of having a holiday?</b><br>
+                - Holidays have many benefits. They help to reduce stress, improve our mental health, and give us a chance to travel and explore new places. They also help us to feel a sense of community and to connect with our culture.
+            </p>
+            <p>
+                <b>4. Do you think that people should be encouraged to travel more?</b><br>
+                - Yes, I think so. Traveling is a great way to broaden our perspective and to learn about different cultures. It helps us to be more open-minded and to appreciate the diversity of the world.
+            </p>
+            <p>
+                <b>5. How has technology changed the way we celebrate holidays?</b><br>
+                - Technology has changed the way we celebrate holidays in many ways. We can now use social media to share our holiday photos and videos with our friends and family. We can also use video calls to celebrate with people who live far away.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 14: Weather</h3>
+            <h4>Part 1: Weather</h4>
+            <p>
+                <b>1. What is your favorite type of weather?</b><br>
+                - I love sunny and warm weather. It makes me feel happy and energized. I love to go outside and enjoy the sunshine.
+            </p>
+            <p>
+                <b>2. What do you usually do when it's sunny?</b><br>
+                - When it's sunny, I love to go for a walk in the park, go to the beach, or have a picnic with my friends.
+            </p>
+            <p>
+                <b>3. What do you usually do when it's raining?</b><br>
+                - When it's raining, I love to stay inside and read a book or watch a movie. I also enjoy drinking a cup of hot chocolate and listening to the rain fall.
+            </p>
+            <p>
+                <b>4. Has the weather changed much in your country over the years?</b><br>
+                - Yes, I think the weather has become more extreme. We have more heat waves and more storms than we used to.
+            </p>
+            <p>
+                <b>5. Do you think the weather has a big impact on people's moods?</b><br>
+                - Yes, I think so. Sunny weather makes people feel happy and energetic, while rainy weather can make people feel sad and lethargic.
+            </p>
+            <br>
+            <h4>Part 2: An Event in Bad Weather</h4>
+            <p>
+                <b>Describe an occasion when you had to change your plans because of the weather.</b><br>
+                - I remember a time when my friends and I had planned to go to the beach for a day of swimming and sunbathing. We had been looking forward to it for weeks, and we had packed everything we needed. But when we woke up that morning, it was raining heavily and there was a storm. We were all very disappointed, but we had to change our plans. Instead of going to the beach, we went to the cinema and watched a movie. It wasn't what we had planned, but we still had a good time. The reason I remember this occasion so well is that it was a good reminder that we can't control everything, and that we have to be flexible and adaptable.
+            </p>
+            <br>
+            <h4>Part 3: The Weather and Society</h4>
+            <p>
+                <b>1. How does the weather affect the economy?</b><br>
+                - The weather can have a big impact on the economy. Extreme weather, like floods and storms, can cause a lot of damage to property and infrastructure. It can also affect agriculture and tourism.
+            </p>
+            <p>
+                <b>2. Do you think that the government should take action to deal with climate change?</b><br>
+                - Yes, I think so. Climate change is a serious problem, and the government should take action to reduce carbon emissions and to invest in renewable energy. They should also encourage people to be more environmentally friendly.
+            </p>
+            <p>
+                <b>3. How do people in your country usually prepare for bad weather?</b><br>
+                - When bad weather is predicted, people usually stay indoors and stock up on food and water. They also make sure that their homes are protected from the storm.
+            </p>
+            <p>
+                <b>4. Do you think that the weather is a popular topic of conversation?</b><br>
+                - Yes, I think so. The weather is a very popular topic of conversation, especially in countries where the weather is unpredictable. It's a great way to start a conversation with someone you don't know.
+            </p>
+            <p>
+                <b>5. What do you think the weather will be like in the future?</b><br>
+                - I think the weather will become more extreme and unpredictable. We will see more heat waves, storms, and floods. I think we will also see a lot more pollution and a lot more damage to the environment.
+            </p>
+        </div>
+
+        <div class="test-card">
+            <h3>Set 15: Shopping</h3>
+            <h4>Part 1: Shopping</h4>
+            <p>
+                <b>1. Do you like shopping?</b><br>
+                - I don't love shopping, but I don't hate it either. I enjoy shopping for things that I need, but I don't like to spend a lot of time in malls.
+            </p>
+            <p>
+                <b>2. How often do you go shopping?</b><br>
+                - I go shopping once or twice a month, usually to buy groceries and other necessities.
+            </p>
+            <p>
+                <b>3. What kinds of things do you usually buy?</b><br>
+                - I usually buy groceries, clothes, and books. I also buy gifts for my friends and family.
+            </p>
+            <p>
+                <b>4. Do you prefer to shop online or in a physical store?</b><br>
+                - I prefer to shop in a physical store. I like to be able to see and touch the products before I buy them. It's also more of a social experience.
+            </p>
+            <p>
+                <b>5. Do you think that shopping is a popular hobby?</b><br>
+                - Yes, I think so. A lot of people love to go shopping in their free time. They see it as a form of entertainment and a way to relax.
+            </p>
+            <br>
+            <h4>Part 2: A Shopping Experience</h4>
+            <p>
+                <b>Describe a time when you bought something special for someone else.</b><br>
+                - I'd like to talk about the time I bought a gift for my mother's birthday. I wanted to get her something special, so I decided to make her a photo album with all of our favorite family photos. I spent hours looking through old photos and arranging them in the album. I also wrote some small captions for each photo. When I gave it to her, she was so happy that she cried. The reason it was so special is that it was a very personal and thoughtful gift. It wasn't something that I just bought from a store; it was something that I had made myself. It was a way to show her how much I love and appreciate her.
+            </p>
+            <br>
+            <h4>Part 3: Shopping and Consumerism</h4>
+            <p>
+                <b>1. How has online shopping changed the way we buy things?</b><br>
+                - Online shopping has changed the way we buy things in a big way. We can now buy things from anywhere in the world, and we can get them delivered right to our door. It has made shopping more convenient and accessible.
+            </p>
+            <p>
+                <b>2. Do you think that consumerism is a problem in modern society?</b><br>
+                - Yes, I think so. Consumerism can lead to a lot of debt, and it can also be bad for the environment. People are often pressured to buy things that they don't need, and this can lead to a lot of waste.
+            </p>
+            <p>
+                <b>3. What are the benefits of shopping in a physical store?</b><br>
+                - Shopping in a physical store allows you to see and touch the products before you buy them. It's also a more social experience, and you can get advice from the sales staff. It can also be a form of entertainment.
+            </p>
+            <p>
+                <b>4. Do you think that people should be encouraged to buy local products?</b><br>
+                - Yes, I think so. Buying local products supports local businesses and helps to create jobs. It also reduces our carbon footprint, as local products don't have to be transported as far.
+            </p>
+            <p>
+                <b>5. How do you think shopping will change in the future?</b><br>
+                - I think shopping will become even more digital. We will see more use of virtual reality and augmented reality in shopping. I also think we will see a lot more use of artificial intelligence to personalize our shopping experience.
+            </p>
+        </div>
+    </div>
+    <br><br><br><br>
+            `;
+        }
+
+        function showPremiumRequiredMessage() {
+            contentContainer.innerHTML = `
+                <div class="premium-required-container">
+                    <h2>Access Restricted</h2>
+                    <p>To view the exclusive IELTS Speaking Topics, you must have a premium membership.</p>
+                    <button onclick="contactTelegram()">Upgrade to Premium</button>
+                </div>
+            `;
+        }
+
+        // Dropdown functionality
+        function toggleDropdown(id) {
+            document.getElementById(id).classList.toggle("show");
+        }
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

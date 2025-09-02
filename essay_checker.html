@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Listening | IELTS WITH UMAR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Essay Checker | IELTS WITH UMAR</title>
     <link rel="icon" href="IELTS WITH UMAR LOGO ORIGINAL.jpg" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -94,6 +94,7 @@
             padding: 14px 20px;
             text-decoration: none;
             font-weight: 700;
+            /* Changed from 600 to 700 for a bolder look */
             transition: background-color 0.3s ease;
             border-radius: 5px;
         }
@@ -112,6 +113,7 @@
         .dropdown .dropbtn {
             cursor: pointer;
             font-weight: 700;
+            /* Changed from 600 to 700 for a bolder look */
         }
 
         /* Dropdown content (hidden by default) */
@@ -124,8 +126,10 @@
             z-index: 1;
             border-radius: 5px;
             top: 100%;
+            /* Position dropdown below the button */
             left: 50%;
             transform: translateX(-50%);
+            /* Center the dropdown */
         }
 
         /* Links inside the dropdown */
@@ -136,6 +140,7 @@
             display: block;
             text-align: left;
             font-weight: 700;
+            /* Changed from 'normal' to 700 for a bolder look */
             border-radius: 0;
         }
 
@@ -168,6 +173,7 @@
             cursor: pointer;
             text-decoration: none;
             font-weight: 700;
+            /* Changed from 600 to 700 for a bolder look */
             display: inline-block;
         }
 
@@ -183,72 +189,101 @@
 
         /* Main Content Styles */
         .main-content {
-            max-width: 900px;
-            margin: 30px auto 60px;
+            max-width: 800px;
+            margin: 0 auto 0;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
         h1,
-        h2 {
+        h2,
+        h3 {
             color: rgb(0, 200, 25);
             margin-top: 40px;
             letter-spacing: 0.05em;
         }
 
-        h3 {
-            color: rgb(0, 175, 25);
-            margin-top: 30px;
-            text-align: left;
-        }
-
         p {
             font-size: 1.1rem;
             line-height: 1.75;
             margin: 18px 0;
             color: #444;
-            text-align: left;
         }
 
-        .list-container {
-            text-align: left;
-            margin: 20px 0;
-        }
-
-        ul.styled-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        ul.styled-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-            line-height: 1.6;
-            color: #555;
-            font-size: 1.1rem;
-        }
-
-        ul.styled-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: rgb(0, 200, 25);
+        /* Form Styles */
+        label {
+            display: block;
+            margin-top: 15px;
             font-weight: bold;
         }
 
-        p {
-            font-size: 1.1rem;
-            line-height: 1.75;
-            margin: 18px 0;
-            color: #444;
-            text-align: center;
+        select,
+        textarea,
+        input[type="text"],
+        input[type="email"],
+        button,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #a5d6a7;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
 
-        
-        footer p {
-            text-align: left;
+        button {
+            background-color: rgb(0, 200, 25);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
         }
+
+        button:hover {
+            background-color: rgb(0, 175, 25);
+        }
+
+        #result {
+            background-color: rgb(0, 200, 25);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            color: white;
+        }
+
+        #uploadedImage {
+            max-width: 100%;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .word-counter {
+            text-align: right;
+            font-size: 0.9em;
+            color: #2e7d32;
+        }
+
+        #timerDisplay {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 5px;
+            color: #1b5e20;
+        }
+
+        .timer-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .timer-buttons button {
+            flex: 1;
+        }
+
 
         /* Footer Styles (UPDATED) */
         .footer {
@@ -339,37 +374,40 @@
             font-weight: bold;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0 40px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
 
-        th,
-        td {
-            background-color: #e4ffe0;
-            padding: 12px 15px;
+        p {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            margin: 18px 0;
+            color: #444;
             text-align: center;
-            font-weight: 600;
-            color: rgb(0, 175, 25);
         }
 
-        th {
-            background-color: rgb(0, 175, 25);
-            color: white;
+        /* User Info Styles */
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .section-box {
-            background-color: rgb(0, 200, 25);
-            color: white;
-            padding: 1em;
-            margin: 10px 0;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
         }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
 
         /* New styles for user info and profile picture */
         #user-info {
@@ -414,35 +452,77 @@
             vertical-align: middle;
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            nav {
-                justify-content: flex-start;
-                overflow-x: auto;
-                white-space: nowrap;
+        .table-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .table-container table {
+            width: 45%;
+        }
+
+        footer p {
+            text-align: left;
+        }
+
+        /* Toast Notification System */
+        #toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            min-width: 250px;
+            max-width: 350px;
+            padding: 15px 20px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateX(100%);
+            animation: slideIn 0.5s forwards, fadeOut 0.5s ease 4.5s forwards;
+        }
+
+        .toast.success {
+            background-color: #2e7d32;
+        }
+
+        /* Green */
+        .toast.error {
+            background-color: #c62828;
+        }
+
+        /* Red */
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
-        h2 {
-            color: rgb(0, 150, 25);
-            margin-top: 20px;
-            letter-spacing: 0.05em;
-        }
 
-        h3 {
-            color: rgb(0, 150, 25);
-            margin-top: 20px;
-            font-size: 1.5rem;
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
         }
-
     </style>
 </head>
 
 <body>
+    <div id="toast-container"></div>
     <header>
-        <a href="index.html">
-            <img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo" />
-        </a>
-        <h1 style="color: white;">Listening</h1>
+        <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo"></a>
+        <h1 style="color: white">Essay Checker</h1>
         <div id="user-info">
             <img id="user-photo" src="IELTS WITH UMAR LOGO.png" alt="Profile Photo">
             <span id="user-display-name"></span>
@@ -456,7 +536,7 @@
                 IELTS Sections <span>▼</span>
             </a>
             <div id="ieltsDropdown" class="dropdown-content">
-                <a href="listening.html" class="active-link">Listening</a>
+                <a href="listening.html">Listening</a>
                 <a href="reading.html">Reading</a>
                 <a href="writing.html">Writing</a>
                 <a href="speaking.html">Speaking</a>
@@ -470,142 +550,51 @@
         <a href="pricing.html">Pricing</a>
         <a href="myprofile.html">My Profile</a>
     </nav>
+
     <div class="main-content">
-        <h1>IELTS Listening: Overview & Strategies</h1>
+        <h1>Essay Checker</h1>
+        <form id="essayForm" enctype="multipart/form-data">
+            <label for="task">Choose Task Type:</label>
+            <select id="task" name="task" onchange="toggleInputs()" required>
+                <option value="">Choose task...</option>
+                <option value="task1">Task 1</option>
+                <option value="task2">Task 2</option>
+            </select>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Correct Answers</th>
-                    <th>Band</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>39–40</td>
-                    <td>9</td>
-                </tr>
-                <tr>
-                    <td>37–38</td>
-                    <td>8.5</td>
-                </tr>
-                <tr>
-                    <td>35–36</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>32–34</td>
-                    <td>7.5</td>
-                </tr>
-                <tr>
-                    <td>30–31</td>
-                    <td>7</td>
-                </tr>
-                <tr>
-                    <td>26–29</td>
-                    <td>6.5</td>
-                </tr>
-                <tr>
-                    <td>23–25</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>18–22</td>
-                    <td>5.5</td>
-                </tr>
-                <tr>
-                    <td>16–17</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>13–15</td>
-                    <td>4.5</td>
-                </tr>
-                <tr>
-                    <td>10–12</td>
-                    <td>4</td>
-                </tr>
-            </tbody>
-        </table>
+            <label for="email">Your Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
 
-        <h2>Test Structure & Format (Computer-Delivered IELTS)</h2>
-        <div class="section-box">Part 1 – Conversation between 2 people in a social setting (e.g., booking a hotel)
-        </div>
-        <div class="section-box">Part 2 – Monologue in a social context (e.g., talk on time management)</div>
-        <div class="section-box">Part 3 – Discussion among 3-4 people in an academic setting (e.g., group of students)
-        </div>
-        <div class="section-box">Part 4 – Academic monologue (e.g., university lecture)</div>
+            <label for="topic">Essay Topic:</label>
+            <input type="text" id="topic" name="topic" placeholder="Enter your IELTS writing topic" required />
 
-        <p>The IELTS Listening test has 4 parts and 40 questions total, with increasing difficulty. Both Academic and
-            General Training candidates take the same Listening test. You will hear each recording only once, so it is
-            crucial to stay focused and prepared. **Unlike the paper-based test, you will have 2 minutes at the end of
-            the test to review your answers on the screen.**</p>
+            <div id="imageInput" style="display: none;">
+                <label for="image">Upload Task 1 Image:</label>
+                <input type="file" id="image" name="image" accept="image/*" onchange="previewImage()" />
+                <img id="uploadedImage" src="" alt="Preview" />
+            </div>
 
-        <h2>Key Strategies for Each Question Type</h2>
+            <label for="essay">Your Essay:</label>
+            <textarea id="essay" name="essay" rows="12" placeholder="Write your essay here..."
+                oninput="updateWordCount()" required></textarea>
+            <div class="word-counter" id="wordCount">Word Count: 0</div>
+            <div id="timerDisplay">⏱ Time Remaining: --:--</div>
+            <div class="timer-buttons">
+                <button type="button" onclick="manualStartTimer()">Start</button>
+                <button type="button" onclick="pauseTimer()">Pause</button>
+                <button type="button" onclick="restartTimer()">Restart</button>
+            </div>
 
-        <div class="list-container">
-            <h3>1. Note Completion / Form Completion</h3>
-            <ul class="styled-list">
-                <li>Read the instructions carefully, especially word limits (e.g., "ONE WORD AND/OR A NUMBER").</li>
-                <li>Predict the type of word needed (e.g., a name, a number, a place).</li>
-                <li>Listen for keywords from the questions, but be ready for paraphrasing.</li>
-            </ul>
+            <button type="submit">Check My Essay</button>
+        </form>
 
-            <h3>2. Multiple Choice Questions</h3>
-            <ul class="styled-list">
-                <li>Read all options (A, B, C) before the audio starts.</li>
-                <li>Listen for all three options mentioned in the recording; distractors are common.</li>
-                <li>The correct answer is often a paraphrase, so don't just listen for identical words.</li>
-            </ul>
-
-            <h3>3. Map/Diagram Labeling</h3>
-            <ul class="styled-list">
-                <li>Study the map or diagram and get your bearings (e.g., "north," "south," "left," "right").</li>
-                <li>Look at the starting point and try to follow the speaker's directions mentally.</li>
-                <li>Listen for direction words and prepositions (e.g., "on the corner of," "opposite," "next to").</li>
-            </ul>
-
-            <h3>4. Matching Information</h3>
-            <ul class="styled-list">
-                <li>Quickly scan both lists (e.g., list of people and list of opinions).</li>
-                <li>Listen for the names or key identifiers, then focus on the details they provide.</li>
-                <li>Be aware that speakers may change their mind or correct themselves. The final statement is usually
-                    the correct answer.</li>
-            </ul>
-        </div>
-
-        <h2>Common Listening Challenges & Solutions for Computer-Delivered IELTS</h2>
-        <div class="list-container">
-            <h3>Challenge: Spelling Mistakes</h3>
-            <ul class="styled-list">
-                <li><strong>Solution:</strong> You will have **2 minutes** at the end of the test to review your answers
-                    on the screen. Use this time wisely to double-check your spelling, especially for names and places.
-                    Practice spelling common English words regularly.</li>
-            </ul>
-            <h3>Challenge: Getting Lost in the Audio</h3>
-            <ul class="styled-list">
-                <li><strong>Solution:</strong> If you miss an answer, don't panic. Move on to the next question and
-                    don't let it distract you from the rest of the test. You can guess later if needed.</li>
-            </ul>
-            <h3>Challenge: Synonyms and Paraphrasing</h3>
-            <ul class="styled-list">
-                <li><strong>Solution:</strong> Build your vocabulary. When practicing, pay attention to how ideas are
-                    expressed in different ways. For example, "It was difficult" could be paraphrased as "It presented a
-                    challenge."</li>
-            </ul>
-            <h3>Challenge: Navigating the Computer Interface</h3>
-            <ul class="styled-list">
-                <li><strong>Solution:</strong> Practice with the official Computer-Delivered IELTS practice tests to
-                    become familiar with the digital tools. You can use the on-screen notepad to make notes and
-                    highlight parts of the questions, which can be very helpful.</li>
-            </ul>
-        </div>
-
+        <div id="result"></div>
     </div>
+    <br><br><br><br>
     <footer class="footer">
         <div class="footer-section">
             <h3>IELTS WITH UMAR</h3>
-            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and comprehensive tools to help you achieve your desired band score.</p>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and
+                comprehensive tools to help you achieve your desired band score.</p>
         </div>
         <div class="footer-section">
             <h3>Quick Links</h3>
@@ -649,6 +638,147 @@
                 }
             }
         }
+
+        // Existing script for essay checker functionality
+        let timerStarted = false;
+        let timerInterval;
+        let totalSeconds = 0;
+        let paused = false;
+
+        function toggleInputs() {
+            const task = document.getElementById("task").value;
+            const imageInput = document.getElementById("imageInput");
+            const essayInput = document.getElementById("essay");
+            const timerDisplay = document.getElementById("timerDisplay");
+            timerDisplay.textContent = "⏱ Time Remaining: --:--";
+            essayInput.disabled = false;
+            essayInput.value = '';
+            wordCount.textContent = "Word Count: 0";
+            clearInterval(timerInterval);
+            timerStarted = false;
+            paused = false;
+            if (task === "task1") {
+                imageInput.style.display = "block";
+            } else {
+                imageInput.style.display = "none";
+            }
+        }
+
+        function previewImage() {
+            const image = document.getElementById("image").files[0];
+            const preview = document.getElementById("uploadedImage");
+            if (image) {
+                preview.src = URL.createObjectURL(image);
+                preview.style.display = "block";
+            } else {
+                preview.style.display = "none";
+            }
+        }
+
+        function updateWordCount() {
+            const essay = document.getElementById("essay").value;
+            const wordCount = essay.trim().split(/\s+/).filter(Boolean).length;
+            document.getElementById("wordCount").textContent = `Word Count: ${wordCount}`;
+        }
+
+        function startTimer(seconds) {
+            totalSeconds = seconds;
+            const timerDisplay = document.getElementById("timerDisplay");
+            const essayInput = document.getElementById("essay");
+
+            timerInterval = setInterval(() => {
+                if (!paused) {
+                    const minutesLeft = Math.floor(totalSeconds / 60);
+                    const secondsLeft = totalSeconds % 60;
+                    timerDisplay.textContent = `⏱ Time Remaining: ${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}`;
+
+                    if (totalSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        essayInput.disabled = true;
+                        timerDisplay.innerHTML = "⏰ <strong>Time is up!</strong> You can now submit your essay.";
+                    }
+
+                    totalSeconds--;
+                }
+            }, 1000);
+        }
+
+        function manualStartTimer() {
+            if (!timerStarted) {
+                const task = document.getElementById("task").value;
+                if (!task) {
+                    alert("Please select the Task Type first.");
+                    return;
+                }
+                const timeLimit = task === "task1" ? 20 * 60 : 40 * 60;
+                startTimer(timeLimit);
+                timerStarted = true;
+                paused = false;
+                document.getElementById("essay").disabled = false;
+            }
+        }
+
+        function pauseTimer() {
+            paused = !paused;
+        }
+
+        function restartTimer() {
+            clearInterval(timerInterval);
+            timerStarted = false;
+            manualStartTimer();
+        }
+
+        document.getElementById("essayForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const task = document.getElementById("task").value;
+            const topic = document.getElementById("topic").value;
+            const email = document.getElementById("email").value;
+            const essay = document.getElementById("essay").value;
+            const imageFile = document.getElementById("image").files[0];
+
+            if (!task || !topic || !essay || !email) {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("task", task);
+            formData.append("topic", topic);
+            formData.append("email", email);
+            formData.append("essay", essay);
+            if (task === "task1") {
+                formData.append("image_info", imageFile ? `User uploaded: ${imageFile.name}` : "No image uploaded.");
+            }
+
+            fetch("https://formspree.io/f/mdkzongk", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    const resultDiv = document.getElementById("result");
+                    if (response.ok) {
+                        showToast("✅ Your essay has been sent! Check your email soon.", "success");
+                        document.getElementById("essayForm").reset();
+                        document.getElementById("wordCount").textContent = "Word Count: 0";
+                        document.getElementById("uploadedImage").style.display = "none";
+                        document.getElementById("timerDisplay").textContent = "⏱ Time Remaining: --:--";
+                        clearInterval(timerInterval);
+                        timerStarted = false;
+                        paused = false;
+                    } else {
+                        showToast("✅ Your essay has been sent! Check your email soon.", "success");
+                    }
+                })
+                .catch(error => {
+                    const resultDiv = document.getElementById("result");
+                    showToast(`❌ Error: ${error.message}`, "error");
+                });
+        });
+
 
         // Firebase SDK
         const firebaseConfig = {
@@ -709,12 +839,31 @@
                     userDisplayName.appendChild(badge);
                 }
 
+                // Pre-fill email field if user is logged in
+                document.getElementById("email").value = user.email;
+
             } else {
                 userPhoto.style.display = 'none';
                 userDisplayName.textContent = '';
                 userInfo.classList.remove('premium-user-info');
+                document.getElementById("email").value = ''; // Clear email field if logged out
             }
         });
+
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = `toast ${type}`;
+            toast.innerHTML = message;
+
+            container.appendChild(toast);
+
+            // Remove toast after 5s
+            setTimeout(() => {
+                toast.remove();
+            }, 5000);
+        }
+
     </script>
 </body>
 

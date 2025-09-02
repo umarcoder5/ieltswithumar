@@ -5,14 +5,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reading | IELTS WITH UMAR</title>
-    <link rel="icon" href="IELTS WITH UMAR LOGO.png" type="image/png">
+    <link rel="icon" href="IELTS WITH UMAR LOGO ORIGINAL.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* General Styles */
+        html, body {
+            width: 100%;
+            height: 100%;
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
             background-color: white;
             color: #333;
+        }
+
+        
+        /* Loading Screen Styles (UPDATED) */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid rgb(0, 175, 25);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         header {
@@ -37,6 +77,7 @@
             letter-spacing: 1px;
         }
 
+        /* Navigation Menu Styles (Updated) */
         nav {
             background-color: rgb(0, 175, 25);
             display: flex;
@@ -50,7 +91,7 @@
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: background-color 0.3s ease;
             border-radius: 5px;
         }
@@ -59,18 +100,104 @@
             background-color: rgb(0, 150, 25);
         }
 
+        /* Dropdown container */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown button */
+        .dropdown .dropbtn {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgb(0, 150, 25);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-weight: 700;
+            border-radius: 0;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: rgb(0, 120, 25);
+        }
+
+        .dropdown-content a:first-child {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        /* Show the dropdown menu (use this class with JS) */
+        .show {
+            display: block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: white;
+            padding: 14px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: rgb(0, 150, 25);
+        }
+
+        /* Highlight the active page link */
+        .active-link {
+            background-color: rgb(0, 150, 25);
+        }
+
+        /* Main Content Styles */
         .main-content {
             max-width: 900px;
             margin: 30px auto 60px;
+            padding: 0 20px;
             text-align: center;
         }
 
         h1,
-        h2,
-        h3 {
+        h2 {
             color: rgb(0, 200, 25);
             margin-top: 40px;
             letter-spacing: 0.05em;
+        }
+
+        h3 {
+            color: rgb(0, 175, 25);
+            margin-top: 30px;
+            text-align: left;
         }
 
         p {
@@ -78,21 +205,134 @@
             line-height: 1.75;
             margin: 18px 0;
             color: #444;
+            text-align: left;
         }
 
-        footer {
-            background-color: rgb(0, 175, 25);
-            color: white;
+        .list-container {
+            text-align: left;
+            margin: 20px 0;
+        }
+
+        ul.styled-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.styled-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        ul.styled-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: rgb(0, 200, 25);
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            margin: 18px 0;
+            color: #444;
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            font-weight: 600;
-            width: 100%;
-            font-size: 0.9rem;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
         }
 
+
+        /* Footer Styles (UPDATED) */
+        .footer {
+            background-color: rgb(0, 150, 25);
+            color: white;
+            padding: 50px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            position: relative;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+            gap: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
+            border-bottom: 2px solid rgb(0, 200, 25);
+            padding-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, padding-left 0.3s ease;
+            display: inline-block;
+            font-size: 1.05rem;
+            font-weight: bold;
+            padding: 5px 0;
+            border-radius: 3px;
+            position: relative;
+            padding-left: 0;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+            background-color: rgb(0, 100, 20);
+            transform: translateX(0);
+            padding-left: 20px;
+        }
+
+        .footer-section ul li a:hover::before {
+            content: '>';
+            position: absolute;
+            left: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: white;
+            font-weight: bold;
+        }
 
         table {
             width: 100%;
@@ -134,6 +374,17 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            /* Default background */
+        }
+
+        /* Class for premium styling */
+        .premium-user-info {
+            background-color: #FFD700 !important;
         }
 
         #user-photo {
@@ -151,6 +402,13 @@
             font-size: 1.1rem;
         }
 
+        /* New CSS for the premium badge */
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
         .table-container {
             display: flex;
             gap: 20px;
@@ -159,6 +417,26 @@
 
         .table-container table {
             width: 45%;
+        }
+
+        /* Responsive design for tables */
+        @media (max-width: 768px) {
+            nav {
+                justify-content: flex-start;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            .table-container {
+                flex-direction: column;
+            }
+
+            .table-container table {
+                width: 100%;
+            }
+        }
+        
+        footer p {
+            text-align: left;
         }
     </style>
 </head>
@@ -175,14 +453,23 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About Me</a>
-        <a href="listening.html">Listening</a>
-        <a href="reading.html">Reading</a>
-        <a href="writing.html">Writing</a>
-        <a href="speaking.html">Speaking</a>
-        <a href="um_grammar_test.html">Grammar Test</a>
-        <a href="um_listening_test.html">Listening Test</a>
-        <a href="um_reading_test.html">Reading Test</a>
-        <a href="um_writing_check.html">Essay Checker</a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn" onclick="toggleDropdown('ieltsDropdown')">
+                IELTS Sections <span>▼</span>
+            </a>
+            <div id="ieltsDropdown" class="dropdown-content">
+                <a href="listening.html">Listening</a>
+                <a href="reading.html" class="active-link">Reading</a>
+                <a href="writing.html">Writing</a>
+                <a href="speaking.html">Speaking</a>
+            </div>
+        </div>
+        <a href="essay_checker.html">Essay Checker</a>
+        <a href="listening_tests.html">IELTS Listening Tests</a>
+        <a href="reading_tests.html">IELTS Reading Tests</a>
+        <a href="writing_samples.html">Writing Samples</a>
+        <a href="speaking_topics.html">Speaking Topics</a>
+        <a href="pricing.html">Pricing</a>
         <a href="myprofile.html">My Profile</a>
     </nav>
     <div class="main-content">
@@ -286,199 +573,113 @@
             </table>
         </div>
 
-        <div class="section-box">This test consists of three sections with 40 questions. There are three texts, which are
-            taken from journals, books, magazines and newspapers. The texts are on topics of general interest. At least
-            one
-            text contains detailed logical argument. There are different types of questions, and we’re going to look at
-            some
-            of these. Before that, let’s think about the two most important reading techniques that you’ll need to use.
-        </div>
         <h2>Skimming & Scanning</h2>
-        <p>⯀<b>Skimming</b> means looking over a text very quickly in order to get the gist - in other words, a basic
-            idea
-            of what it’s about. You can do this by looking at the title of the passage, the subheadings (if there are
-            any)
-            and the first and last sentences of each paragraph. The first sentence of each paragraph is especially
-            important
-            as it tends to contain the main idea of that paragraph. Skimming the passage before you try to answer the
-            questions is essential, as it gives you an idea of the topic and of how the passage is organised.</p>
-        <p>⯀<b>Scanning</b> means looking through the text very quickly for a specific piece of information. This could
-            be
-            something like a name or date, or it could be an idea or statement, for example someone’s opinion. It could
-            also
-            be looking for key words or words with similar meanings, as we talked about above. When you’ve read the
-            question
-            and understood what you’re looking for, you’ll then need to scan the text to find the answer. (This will be
-            easier if you’ve skimmed the text first!) Notice that neither scanning nor skimming involve reading the text
-            word for word. Again, it’s important to remember that you’re not supposed to read every word.</p>
-        <h2>Reading Question Types</h2>
-        <p>⯀A variety of question types is used, including: multiple choice, identifying information (True/False/Not
-            Given),
-            identifying the writer's views/claims (Yes/No/Not Given), matching information, matching headings, matching
-            features, matching sentence endings, sentence completion, summary completion, note completion, table
-            completion,
-            flow-chart completion, diagram label completion and short-answer questions.</p>
-        <h3>Multiple Choice Questions</h3>
-        <p>⯀IELTS Academic reading multiple choice questions have about 3-4 options from which we have to choose our
-            answer.
-            This might be in the form of a question&answer type or a choose a correct ending to a sentence type. These
-            answers appear in chronological order according to the passage.</p>
-        <h3>Match Questions</h3>
-        <p>⯀There are various types of matching questions in IELTS academic reading tests and each one is different from
-            another.</p>
-        <h3>Matching Headings</h3>
-        <p>⯀In this type of question, a list of headings will be given and you are asked to match these headings with a
-            paragraph in the passage. You should read the headings before you begin reading the text. To get the correct
-            answer, you have to read the complete paragraph and not just stop with the first few lines of the paragraph.
-            There will also be many other headings that are not related to any of the paragraphs given in the passage,
-            in
-            such cases, try to identify those types of headings too.</p>
-        <h3>Matching information</h3>
-        <p>⯀Matching Information questions have a list which contains information taken from the paragraphs. You are
-            asked
-            to find out the paragraph from which the information is taken. Sometimes the question may be tricky because
-            the
-            information given might not be in exact words as given in the paragraph instead it will be paraphrased so
-            you
-            need to read the paragraph to understand the meaning/idea behind it to answer these questions.</p>
-        <h3>Matching Features</h3>
-        <p>⯀In this type of question, there will be a list of items in the box and you need to match these items by
-            reading
-            and understanding some sentences in the passages. The list may be of the name of people or cities. For
-            example,
-            If there is a name of a person in the box of items then the question may be to match the sentence with the
-            person who said them. Like other types of match questions, some of the items mentioned may not be available
-            in
-            the passage. So, to save time read the passage before answering each question.</p>
-        <h3>Matching sentence endings</h3>
-        <p>⯀In this type of question, you need to connect two halves of the sentences. The first half of the sentence
-            will
-            be already given you need to find out which is the appropriate ending for the sentence from the list given.
-            While choosing from the list you need to keep the following things in mind:</p>
-        <p>⯀There should not be any grammatical errors in the sentence.</p>
-        <p>⯀The ending sentence chosen by you should make sense.</p>
-        <p>⯀The sentence should have the same meaning as the sentence in the passage.</p>
-        <h3>True/False/Not given Questions</h3>
-        <p>⯀Similar to the True/False/Not given questions, Yes/No/Not given questions also have various statements. But
-            here
-            you are asked to agree or disagree with the statement based on the opinion of the author.</p>
-        <h3>Note, Table, Diagram and Summary Completion Questions</h3>
-        <p>⯀In Note, Table, Summary and Diagram completion questions, you will be asked to complete a set of notes,
-            tables,
-            diagram or a summary based on the information given in the text. Sometimes the question will be to write a
-            short
-            answer and sometimes you’ll have to choose from the list of answers given. Usually, these kinds of questions
-            will only be based on one part of the passage, so you won’t have to read the whole passage to fill the
-            important
-            information.</p>
-        <h3>Sentence completion and Short-answer Questions</h3>
-        <p>⯀IELTS academic reading Sentence completion and Short answer questions are almost similar. In sentence
-            completion, you’ll be asked to fill in the blank spaces using the words given in the text. Whereas, in short
-            answers, you’ll have to take words from the given text to write the short answers. It is important to pay
-            close
-            attention to the instructions that are given in the question because in some instructions there will be a
-            word
-            limit mentioned and you may lose marks if you don’t follow it.</p>
+        <div class="list-container">
+            <h3>Skimming</h3>
+            <ul class="styled-list">
+                <li>Looking over a text very quickly to get the main idea of what it’s about.</li>
+                <li>To do this, read the title, subheadings, and the first and last sentences of each paragraph.</li>
+                <li>This gives you an idea of the topic and how the passage is organized before you answer the questions.</li>
+            </ul>
+        </div>
+        <div class="list-container">
+            <h3>Scanning</h3>
+            <ul class="styled-list">
+                <li>Looking through the text very quickly for a specific piece of information.</li>
+                <li>This could be a name, date, idea, or keywords mentioned in the questions.</li>
+                <li>After you understand the question, you'll scan the text to locate the answer.</li>
+            </ul>
+        </div>
+        <div class="section-box">
+            Remember, neither technique involves reading every single word. You're not supposed to.
+        </div>
 
-        <h2>The following guide will help you maximise your score</h2>
-        <p>⯀A summary provides a short and clear description of content mentioned in a text or a speech. In IELTS
-            Reading,
-            there will be a summary that will re-tell the main ideas of a text. That summary will have gaps that must be
-            filled using words from the passage or from a list of options.</p>
-        <p>⯀Understanding the general meaning of the passage is a challenge to some candidates, and strong skimming and
-            scanning skills are necessary for the completion of such task.</p>
-        <h2>General notes for the IELTS Reading Test:</h2>
-        <p>⯀Read the instructions carefully.</p>
-        <p>⯀Read and paraphrase the passage title and questions (say what they mean in other words).</p>
-        <p>⯀Skim the text – read it quickly to get the general idea.</p>
-        <p>⯀Scan the text – read it quickly to find specific information to answer the question.</p>
-        <p>⯀Underline or circle any words, dates or names that stand out.</p>
-        <p>⯀Use your time effectively – approximately 20 minutes on each passage (reading, answering questions,
-            transferring
-            answers to the answer sheet in the paper test).</p>
-        <h2>Useful Tips:</h2>
-        <p>⯀Ensure that you read and understand the instructions. If the instructions say you must choose an answer from
-            a
-            list of options, you must use that list. The answers will be preceded by letters, for example A-G, and you
-            may
-            only use those letters as your answers. If you write the word instead of the letter, your answer will be
-            marked
-            as incorrect, and you will not gain a point even if your answer is correct.</p>
-        <p>⯀If the instructions state that you must use words from the passage, they will inform you of how many words
-            you
-            are allowed to use, such as: 'you may use no more than 2 words from the passage'. In this case, you will
-            therefore only be allowed to use 1 or 2 words from the text as your answer for each gap. If you use more
-            than
-            the number indicated in the instructions, your answer will be counted as incorrect, even if it contains the
-            correct answer.</p>
-        <p>⯀If the instructions tell you to use words from the passage, make sure you only use words taken directly from
-            the
-            passage. You may not paraphrase or use your own words to fill in the gaps, or those will be considered
-            incorrect, even if the meaning is correct.</p>
-        <p>⯀Because this question requires you to understand general meaning, make sure that you pay attention to all
-            the
-            information provided, including the title, which should give you an idea of what the text is going to be
-            about.
-        </p>
-        <p>⯀Skim the summary first. Read them quickly to get a basic understanding of their content. Then, read them
-            again
-            in more detail to understand the kind of information and language you need to identify in the passage.</p>
-        <p>⯀Paraphrasing is the key to completing this task effectively and efficiently. Identify the key language in
-            the
-            title and in the summary, and paraphrase that key language (say what it means in other words). The summary
-            will
-            not always contain the same words as in the text, as it will be re-explaining what the text says. Therefore,
-            paraphrasing key words and phrases in the question and title may provide you with words that are actually
-            located in the text. Use your scanning skills to search for those paraphrases in the text, and once you have
-            identified them, read around them to locate the language you need to use as your answer.</p>
-        <p>⯀Some key information you will be able to paraphrase, such as verbs (e.g.: 'cry' could also be 'weep' of
-            'whine'), but other key information may include names or dates that cannot be paraphrased, although will be
-            easier to identify in the text.</p>
-        <p>⯀Pay attention to the grammar around the gaps in the questions. The grammar being used will be a good
-            indicator
-            of the type of language you will need to choose as your answer (verb, noun, adjective, etc). For instance,
-            if
-            the gap is preceded by 'want to', it is safe to assume the necessary language to fill in the gap will be a
-            verb.
-            Analyse the grammar to predict the type of missing language. If you need to choose an answer from a list of
-            options, make sure that it makes grammatical sense.</p>
-        <p>⯀Answers usually come in order, which will be helpful in locating the information and answers more
-            efficiently.
-        </p>
-        <p>⯀Be very mindful of time – spend 1 or 2 minutes skimming the text, and do not try to understand every single
-            word. The goal is to gain a general understating of the text. Detailed reading only comes in when you have
-            scanned and located key information in the text that will help you decide on your answer for the gap. To
-            help
-            with time-management, read the first and last sentences of the text, and the first sentence of each
-            paragraph
-            will normally describe the theme of the paragraphs.</p>
-        <h2>Pay attention to the helpful notes below:</h2>
-        <p>⯀Instructions that inform you of your word limit can be confusing. Here is a detailed explanation on how to
-            interpret them; for example:
-            Write <b>NO MORE THAN TWO WORDS AND/OR A NUMBER</b>
-            This means that you can use:
-            (1 word OR 2 words OR 1 number) OR (1 word + 1 number) OR (2 words + 1 number)</p>
-        <p>⯀If a number is expressed in letter form and contains more than one word (e.g: 'forty-six'), it still counts
-            as
-            one word. In this case: 'forty-six years old' has 4 words, but 'forty-six' is considered a single word, so
-            'forty-six years old' equals 1 number + 2 words.</p>
-        <p>⯀Words that use hyphens (-) such 'cold-blooded' or 'fun-loving' count as one word.</p>
-        <p>⯀If you find key words in the questions that are easily identifiable in the text or which you have previously
-            found through skimming the text, answer those questions first, but ensure that you study those parts of the
-            text
-            carefully before deciding on an answer.</p>
-        <p>⯀Do not rush your answers. If you need to choose answers from a list, several options may seem grammatically
-            correct and/or content-appropriate for one gap. It is crucial that you focus on the meaning of the sentence
-            surrounding the gap, so that you can choose the most suitable option.</p>
+        <h2>Reading Question Types</h2>
+        <div class="list-container">
+            <p>The IELTS Reading test uses a variety of question types, including:</p>
+            <ul class="styled-list">
+                <li>Multiple Choice</li>
+                <li>Identifying Information (True/False/Not Given)</li>
+                <li>Identifying the Writer's Views/Claims (Yes/No/Not Given)</li>
+                <li>Matching Information, Headings, Features, or Sentence Endings</li>
+                <li>Completion questions (Sentence, Summary, Note, Table, Flow-chart, Diagram Label)</li>
+                <li>Short-Answer Questions</li>
+            </ul>
+        </div>
+
+        <div class="list-container">
+            <h3>Key Types Explained</h3>
+            <ul class="styled-list">
+                <li><strong>Multiple Choice:</strong> Answers appear in chronological order in the passage. Read the questions first to know what to look for.</li>
+                <li><strong>Matching Headings:</strong> Read the headings before the text. Read the full paragraph to understand the main idea, not just the first few lines.</li>
+                <li><strong>Matching Information:</strong> The information in the question is often paraphrased, so you need to understand the meaning, not just find exact words.</li>
+                <li><strong>True/False/Not Given:</strong> Be careful not to confuse True/False with Yes/No. True/False is about factual information, while Yes/No is about the author's opinion or claims.</li>
+                <li><strong>Completion Questions:</strong> These questions are usually based on one part of the passage. Always pay attention to the word limit given in the instructions.</li>
+            </ul>
+        </div>
+        <div class="section-box">
+            The key to success is strong skimming and scanning skills, as well as an understanding of paraphrasing.
+        </div>
+
+        <h2>General Notes and Useful Tips</h2>
+        <div class="list-container">
+            <ul class="styled-list">
+                <li><strong>Read all instructions carefully:</strong> Pay attention to word limits and whether you should use words from the passage or letters from a list.</li>
+                <li><strong>Don't paraphrase your answers:</strong> If the instructions say to use words from the passage, you must use the exact words.</li>
+                <li><strong>Use time effectively:</strong> Aim for about 20 minutes per passage. Don't get stuck on one question.</li>
+                <li><strong>Understand word limits:</strong> "NO MORE THAN TWO WORDS AND/OR A NUMBER" means you can write one word, two words, a number, a word and a number, or two words and a number. Words with hyphens (e.g., 'cold-blooded') count as one word.</li>
+                <li><strong>Answers are usually in order:</strong> Most question types follow the order of the text, which helps with time management.</li>
+            </ul>
+        </div>
     </div>
-    <p>_</p>
-    <footer>
-        <p style="color: white;">&copy; 2025 IELTS WITH UMAR | All rights reserved.</p>
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>IELTS WITH UMAR</h3>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and comprehensive tools to help you achieve your desired band score.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Me</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="myprofile.html">My Profile</a></li>
+                <li><a href="essay_checker.html">Essay Checker</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>IELTS Sections</h3>
+            <ul>
+                <li><a href="listening.html">Listening</a></li>
+                <li><a href="reading.html">Reading</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="speaking.html">Speaking</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 IELTS WITH UMAR. All rights reserved.
+        </div>
     </footer>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-
     <script>
+        // Dropdown functions
+        function toggleDropdown(id) {
+            document.getElementById(id).classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        // Firebase SDK
         const firebaseConfig = {
             apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
             authDomain: "ielts-with-umar.firebaseapp.com",
@@ -490,10 +691,30 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
 
+        const userInfo = document.getElementById('user-info');
         const userPhoto = document.getElementById('user-photo');
         const userDisplayName = document.getElementById('user-display-name');
 
+        // List of premium user emails, as provided by you.
+        const premiumUsers = [
+            "yusupovumarcr7@gmail.com",
+            "premium@gmail.com",
+            "saidumarjaxongirov@gmail.com",
+            "shoirasayfitdinova567@gmail.com",
+            "dostonbr2@gmail.com",
+            "shoxish@mail.ru",
+            "nozimshavkiev@gmail.com",
+            "nematullayevsaidkamol2@gmail.com"
+        ];
+
         auth.onAuthStateChanged(user => {
+            // Clear any existing badges and classes to prevent duplicates on state change
+            const existingBadge = document.getElementById('premium-badge');
+            if (existingBadge) {
+                existingBadge.remove();
+            }
+            userInfo.classList.remove('premium-user-info');
+
             if (user) {
                 if (user.photoURL) {
                     userPhoto.src = user.photoURL;
@@ -503,9 +724,24 @@
                     userPhoto.style.display = 'block';
                 }
                 userDisplayName.textContent = user.displayName || user.email;
+
+                // Check for premium access
+                if (premiumUsers.includes(user.email)) {
+                    // User is premium, apply gold background and badge
+                    userInfo.classList.add('premium-user-info');
+
+                    const badge = document.createElement('span');
+                    badge.id = 'premium-badge';
+                    badge.innerHTML = '⭐';
+                    badge.className = 'premium-badge';
+                    // Append the badge to the right of the user's name
+                    userDisplayName.appendChild(badge);
+                }
+
             } else {
                 userPhoto.style.display = 'none';
                 userDisplayName.textContent = '';
+                userInfo.classList.remove('premium-user-info');
             }
         });
     </script>
