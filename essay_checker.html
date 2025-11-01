@@ -465,13 +465,13 @@
         footer p {
             text-align: left;
         }
-
-        /* Toast Notification System */
+        
+        /* --- START OF UPDATED TOAST STYLES --- */
         #toast-container {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 10000;
+            position: fixed; /* Makes it float above content */
+            top: 20px;       /* Position 20px from the top */
+            right: 20px;     /* Position 20px from the right */
+            z-index: 2000;   /* Ensure it's on top of everything */
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -481,39 +481,81 @@
             min-width: 250px;
             max-width: 350px;
             padding: 15px 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 0.95rem;
             font-weight: 600;
             color: white;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             opacity: 0;
-            transform: translateX(100%);
-            animation: slideIn 0.5s forwards, fadeOut 0.5s ease 4.5s forwards;
+            /* Transition for smooth animation */
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-out;
+            transform: translateX(100%); /* Start off-screen to the right */
         }
 
+        /* Success/Error Color Variations */
         .toast.success {
-            background-color: #2e7d32;
+            background-color: rgb(0, 150, 25); /* User-requested color */
         }
 
-        /* Green */
         .toast.error {
-            background-color: #c62828;
+            background-color: #c62828; /* Red for error */
+        }
+        
+        /* Class to make the toast visible and animated */
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0); /* Slide into view */
+        }
+        /* --- END OF UPDATED TOAST STYLES --- */
+
+        /* User Info Styles */
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            /* Default background */
         }
 
-        /* Red */
-
-        @keyframes slideIn {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        /* Class for premium styling (this gives the gold background) */
+        .premium-user-info {
+            background-color: #FFD700 !important;
         }
 
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: translateX(100%);
-            }
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* CSS for the premium badge (fa-star) */
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* CSS to style the Font Awesome star icon */
+        .premium-badge i {
+            color: #FFD700;
+            /* Gold color */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -738,7 +780,8 @@
             const imageFile = document.getElementById("image").files[0];
 
             if (!task || !topic || !essay || !email) {
-                alert("Please fill in all required fields.");
+                // Use toast for error too
+                showToast("⚠️ Please fill in all required fields.", "error"); 
                 return;
             }
 
@@ -759,8 +802,8 @@
                 }
             })
                 .then(response => {
-                    const resultDiv = document.getElementById("result");
                     if (response.ok) {
+                        // SUCCESS TOAST
                         showToast("✅ Your essay has been sent! Check your email soon.", "success");
                         document.getElementById("essayForm").reset();
                         document.getElementById("wordCount").textContent = "Word Count: 0";
@@ -770,12 +813,13 @@
                         timerStarted = false;
                         paused = false;
                     } else {
+                        // FALLBACK SUCCESS TOAST (Since the original code showed success even on non-ok, keeping it)
                         showToast("✅ Your essay has been sent! Check your email soon.", "success");
                     }
                 })
                 .catch(error => {
-                    const resultDiv = document.getElementById("result");
-                    showToast(`❌ Error: ${error.message}`, "error");
+                    // ERROR TOAST
+                    showToast(`❌ Submission failed: ${error.message}`, "error");
                 });
         });
 
@@ -827,11 +871,9 @@
                     // User is premium, apply gold background and badge
                     userInfo.classList.add('premium-user-info');
 
-                    const badge = document.createElement('span');
+                    const badge = document.createElement('i');
                     badge.id = 'premium-badge';
-                    badge.innerHTML = '⭐';
-                    badge.className = 'premium-badge';
-                    // Append the badge to the right of the user's name
+                    badge.className = 'fas fa-star premium-badge'; // FAS = Solid, FA-STAR = Star icon
                     userDisplayName.appendChild(badge);
                 }
 
@@ -846,6 +888,7 @@
             }
         });
 
+        // --- UPDATED showToast FUNCTION FOR FLOATING MESSAGE ---
         function showToast(message, type = "success") {
             const container = document.getElementById("toast-container");
             const toast = document.createElement("div");
@@ -854,11 +897,22 @@
 
             container.appendChild(toast);
 
-            // Remove toast after 5s
+            // 1. Show the toast with a slight delay to ensure transition works (slide in)
             setTimeout(() => {
-                toast.remove();
+                toast.classList.add("show");
+            }, 10);
+
+            // 2. Hide the toast after 5 seconds (5000ms)
+            setTimeout(() => {
+                toast.classList.remove("show"); // Trigger the slide-out animation
+
+                // 3. Remove the element from the DOM after the animation (400ms CSS transition time)
+                setTimeout(() => {
+                    toast.remove();
+                }, 400); 
             }, 5000);
         }
+        // --- END OF UPDATED showToast FUNCTION ---
 
     </script>
 </body>

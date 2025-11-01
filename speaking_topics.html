@@ -433,6 +433,56 @@
         footer p {
             text-align: left;
         }
+
+        /* User Info Styles */
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            /* Default background */
+        }
+
+        /* Class for premium styling (this gives the gold background) */
+        .premium-user-info {
+            background-color: #FFD700 !important;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* CSS for the premium badge (fa-star) */
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* CSS to style the Font Awesome star icon */
+        .premium-badge i {
+            color: #FFD700;
+            /* Gold color */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -561,10 +611,9 @@
                 if (premiumUsers.includes(user.email)) {
                     userInfo.classList.add('premium-user-info');
 
-                    const badge = document.createElement('span');
+                    const badge = document.createElement('i');
                     badge.id = 'premium-badge';
-                    badge.innerHTML = '⭐';
-                    badge.className = 'premium-badge';
+                    badge.className = 'fas fa-star premium-badge'; // FAS = Solid, FA-STAR = Star icon
                     userDisplayName.appendChild(badge);
 
                     showPremiumContent();

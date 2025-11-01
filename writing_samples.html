@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
-        html, body {
+        html,
+        body {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -49,6 +50,7 @@
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(360deg);
             }
@@ -194,7 +196,7 @@
             flex-wrap: wrap;
             border-bottom: 2px solid #ddd;
         }
-        
+
         .tab-button {
             background-color: transparent;
             border: none;
@@ -208,11 +210,11 @@
             border-radius: 8px 8px 0 0;
             margin-bottom: -2px;
         }
-        
+
         .tab-button:hover {
             color: rgb(0, 150, 25);
         }
-        
+
         .tab-button.active {
             color: rgb(0, 175, 25);
             border-bottom: 4px solid rgb(0, 175, 25);
@@ -255,7 +257,8 @@
         }
 
         .sample-card p {
-            text-align: left; /* Overrides the generic p style */
+            text-align: left;
+            /* Overrides the generic p style */
             font-size: 1rem;
             line-height: 1.5;
             color: #555;
@@ -266,25 +269,26 @@
             color: #333;
             font-size: 1.05rem;
         }
-        
+
         .sample-card hr {
             border-color: #ddd;
             margin: 10px 0;
         }
-        
+
         .tab-content {
             display: none;
             animation: fadeIn 0.5s ease;
         }
-        
+
         .tab-content.active {
             display: block;
         }
-        
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -463,9 +467,59 @@
             color: #444;
             text-align: center;
         }
-        
+
         footer p {
             text-align: left;
+        }
+
+        /* User Info Styles */
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            /* Default background */
+        }
+
+        /* Class for premium styling (this gives the gold background) */
+        .premium-user-info {
+            background-color: #FFD700 !important;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* CSS for the premium badge (fa-star) */
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* CSS to style the Font Awesome star icon */
+        .premium-badge i {
+            color: #FFD700;
+            /* Gold color */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -513,7 +567,8 @@
     <footer class="footer">
         <div class="footer-section">
             <h3>IELTS WITH UMAR</h3>
-            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and comprehensive tools to help you achieve your desired band score.</p>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and
+                comprehensive tools to help you achieve your desired band score.</p>
         </div>
         <div class="footer-section">
             <h3>Quick Links</h3>
@@ -537,85 +592,85 @@
             &copy; 2025 IELTS WITH UMAR. All rights reserved.
         </div>
     </footer>
-    </body>
+</body>
+
 </html>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-    <script>
-        // Loading animation script (UPDATED)
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById('loadingOverlay').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('loadingOverlay').style.display = 'none';
-                }, 500);
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<script>
+    // Loading animation script (UPDATED)
+    window.onload = function () {
+        setTimeout(function () {
+            document.getElementById('loadingOverlay').style.opacity = '0';
+            setTimeout(function () {
+                document.getElementById('loadingOverlay').style.display = 'none';
             }, 500);
-        };
+        }, 500);
+    };
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
-            authDomain: "ielts-with-umar.firebaseapp.com",
-            projectId: "ielts-with-umar",
-            storageBucket: "ielts-with-umar.firebasestorage.app",
-            messagingSenderId: "373444526917",
-            appId: "1:373444526917:web:35b7363401de1df815742c"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
+    const firebaseConfig = {
+        apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
+        authDomain: "ielts-with-umar.firebaseapp.com",
+        projectId: "ielts-with-umar",
+        storageBucket: "ielts-with-umar.firebasestorage.app",
+        messagingSenderId: "373444526917",
+        appId: "1:373444526917:web:35b7363401de1df815742c"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
 
-        const userInfo = document.getElementById('user-info');
-        const userPhoto = document.getElementById('user-photo');
-        const userDisplayName = document.getElementById('user-display-name');
-        const contentContainer = document.getElementById('content-container');
+    const userInfo = document.getElementById('user-info');
+    const userPhoto = document.getElementById('user-photo');
+    const userDisplayName = document.getElementById('user-display-name');
+    const contentContainer = document.getElementById('content-container');
 
-        const premiumUsers = [
-            "yusupovumarcr7@gmail.com",
-            "premium@gmail.com",
-            "shoxish@mail.ru",
-            "nozimshavkiev@gmail.com",
-            "muhammadjonsh1243@gmail.com"
-        ];
+    const premiumUsers = [
+        "yusupovumarcr7@gmail.com",
+        "premium@gmail.com",
+        "shoxish@mail.ru",
+        "nozimshavkiev@gmail.com",
+        "muhammadjonsh1243@gmail.com"
+    ];
 
-        auth.onAuthStateChanged(user => {
-            const existingBadge = document.getElementById('premium-badge');
-            if (existingBadge) {
-                existingBadge.remove();
-            }
-            userInfo.classList.remove('premium-user-info');
+    auth.onAuthStateChanged(user => {
+        const existingBadge = document.getElementById('premium-badge');
+        if (existingBadge) {
+            existingBadge.remove();
+        }
+        userInfo.classList.remove('premium-user-info');
 
-            if (user) {
-                if (user.photoURL) {
-                    userPhoto.src = user.photoURL;
-                    userPhoto.style.display = 'block';
-                } else {
-                    userPhoto.src = "IELTS WITH UMAR LOGO.png";
-                    userPhoto.style.display = 'block';
-                }
-                userDisplayName.textContent = user.displayName || user.email;
-
-                if (premiumUsers.includes(user.email)) {
-                    userInfo.classList.add('premium-user-info');
-
-                    const badge = document.createElement('span');
-                    badge.id = 'premium-badge';
-                    badge.innerHTML = '⭐';
-                    badge.className = 'premium-badge';
-                    userDisplayName.appendChild(badge);
-
-                    showPremiumContent();
-                } else {
-                    showPremiumRequiredMessage();
-                }
+        if (user) {
+            if (user.photoURL) {
+                userPhoto.src = user.photoURL;
+                userPhoto.style.display = 'block';
             } else {
-                userPhoto.style.display = 'none';
-                userDisplayName.textContent = '';
-                userInfo.classList.remove('premium-user-info');
+                userPhoto.src = "IELTS WITH UMAR LOGO.png";
+                userPhoto.style.display = 'block';
+            }
+            userDisplayName.textContent = user.displayName || user.email;
+
+            if (premiumUsers.includes(user.email)) {
+                userInfo.classList.add('premium-user-info');
+
+                const badge = document.createElement('i');
+                badge.id = 'premium-badge';
+                badge.className = 'fas fa-star premium-badge'; // FAS = Solid, FA-STAR = Star icon
+                userDisplayName.appendChild(badge);
+
+                showPremiumContent();
+            } else {
                 showPremiumRequiredMessage();
             }
-        });
+        } else {
+            userPhoto.style.display = 'none';
+            userDisplayName.textContent = '';
+            userInfo.classList.remove('premium-user-info');
+            showPremiumRequiredMessage();
+        }
+    });
 
-        function showPremiumContent() {
-            contentContainer.innerHTML = `
+    function showPremiumContent() {
+        contentContainer.innerHTML = `
                 <h2>Exclusive Writing Samples</h2>
                 <div class="writing-samples-container">
         <div class="sample-card">
@@ -759,41 +814,41 @@
     </div>
     <br><br><br><br>
             `;
-        }
+    }
 
-        function showPremiumRequiredMessage() {
-            contentContainer.innerHTML = `
+    function showPremiumRequiredMessage() {
+        contentContainer.innerHTML = `
                 <div class="premium-required-container">
                     <h2>Access Restricted</h2>
                     <p>To view the exclusive IELTS Writing Samples, you must have a premium membership.</p>
                     <button onclick="contactTelegram()">Upgrade to Premium</button>
                 </div>
             `;
-        }
+    }
 
-        function toggleDropdown(id) {
-            document.getElementById(id).classList.toggle("show");
-        }
+    function toggleDropdown(id) {
+        document.getElementById(id).classList.toggle("show");
+    }
 
-        window.onclick = function (event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
                 }
             }
         }
+    }
 
-        function contactTelegram() {
-            const telegramUsername = 'galaxy_u7';
-            const message = encodeURIComponent("I would like to purchase one of your premium plans. Please provide me with more details.");
-            const telegramURL = `https://t.me/${telegramUsername}?text=${message}`;
-            window.open(telegramURL, '_blank');
-        }
-    </script>
+    function contactTelegram() {
+        const telegramUsername = 'galaxy_u7';
+        const message = encodeURIComponent("I would like to purchase one of your premium plans. Please provide me with more details.");
+        const telegramURL = `https://t.me/${telegramUsername}?text=${message}`;
+        window.open(telegramURL, '_blank');
+    }
+</script>
 </body>
 
 </html>

@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
-        html, body {
+        html,
+        body {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -21,7 +22,7 @@
             color: #333;
         }
 
-        
+
         /* Loading Screen Styles (UPDATED) */
         .loading-overlay {
             position: fixed;
@@ -50,6 +51,7 @@
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(360deg);
             }
@@ -426,6 +428,7 @@
                 overflow-x: auto;
                 white-space: nowrap;
             }
+
             .table-container {
                 flex-direction: column;
             }
@@ -434,9 +437,59 @@
                 width: 100%;
             }
         }
-        
+
         footer p {
             text-align: left;
+        }
+
+        /* User Info Styles */
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            /* Default background */
+        }
+
+        /* Class for premium styling (this gives the gold background) */
+        .premium-user-info {
+            background-color: #FFD700 !important;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* CSS for the premium badge (fa-star) */
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* CSS to style the Font Awesome star icon */
+        .premium-badge i {
+            color: #FFD700;
+            /* Gold color */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -579,7 +632,8 @@
             <ul class="styled-list">
                 <li>Looking over a text very quickly to get the main idea of what it’s about.</li>
                 <li>To do this, read the title, subheadings, and the first and last sentences of each paragraph.</li>
-                <li>This gives you an idea of the topic and how the passage is organized before you answer the questions.</li>
+                <li>This gives you an idea of the topic and how the passage is organized before you answer the
+                    questions.</li>
             </ul>
         </div>
         <div class="list-container">
@@ -610,11 +664,16 @@
         <div class="list-container">
             <h3>Key Types Explained</h3>
             <ul class="styled-list">
-                <li><strong>Multiple Choice:</strong> Answers appear in chronological order in the passage. Read the questions first to know what to look for.</li>
-                <li><strong>Matching Headings:</strong> Read the headings before the text. Read the full paragraph to understand the main idea, not just the first few lines.</li>
-                <li><strong>Matching Information:</strong> The information in the question is often paraphrased, so you need to understand the meaning, not just find exact words.</li>
-                <li><strong>True/False/Not Given:</strong> Be careful not to confuse True/False with Yes/No. True/False is about factual information, while Yes/No is about the author's opinion or claims.</li>
-                <li><strong>Completion Questions:</strong> These questions are usually based on one part of the passage. Always pay attention to the word limit given in the instructions.</li>
+                <li><strong>Multiple Choice:</strong> Answers appear in chronological order in the passage. Read the
+                    questions first to know what to look for.</li>
+                <li><strong>Matching Headings:</strong> Read the headings before the text. Read the full paragraph to
+                    understand the main idea, not just the first few lines.</li>
+                <li><strong>Matching Information:</strong> The information in the question is often paraphrased, so you
+                    need to understand the meaning, not just find exact words.</li>
+                <li><strong>True/False/Not Given:</strong> Be careful not to confuse True/False with Yes/No. True/False
+                    is about factual information, while Yes/No is about the author's opinion or claims.</li>
+                <li><strong>Completion Questions:</strong> These questions are usually based on one part of the passage.
+                    Always pay attention to the word limit given in the instructions.</li>
             </ul>
         </div>
         <div class="section-box">
@@ -624,18 +683,25 @@
         <h2>General Notes and Useful Tips</h2>
         <div class="list-container">
             <ul class="styled-list">
-                <li><strong>Read all instructions carefully:</strong> Pay attention to word limits and whether you should use words from the passage or letters from a list.</li>
-                <li><strong>Don't paraphrase your answers:</strong> If the instructions say to use words from the passage, you must use the exact words.</li>
-                <li><strong>Use time effectively:</strong> Aim for about 20 minutes per passage. Don't get stuck on one question.</li>
-                <li><strong>Understand word limits:</strong> "NO MORE THAN TWO WORDS AND/OR A NUMBER" means you can write one word, two words, a number, a word and a number, or two words and a number. Words with hyphens (e.g., 'cold-blooded') count as one word.</li>
-                <li><strong>Answers are usually in order:</strong> Most question types follow the order of the text, which helps with time management.</li>
+                <li><strong>Read all instructions carefully:</strong> Pay attention to word limits and whether you
+                    should use words from the passage or letters from a list.</li>
+                <li><strong>Don't paraphrase your answers:</strong> If the instructions say to use words from the
+                    passage, you must use the exact words.</li>
+                <li><strong>Use time effectively:</strong> Aim for about 20 minutes per passage. Don't get stuck on one
+                    question.</li>
+                <li><strong>Understand word limits:</strong> "NO MORE THAN TWO WORDS AND/OR A NUMBER" means you can
+                    write one word, two words, a number, a word and a number, or two words and a number. Words with
+                    hyphens (e.g., 'cold-blooded') count as one word.</li>
+                <li><strong>Answers are usually in order:</strong> Most question types follow the order of the text,
+                    which helps with time management.</li>
             </ul>
         </div>
     </div>
     <footer class="footer">
         <div class="footer-section">
             <h3>IELTS WITH UMAR</h3>
-            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and comprehensive tools to help you achieve your desired band score.</p>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and
+                comprehensive tools to help you achieve your desired band score.</p>
         </div>
         <div class="footer-section">
             <h3>Quick Links</h3>
@@ -667,7 +733,7 @@
             document.getElementById(id).classList.toggle("show");
         }
 
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (!event.target.matches('.dropbtn')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
                 for (var i = 0; i < dropdowns.length; i++) {
@@ -726,11 +792,9 @@
                     // User is premium, apply gold background and badge
                     userInfo.classList.add('premium-user-info');
 
-                    const badge = document.createElement('span');
+                    const badge = document.createElement('i');
                     badge.id = 'premium-badge';
-                    badge.innerHTML = '⭐';
-                    badge.className = 'premium-badge';
-                    // Append the badge to the right of the user's name
+                    badge.className = 'fas fa-star premium-badge'; // FAS = Solid, FA-STAR = Star icon
                     userDisplayName.appendChild(badge);
                 }
 

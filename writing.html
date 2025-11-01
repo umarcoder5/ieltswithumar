@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* General Styles */
-        html, body {
+        html,
+        body {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -21,7 +22,7 @@
             color: #333;
         }
 
-        
+
         /* Loading Screen Styles (UPDATED) */
         .loading-overlay {
             position: fixed;
@@ -50,6 +51,7 @@
             0% {
                 transform: rotate(0deg);
             }
+
             100% {
                 transform: rotate(360deg);
             }
@@ -397,13 +399,64 @@
                 overflow-x: auto;
                 white-space: nowrap;
             }
+
             .table-container table {
                 width: 100%;
             }
         }
-        
+
         footer p {
             text-align: left;
+        }
+
+        /* User Info Styles */
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            /* Default background */
+        }
+
+        /* Class for premium styling (this gives the gold background) */
+        .premium-user-info {
+            background-color: #FFD700 !important;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* CSS for the premium badge (fa-star) */
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* CSS to style the Font Awesome star icon */
+        .premium-badge i {
+            color: #FFD700;
+            /* Gold color */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -453,148 +506,255 @@
         <div class="list-container">
             <h3>How to use your 20 minutes:</h3>
             <ul class="styled-list">
-                <li>You have 20 minutes for Task 1, so try spending 5 minutes on each paragraph. This might help you to organise
+                <li>You have 20 minutes for Task 1, so try spending 5 minutes on each paragraph. This might help you to
+                    organise
                     your time better.</li>
-                <li>First 5 minutes: Read the question, make sure you understand the chart, write your introduction by paraphrasing the question.</li>
-                <li>Second 5 minutes: Look at the chart and try to find 2 general points. Don't look at specific details; look for "the big picture". Write 2 sentences summarising the information.</li>
-                <li>Final 10 minutes: Describe specific details. Try to break this part into 2 paragraphs because it looks better. You could spend 5 minutes on each paragraph.</li>
+                <li>First 5 minutes: Read the question, make sure you understand the chart, write your introduction by
+                    paraphrasing the question.</li>
+                <li>Second 5 minutes: Look at the chart and try to find 2 general points. Don't look at specific
+                    details; look for "the big picture". Write 2 sentences summarising the information.</li>
+                <li>Final 10 minutes: Describe specific details. Try to break this part into 2 paragraphs because it
+                    looks better. You could spend 5 minutes on each paragraph.</li>
             </ul>
         </div>
         <div class="list-container">
             <h3>Points to Apply in Task 1:</h3>
             <ul class="styled-list">
-                <li>The IELTS writing Task 1 academic is an information transfer task which requires you to write a fairly
+                <li>The IELTS writing Task 1 academic is an information transfer task which requires you to write a
+                    fairly
                     precise account of some information presented in graphic form such as a graph, table or some form of
-                    pictorial representation of data. In order to complete the task successfully, follow these suggestions.</li>
-                <li>Introduction should describe the purpose of the report and say what the overall trends are. For example, if
-                    the graph is climbing up or dropping down, you should mention the change or the changes accurately and
-                    meaningfully. You need to remember that you are describing a graph to someone who does not see it, so your
-                    words must draw the picture. Write what the graph is about, its dates and location as well as the right kind
+                    pictorial representation of data. In order to complete the task successfully, follow these
+                    suggestions.</li>
+                <li>Introduction should describe the purpose of the report and say what the overall trends are. For
+                    example, if
+                    the graph is climbing up or dropping down, you should mention the change or the changes accurately
+                    and
+                    meaningfully. You need to remember that you are describing a graph to someone who does not see it,
+                    so your
+                    words must draw the picture. Write what the graph is about, its dates and location as well as the
+                    right kind
                     of measurements used. You must write in complete sentences.</li>
-                <li>Do not copy whole sentences or long phrases from the question. The examiner will recognize them, and they
+                <li>Do not copy whole sentences or long phrases from the question. The examiner will recognize them, and
+                    they
                     will not count towards the minimum number of words you must write.</li>
-                <li>The overall trend or the general over view should sum up the global or the general trends shown in the
-                    figure and compare them if possible. Your personal opinion should not appear anywhere in the report. You
-                    should not include other information that does not appear in the figure or the chart since this kind of
+                <li>The overall trend or the general over view should sum up the global or the general trends shown in
+                    the
+                    figure and compare them if possible. Your personal opinion should not appear anywhere in the report.
+                    You
+                    should not include other information that does not appear in the figure or the chart since this kind
+                    of
                     writing can and will probably be penalized.</li>
-                <li>The body paragraphs should describe the most important features and trends, while all the information is
-                    summarized to avoid unnecessary details. When you are given too much information, you need to group them and
-                    select the most noticeable ones. For example, if there is a graph that has 2 peaks, you should mention them
-                    and tell when those peaks appeared and what the peak values are; however, if there are 5 similar trends, you
-                    need to group the information in order to avoid over length writing, which can lead to a waste of time.</li>
-                <li>Notice how many distinctive features the diagram or the graph has and divide them into paragraphs, one
-                    paragraph one set of features that is a group of similar trends. You should also link the paragraphs by
+                <li>The body paragraphs should describe the most important features and trends, while all the
+                    information is
+                    summarized to avoid unnecessary details. When you are given too much information, you need to group
+                    them and
+                    select the most noticeable ones. For example, if there is a graph that has 2 peaks, you should
+                    mention them
+                    and tell when those peaks appeared and what the peak values are; however, if there are 5 similar
+                    trends, you
+                    need to group the information in order to avoid over length writing, which can lead to a waste of
+                    time.</li>
+                <li>Notice how many distinctive features the diagram or the graph has and divide them into paragraphs,
+                    one
+                    paragraph one set of features that is a group of similar trends. You should also link the paragraphs
+                    by
                     sentences that logically connect them to one another.</li>
-                <li>You need to write about all the periods of time and all the subjects of the graph or the figure. If it shows
-                    several years for example 1992, 1993, 1994 and 1995, write about all of them. If it is about men and women,
-                    write about both genders. Remember that summarizing does not mean throwing away information. The key here is
-                    to select what is important, organize it and make comparisons, which is describing both the similarities and
+                <li>You need to write about all the periods of time and all the subjects of the graph or the figure. If
+                    it shows
+                    several years for example 1992, 1993, 1994 and 1995, write about all of them. If it is about men and
+                    women,
+                    write about both genders. Remember that summarizing does not mean throwing away information. The key
+                    here is
+                    to select what is important, organize it and make comparisons, which is describing both the
+                    similarities and
                     the differences where relevant.</li>
-                <li>You may make notes on the virtual scratchpad in the computer-delivered test or on the question sheet if you are doing the paper-based test. The examiner will not see your notes.</li>
+                <li>You may make notes on the virtual scratchpad in the computer-delivered test or on the question sheet
+                    if you are doing the paper-based test. The examiner will not see your notes.</li>
             </ul>
         </div>
-        
+
         <h2>In IELTS Writing Task 2:</h2>
         <div class="section-box">You have about 40 minutes.</div>
         <div class="section-box">You must write an essay of at least 250 words.</div>
         <p>You are writing for an educated non-specialist audience and not a university lecturer.
-            Therefore, your language does not need to be that formal. You are, in most cases, expected to give your opinion. You may also have to include your life experience and some relevant examples. You must either argue, that is, you must present an opinion and give reasons to support your opinions or express the causes or consequences of a situation. Sometimes you should either predict what might happen in the future or give solutions to a problem. You must organize your writing in a good standard manner and you must use appropriate language and ideas.</p>
+            Therefore, your language does not need to be that formal. You are, in most cases, expected to give your
+            opinion. You may also have to include your life experience and some relevant examples. You must either
+            argue, that is, you must present an opinion and give reasons to support your opinions or express the causes
+            or consequences of a situation. Sometimes you should either predict what might happen in the future or give
+            solutions to a problem. You must organize your writing in a good standard manner and you must use
+            appropriate language and ideas.</p>
 
         <div class="list-container">
             <h3>Points to Apply in Task 2, Essay Writing:</h3>
             <ul class="styled-list">
-                <li>The topics of the questions will be of general interest, and no specialist knowledge is required. For
-                    example, topics can include travel, accommodation, current affairs, shops and services, health and welfare,
+                <li>The topics of the questions will be of general interest, and no specialist knowledge is required.
+                    For
+                    example, topics can include travel, accommodation, current affairs, shops and services, health and
+                    welfare,
                     health and safety, recreation, social and physical environment.</li>
                 <li>You must write in complete sentences.</li>
-                <li>Do not copy whole sentences or long phrases from the question. The examiner will recognize them, and they
+                <li>Do not copy whole sentences or long phrases from the question. The examiner will recognize them, and
+                    they
                     will not count towards the minimum number of words you must write.</li>
-                <li>You may make notes on the virtual scratchpad in the computer-delivered test or on the question sheet if you are doing the paper-based test. The examiner will not see your notes.</li>
+                <li>You may make notes on the virtual scratchpad in the computer-delivered test or on the question sheet
+                    if you are doing the paper-based test. The examiner will not see your notes.</li>
             </ul>
         </div>
-        
+
         <h2>IELTS Writing Academic Task 1 - Task 2:</h2>
         <div class="list-container">
             <ul class="styled-list">
-                <li>In order to get a good vocabulary score, you should try to show knowledge of a range of words, a broad
-                    vocabulary. So, if possible, use suitable synonyms and other words sometimes instead of repeating the same
+                <li>In order to get a good vocabulary score, you should try to show knowledge of a range of words, a
+                    broad
+                    vocabulary. So, if possible, use suitable synonyms and other words sometimes instead of repeating
+                    the same
                     word all the time.</li>
-                <li>As well as that, it sometimes does not "sound" very good or, is not very good style to repeat the same key
+                <li>As well as that, it sometimes does not "sound" very good or, is not very good style to repeat the
+                    same key
                     word twice in the same sentence or very close to each other, such as near the beginning of the next
-                    sentence. In this case, you can often use a pronoun such as "it", "them", "this", "that" or a phrase such as
+                    sentence. In this case, you can often use a pronoun such as "it", "them", "this", "that" or a phrase
+                    such as
                     "this situation" etc.</li>
-                <li>But the idea that you should not repeat the same word more than twice is too rigid and, in fact, ridiculous
-                    in a 250 word essay. Just try not to repeat it many times, if possible, especially repeating them close
-                    together. But there are some words that don't have many synonyms or other ways to write them so, in this
+                <li>But the idea that you should not repeat the same word more than twice is too rigid and, in fact,
+                    ridiculous
+                    in a 250 word essay. Just try not to repeat it many times, if possible, especially repeating them
+                    close
+                    together. But there are some words that don't have many synonyms or other ways to write them so, in
+                    this
                     case, you might have to repeat the word a bit more often than with other words.</li>
-                <li>The problem with lower-level students is that they are sometimes not very sure of what are suitable synonyms
-                    or alternative ways to express a word. They then choose words that are close to but not the same in meaning,
-                    or words that change the emphasis of the original word, or words that are completely unsuitable for other
-                    reasons. This will hurt the vocabulary score, not help it, and it might confuse the reader, making the essay
-                    difficult to understand. The candidate in this case would get a better score by repeating the same word a
+                <li>The problem with lower-level students is that they are sometimes not very sure of what are suitable
+                    synonyms
+                    or alternative ways to express a word. They then choose words that are close to but not the same in
+                    meaning,
+                    or words that change the emphasis of the original word, or words that are completely unsuitable for
+                    other
+                    reasons. This will hurt the vocabulary score, not help it, and it might confuse the reader, making
+                    the essay
+                    difficult to understand. The candidate in this case would get a better score by repeating the same
+                    word a
                     bit more and not making unsuitable substitutions for that word.</li>
-                <li>It is not true that "examiners prefer more than 300 words". You get graded on the criteria that are written
-                    in the Task 2 Band Descriptor and according to how well you follow the instructions in the essay question.
-                    "More than 300 words" is not written in the Band Descriptor nor in the instructions for the essay.</li>
+                <li>It is not true that "examiners prefer more than 300 words". You get graded on the criteria that are
+                    written
+                    in the Task 2 Band Descriptor and according to how well you follow the instructions in the essay
+                    question.
+                    "More than 300 words" is not written in the Band Descriptor nor in the instructions for the essay.
+                </li>
                 <li>Certainly, you should write more than 250 words. To be safe, you should aim for at least 255 or
                     260 words.</li>
-                <li>It is true that, in general, you can express more ideas or points in 300 words than in 260 words and, if you
-                    successfully did that, you would probably get a better score. We say "probably", not "certainly" and we
-                    emphasize "successfully" because forcing yourself to write more than 300 words might add to the total number
-                    of errors you make in grammar and vocabulary, all for the sake of writing only a few weak extra ideas, or
-                    completely irrelevant ideas, not ideas or points that have real value in answering the essay question.</li>
-                <li>So, it is clear that writing more than 300 words does not automatically give you a better score and, in
-                    fact, trying to write more than 300 words in the real test creates several problems. The biggest problem for
-                    people at the Band 5 to 6 level is that it is difficult to write a good essay of 300 or more words in about
-                    40 minutes. Someone at the Band 8 level could do it but a Band 5.5 candidate would be writing in a hurry,
-                    not thinking very clearly about the real or full meaning of the question, not thinking very clearly about
-                    the logic and arrangement of the ideas, and writing sentences quickly without thinking very much if the
-                    grammar and vocabulary is as good as he or she can write. And, as we mentioned above, some people who try to
-                    write more than 300 words might have already run out of relevant ideas or points and they end up writing
-                    irrelevant content (or weak ideas) that might actually damage their score, even if there are no extra
+                <li>It is true that, in general, you can express more ideas or points in 300 words than in 260 words
+                    and, if you
+                    successfully did that, you would probably get a better score. We say "probably", not "certainly" and
+                    we
+                    emphasize "successfully" because forcing yourself to write more than 300 words might add to the
+                    total number
+                    of errors you make in grammar and vocabulary, all for the sake of writing only a few weak extra
+                    ideas, or
+                    completely irrelevant ideas, not ideas or points that have real value in answering the essay
+                    question.</li>
+                <li>So, it is clear that writing more than 300 words does not automatically give you a better score and,
+                    in
+                    fact, trying to write more than 300 words in the real test creates several problems. The biggest
+                    problem for
+                    people at the Band 5 to 6 level is that it is difficult to write a good essay of 300 or more words
+                    in about
+                    40 minutes. Someone at the Band 8 level could do it but a Band 5.5 candidate would be writing in a
+                    hurry,
+                    not thinking very clearly about the real or full meaning of the question, not thinking very clearly
+                    about
+                    the logic and arrangement of the ideas, and writing sentences quickly without thinking very much if
+                    the
+                    grammar and vocabulary is as good as he or she can write. And, as we mentioned above, some people
+                    who try to
+                    write more than 300 words might have already run out of relevant ideas or points and they end up
+                    writing
+                    irrelevant content (or weak ideas) that might actually damage their score, even if there are no
+                    extra
                     grammar or vocabulary errors.</li>
-                <li>While handwriting quality is not a factor in the computer-delivered test, the principle of not rushing is still crucial. Writing in a hurry, whether on paper or on a keyboard, increases the risk of making careless errors and producing disorganized, incoherent text. The key is to manage your time effectively to write a well-structured and accurate response.</li>
-                <li>Overall, we think candidates at the Band 4.5 to 7 level should teach themselves to write Task 2 essays that
-                    are between 260 and 290 words long. (Writing 260 to 275 words would be better.) In the computer-delivered test, the word count is automatically displayed, so you can easily track your progress.</li>
-                <li>One way to avoid wasting words on irrelevant content is to not use unnecessary words, or write unnecessary
-                    content, in your introduction paragraph. Certainly, don't repeat the question, even if you rewrite the
-                    question using different words to the original wording. (You will lose some of your word count if you just
-                    repeat the question almost verbatim and if you go below 250 for your word count, you lose points.) And don't
-                    explain the meaning of the question as if the reader is an uneducated person who doesn't understand what the
+                <li>While handwriting quality is not a factor in the computer-delivered test, the principle of not
+                    rushing is still crucial. Writing in a hurry, whether on paper or on a keyboard, increases the risk
+                    of making careless errors and producing disorganized, incoherent text. The key is to manage your
+                    time effectively to write a well-structured and accurate response.</li>
+                <li>Overall, we think candidates at the Band 4.5 to 7 level should teach themselves to write Task 2
+                    essays that
+                    are between 260 and 290 words long. (Writing 260 to 275 words would be better.) In the
+                    computer-delivered test, the word count is automatically displayed, so you can easily track your
+                    progress.</li>
+                <li>One way to avoid wasting words on irrelevant content is to not use unnecessary words, or write
+                    unnecessary
+                    content, in your introduction paragraph. Certainly, don't repeat the question, even if you rewrite
+                    the
+                    question using different words to the original wording. (You will lose some of your word count if
+                    you just
+                    repeat the question almost verbatim and if you go below 250 for your word count, you lose points.)
+                    And don't
+                    explain the meaning of the question as if the reader is an uneducated person who doesn't understand
+                    what the
                     question means.
-                    Instead, try to write a concise and relevant piece of extra information about the topic or the question, a
-                    piece of information that is related to the remainder of your essay. (This is what "introduction" really
-                    means.) But simply writing that "this question has recently aroused a lot of controversy in society" (or
-                    words to that effect) is weak and boring, (weak because every Task 2 question is about a social question
+                    Instead, try to write a concise and relevant piece of extra information about the topic or the
+                    question, a
+                    piece of information that is related to the remainder of your essay. (This is what "introduction"
+                    really
+                    means.) But simply writing that "this question has recently aroused a lot of controversy in society"
+                    (or
+                    words to that effect) is weak and boring, (weak because every Task 2 question is about a social
+                    question
                     that has two or more viewpoints), is often untrue or inaccurate (for example, by writing "a lot" or
-                    "recently" when the topic may not really be discussed very much or when it has actually been a social
+                    "recently" when the topic may not really be discussed very much or when it has actually been a
+                    social
                     question for a long time), and is obviously from some kind of "essay template".
-                    As a result of the non-originality of this statement (since it came from a template) and the inaccuracies,
-                    it usually fails to impress the examiner. The people who write those "templates" suggest writing about how
-                    the topic has recently become controversial for the students who lack the ability to write anything else.
-                    It's better than nothing because it does, more or less, apply to any Task 2 writing question, but try to do
+                    As a result of the non-originality of this statement (since it came from a template) and the
+                    inaccuracies,
+                    it usually fails to impress the examiner. The people who write those "templates" suggest writing
+                    about how
+                    the topic has recently become controversial for the students who lack the ability to write anything
+                    else.
+                    It's better than nothing because it does, more or less, apply to any Task 2 writing question, but
+                    try to do
                     better than that if you hope to get 6.5 or higher.</li>
             </ul>
         </div>
-        
+
         <div class="list-container">
             <h2>IELTS Writing: Do's and Don't's</h2>
             <ul class="styled-list">
-                <li><strong>Using contractions:</strong> For example "I don't think" or "We can't say." Never use contractions in academic writing.</li>
-                <li><strong>Writing too few words:</strong> If you write much less than the required word count, the examiner has to reduce your score, even if your essay is good quality. On the computer-delivered test, the word count is visible, so you should keep an eye on it to ensure you meet the minimum requirement.</li>
-                <li><strong>Writing too many words:</strong> Writing excessively long essays can lead to errors and may cause you to run out of time. Aim for a maximum of about 350 words in Task 2 to ensure you have enough time for planning, writing, and reviewing.</li>
-                <li><strong>Using informal words:</strong> For example "a nice idea" or "a silly thing to do" instead of academic words (for example "a positive idea" or "a regrettable thing to do.") Remember that academic vocabulary is different from the language you would use in English when talking to friends.</li>
-                <li><strong>Giving personal opinion in an IDEAS type Task:</strong> Check if the Task is asking for your opinion or not. The first question you should ask yourself is "Is this an OPINION or an IDEAS Task?"</li>
-                <li><strong>Telling stories about your personal history, friends or family:</strong> The Task tells you to use "examples from your own experience," but this does not mean describing stories from your life or people you know! It means describing examples of things in the world that you know about, have studied or have learned about in the media.</li>
-                <li><strong>Giving evidence which is too detailed or specific to a subject:</strong> You may be an expert in a particular social or scientific field, but the examiner probably has a different specialty. You need to make your ideas and examples accessible to a general reader. For example, if the Task topic is about money and you are an accountant, do not use specialized accounting terms.</li>
-                <li><strong>Being emotional or too dramatic when giving your opinion in an OPINION Task:</strong> You may feel strongly about issues such as animals or crime, but academic writing must be unemotional. So avoid phrases such as "a disgusting idea" or "I detest this concept." It is much better to say "an unacceptable idea" or "I disapprove of this concept," which is more impersonal and academic; similar to the type of writing that people use in business reports or university essays.</li>
+                <li><strong>Using contractions:</strong> For example "I don't think" or "We can't say." Never use
+                    contractions in academic writing.</li>
+                <li><strong>Writing too few words:</strong> If you write much less than the required word count, the
+                    examiner has to reduce your score, even if your essay is good quality. On the computer-delivered
+                    test, the word count is visible, so you should keep an eye on it to ensure you meet the minimum
+                    requirement.</li>
+                <li><strong>Writing too many words:</strong> Writing excessively long essays can lead to errors and may
+                    cause you to run out of time. Aim for a maximum of about 350 words in Task 2 to ensure you have
+                    enough time for planning, writing, and reviewing.</li>
+                <li><strong>Using informal words:</strong> For example "a nice idea" or "a silly thing to do" instead of
+                    academic words (for example "a positive idea" or "a regrettable thing to do.") Remember that
+                    academic vocabulary is different from the language you would use in English when talking to friends.
+                </li>
+                <li><strong>Giving personal opinion in an IDEAS type Task:</strong> Check if the Task is asking for your
+                    opinion or not. The first question you should ask yourself is "Is this an OPINION or an IDEAS Task?"
+                </li>
+                <li><strong>Telling stories about your personal history, friends or family:</strong> The Task tells you
+                    to use "examples from your own experience," but this does not mean describing stories from your life
+                    or people you know! It means describing examples of things in the world that you know about, have
+                    studied or have learned about in the media.</li>
+                <li><strong>Giving evidence which is too detailed or specific to a subject:</strong> You may be an
+                    expert in a particular social or scientific field, but the examiner probably has a different
+                    specialty. You need to make your ideas and examples accessible to a general reader. For example, if
+                    the Task topic is about money and you are an accountant, do not use specialized accounting terms.
+                </li>
+                <li><strong>Being emotional or too dramatic when giving your opinion in an OPINION Task:</strong> You
+                    may feel strongly about issues such as animals or crime, but academic writing must be unemotional.
+                    So avoid phrases such as "a disgusting idea" or "I detest this concept." It is much better to say
+                    "an unacceptable idea" or "I disapprove of this concept," which is more impersonal and academic;
+                    similar to the type of writing that people use in business reports or university essays.</li>
             </ul>
         </div>
     </div>
     <footer class="footer">
         <div class="footer-section">
             <h3>IELTS WITH UMAR</h3>
-            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and comprehensive tools to help you achieve your desired band score.</p>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and
+                comprehensive tools to help you achieve your desired band score.</p>
         </div>
         <div class="footer-section">
             <h3>Quick Links</h3>
@@ -686,11 +846,9 @@
                     // User is premium, apply gold background and badge
                     userInfo.classList.add('premium-user-info');
 
-                    const badge = document.createElement('span');
+                    const badge = document.createElement('i');
                     badge.id = 'premium-badge';
-                    badge.innerHTML = '⭐';
-                    badge.className = 'premium-badge';
-                    // Append the badge to the right of the user's name
+                    badge.className = 'fas fa-star premium-badge'; // FAS = Solid, FA-STAR = Star icon
                     userDisplayName.appendChild(badge);
                 }
 

@@ -245,7 +245,7 @@
             text-align: center;
         }
 
-        
+
         footer p {
             text-align: left;
         }
@@ -422,6 +422,7 @@
                 white-space: nowrap;
             }
         }
+
         h2 {
             color: rgb(0, 150, 25);
             margin-top: 20px;
@@ -434,6 +435,55 @@
             font-size: 1.5rem;
         }
 
+        /* User Info Styles */
+        #user-info {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            background-color: transparent;
+            /* Default background */
+        }
+
+        /* Class for premium styling (this gives the gold background) */
+        .premium-user-info {
+            background-color: #FFD700 !important;
+        }
+
+        #user-photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+            display: none;
+        }
+
+        #user-display-name {
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* CSS for the premium badge (fa-star) */
+        .premium-badge {
+            font-size: 1.2rem;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        /* CSS to style the Font Awesome star icon */
+        .premium-badge i {
+            color: #FFD700;
+            /* Gold color */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
@@ -605,7 +655,8 @@
     <footer class="footer">
         <div class="footer-section">
             <h3>IELTS WITH UMAR</h3>
-            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and comprehensive tools to help you achieve your desired band score.</p>
+            <p>IELTS WITH UMAR is your ultimate online platform for IELTS preparation, offering expert guidance and
+                comprehensive tools to help you achieve your desired band score.</p>
         </div>
         <div class="footer-section">
             <h3>Quick Links</h3>
@@ -697,11 +748,9 @@
                     // User is premium, apply gold background and badge
                     userInfo.classList.add('premium-user-info');
 
-                    const badge = document.createElement('span');
+                    const badge = document.createElement('i');
                     badge.id = 'premium-badge';
-                    badge.innerHTML = '⭐';
-                    badge.className = 'premium-badge';
-                    // Append the badge to the right of the user's name
+                    badge.className = 'fas fa-star premium-badge'; // FAS = Solid, FA-STAR = Star icon
                     userDisplayName.appendChild(badge);
                 }
 
