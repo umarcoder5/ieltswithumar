@@ -22,7 +22,7 @@
         }
 
         
-        /* Loading Screen Styles (UPDATED) */
+        /* Loading Screen Styles (UPDATED) - Reverted to Green */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -39,7 +39,7 @@
 
         .loading-spinner {
             border: 8px solid #f3f3f3;
-            border-top: 8px solid rgb(0, 175, 25);
+            border-top: 8px solid rgb(0, 175, 25); /* Reverted */
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -56,7 +56,7 @@
         }
 
         header {
-            background-color: rgb(0, 200, 25);
+            background-color: rgb(0, 200, 25); /* Reverted */
             color: white;
             padding: 10px 20px;
             display: flex;
@@ -78,7 +78,7 @@
         }
 
         nav {
-            background-color: rgb(0, 175, 25);
+            background-color: rgb(0, 175, 25); /* Reverted */
             display: flex;
             justify-content: center;
             gap: 10px;
@@ -98,7 +98,7 @@
         }
 
         nav a:hover {
-            background-color: rgb(0, 150, 25);
+            background-color: rgb(0, 150, 25); /* Reverted */
         }
 
         /* Dropdown Menu Styles */
@@ -122,13 +122,13 @@
         }
 
         .dropdown .dropbtn:hover {
-            background-color: rgb(0, 150, 25);
+            background-color: rgb(0, 150, 25); /* Reverted */
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: rgb(0, 150, 25);
+            background-color: rgb(0, 150, 25); /* Reverted */
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
@@ -148,7 +148,7 @@
         }
 
         .dropdown-content a:hover {
-            background-color: rgb(0, 125, 25);
+            background-color: rgb(0, 125, 25); /* Reverted */
         }
 
         .show {
@@ -167,7 +167,7 @@
         }
 
         .profile-card {
-            background: linear-gradient(135deg, #f7f7f7, #ffffff);
+            background: linear-gradient(135deg, #f7f7ff, #ffffff);
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             max-width: 900px;
@@ -175,47 +175,87 @@
             overflow: hidden;
             display: none;
             position: relative;
+            /* Default green outline for non-premium */
+            border: 2px solid rgb(0, 200, 25);
         }
 
-        /* Premium Styling */
+        /* Premium Styling - NOW uses CSS Variables for customization */
         .profile-card.premium {
-            border: 2px solid #FFD700;
+            /* Default premium colors (Yellow) - Calculated from rgb(255, 215, 0) */
+            --premium-color-light: rgb(255, 247, 0); 
+            --premium-color-dark: rgb(217, 183, 0);
+            --premium-text-color: #333; /* Text color for buttons */
+
+            border: 2px solid var(--premium-color-light);
         }
 
         .profile-card.premium .profile-header-bg {
-            background: linear-gradient(135deg, #FFD700, #F0A500);
+            background: linear-gradient(135deg, var(--premium-color-light), var(--premium-color-dark));
         }
 
         .profile-card.premium .edit-btn,
         .profile-card.premium .info-list li i,
-        .profile-card.premium #update-photo-btn {
+        .profile-card.premium #update-photo-btn,
+        .profile-card.premium .theme-changer-toggle-btn {
             background-color: transparent;
-            color: #FFD700;
-            border: 1px solid #FFD700;
+            color: var(--premium-color-light);
+            border: 1px solid var(--premium-color-light);
         }
 
-        /* New and corrected rules for premium buttons and icons */
+        /* Rules for premium buttons and icons */
         .profile-card.premium .name-edit-form .save-btn,
         .profile-card.premium .password-change-form button,
         .profile-card.premium .update-photo-section button {
-            background-color: #FFD700;
-            color: #333;
+            background-color: var(--premium-color-light);
+            color: var(--premium-text-color);
             border: none;
         }
 
         .profile-card.premium .name-edit-form .save-btn:hover,
         .profile-card.premium .password-change-form button:hover,
-        .profile-card.premium .update-photo-section button:hover {
-            background-color: #F0A500;
+        .profile-card.premium .update-photo-section button:hover,
+        .profile-card.premium .theme-changer-toggle-btn:hover {
+            background-color: var(--premium-color-dark);
+            border-color: var(--premium-color-dark);
+            color: var(--premium-text-color);
         }
+        
+        .profile-card.premium .theme-changer-toggle-btn:hover {
+             /* Premium text color on hover for toggle button */
+            color: var(--premium-text-color);
+        }
+
 
         .profile-card.premium .info-list li i {
-            color: #FFD700;
-            border: none;
+            color: var(--premium-color-light);
+            border: none; /* Icons don't need a border */
         }
+        
+        /* This ensures non-premium cards use the default green */
+        .profile-card:not(.premium) .info-list li i {
+             color: rgb(0, 200, 25);
+        }
+        .profile-card:not(.premium) .profile-header-bg {
+             background-color: rgb(0, 200, 25);
+        }
+        .profile-card:not(.premium) #update-photo-btn {
+            color: rgb(0, 200, 25);
+            border: 1px solid rgb(0, 200, 25);
+        }
+        .profile-card:not(.premium) .edit-btn {
+            border: 1px solid rgb(0, 175, 25);
+        }
+        .profile-card:not(.premium) .name-edit-form .save-btn,
+        .profile-card:not(.premium) .password-change-form button,
+        .profile-card:not(.premium) .update-photo-section button {
+            background-color: rgb(0, 200, 25);
+            border: 1px solid rgb(0, 200, 25);
+        }
+        /* End non-premium rules */
+
 
         .premium-badge {
-            color: #FFD700;
+            color: #FFD700; /* Badge stays gold */
             margin-left: 10px;
             font-size: 1.5rem;
         }
@@ -232,7 +272,7 @@
         }
 
         .auth-container h2 {
-            color: rgb(0, 200, 25);
+            color: rgb(0, 200, 25); /* Reverted */
             margin-bottom: 20px;
         }
 
@@ -247,7 +287,7 @@
         .auth-container button {
             width: 100%;
             padding: 12px;
-            background-color: rgb(0, 200, 25);
+            background-color: rgb(0, 200, 25); /* Reverted */
             color: white;
             border: none;
             border-radius: 5px;
@@ -257,7 +297,7 @@
         }
 
         .auth-container button:hover {
-            background-color: rgb(0, 175, 25);
+            background-color: rgb(0, 175, 25); /* Reverted */
         }
 
         .auth-toggle {
@@ -267,14 +307,14 @@
         }
 
         .auth-toggle a {
-            color: rgb(0, 200, 25);
+            color: rgb(0, 200, 25); /* Reverted */
             font-weight: bold;
             text-decoration: none;
             cursor: pointer;
         }
 
         .profile-header-bg {
-            background-color: rgb(0, 200, 25);
+            /* background-color set by .premium or :not(.premium) rules */
             display: flex;
             align-items: center;
             padding: 30px;
@@ -319,26 +359,25 @@
             width: 100%;
             margin-top: 5px;
             padding: 5px;
-            background-color: rgb(0, 200, 25);
             color: white;
-            border: none;
             border-radius: 5px;
             cursor: pointer;
+             /* background-color set by .premium or :not(.premium) rules */
         }
+
 
         #update-photo-btn {
             position: absolute;
             bottom: 5px;
             right: 5px;
             background-color: white;
-            color: rgb(0, 200, 25);
-            border: none;
             border-radius: 50%;
             width: 30px;
             height: 30px;
             font-size: 1rem;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* color/border set by .premium or :not(.premium) rules */
         }
 
         .user-name-title {
@@ -376,7 +415,7 @@
             width: 30px;
             text-align: center;
             margin-right: 15px;
-            color: rgb(0, 200, 25);
+            /* color set by .premium or :not(.premium) rules */
         }
 
         .info-list li .name-section,
@@ -396,11 +435,11 @@
         .edit-btn {
             background-color: #e2e6e9;
             color: #333;
-            border: none;
             padding: 8px 12px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+             /* border set by .premium or :not(.premium) rules */
         }
 
         .edit-btn:hover {
@@ -426,19 +465,19 @@
         .name-edit-form .save-btn,
         .name-edit-form .cancel-btn {
             padding: 8px 12px;
-            border: none;
             border-radius: 5px;
             cursor: pointer;
         }
 
         .name-edit-form .save-btn {
-            background-color: rgb(0, 200, 25);
             color: white;
+            /* background/border set by .premium or :not(.premium) rules */
         }
 
         .name-edit-form .cancel-btn {
             background-color: #ccc;
             color: #333;
+            border: 1px solid #ccc;
         }
 
 
@@ -474,17 +513,12 @@
         }
 
         .password-change-form button {
-            background-color: rgb(0, 200, 25);
             color: white;
-            border: none;
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-        }
-
-        .password-change-form button:hover {
-            background-color: rgb(0, 175, 25);
+             /* background/border set by .premium or :not(.premium) rules */
         }
 
         #message {
@@ -518,7 +552,7 @@
         }
 
 
-        /* Footer Styles (UPDATED) */
+        /* Footer Styles (UPDATED) - Reverted */
         .footer {
             background-color: rgb(0, 150, 25);
             color: white;
@@ -617,7 +651,7 @@
         }
 
 
-        /* Navigation Menu Styles */
+        /* Navigation Menu Styles - Reverted */
         nav {
             background-color: rgb(0, 175, 25);
             display: flex;
@@ -647,7 +681,6 @@
             display: inline-block;
         }
 
-        /* Updated .dropbtn to use flexbox */
         .dropdown .dropbtn {
             background-color: transparent;
             color: white;
@@ -658,11 +691,8 @@
             cursor: pointer;
             border-radius: 5px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
             display: flex;
-            /* Use flexbox */
             align-items: center;
-            /* Center items vertically */
         }
 
         .dropdown .dropbtn:hover {
@@ -700,54 +730,118 @@
             display: block;
         }
 
-        /* Dropdown arrow symbol - adjusted to use a margin */
         .dropdown .dropbtn span {
             margin-left: 5px;
             vertical-align: middle;
-            /* Adjusted vertical alignment */
         }
 
         /* Highlight the active page link */
         .active-link {
-            background-color: rgb(0, 150, 25);
-        }
-        
-        /* Loading Screen Styles (UPDATED) */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-spinner {
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid rgb(0, 175, 25);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            background-color: rgb(0, 150, 25); /* Reverted */
         }
         
         footer p {
             text-align: left;
         }
+
+        /* Theme Changer Section Styles - Initially hidden */
+        .theme-changer-section {
+            padding: 20px 40px;
+            border-top: 1px solid #eee;
+            margin-top: 20px;
+            display: none; /* Hidden by default */
+        }
+
+        .theme-changer-section.visible {
+            display: block; /* Shown when toggled */
+        }
+
+        .theme-changer-section h3 {
+            color: #555; /* Changed from var */
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        /* This rule only affects the h3 *if* the user is premium */
+        .profile-card.premium .theme-changer-section h3 {
+             color: var(--premium-color-light);
+        }
+
+
+        .color-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start;
+        }
+
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            border: 3px solid transparent;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-option.selected {
+            border-color: #333;
+            transform: scale(1.1);
+        }
+        
+        .color-option.selected i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Specific Color Backgrounds */
+        .color-option[data-color-name="red"] { background-color: rgb(200, 25, 25); }
+        .color-option[data-color-name="orange"] { background-color: rgb(255, 140, 0); }
+        .color-option[data-color-name="yellow"] { background-color: rgb(255, 215, 0); }
+        .color-option[data-color-name="green"] { background-color: rgb(0, 175, 25); }
+        .color-option[data-color-name="blue"] { background-color: rgb(0, 0, 200); }
+        .color-option[data-color-name="sky-blue"] { background-color: rgb(0, 191, 255); }
+        .color-option[data-color-name="purple"] { background-color: rgb(128, 0, 128); }
+        .color-option[data-color-name="pink"] { background-color: rgb(255, 20, 147); }
+        .color-option[data-color-name="grey"] { background-color: rgb(128, 128, 128); }
+        .color-option[data-color-name="black"] { background-color: black; }
+        /* [data-color-name="gold"] removed */
+        
+        /* Special handling for light color checkmarks */
+        .color-option[data-color-name="yellow"].selected i,
+        .color-option[data-color-name="sky-blue"].selected i {
+            color: #333; /* Darker checkmark for lighter backgrounds */
+        }
+        
+        /* Theme Changer Toggle Button */
+        .theme-changer-toggle-btn {
+            background-color: #e2e6e9; /* Default non-premium look */
+            color: #333;
+            border: 1px solid rgb(0, 175, 25);
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.0rem;
+            margin-top: 10px;
+            transition: background-color 0.3s, border-color 0.3s;
+            display: none; /* Hidden by default, shown for premium users */
+        }
+        
+        /* Premium rule is now in the .profile-card.premium block */
+        
     </style>
 </head>
 
@@ -834,6 +928,16 @@
                     </li>
                 </ul>
                 <div id="message"></div>
+                
+                
+                <button id="toggle-theme-changer-btn" class="theme-changer-toggle-btn">Change Profile Color</button>
+
+                <div class="theme-changer-section" id="theme-changer-section">
+                    <h3>Select Profile Color</h3>
+                    <div class="color-options" id="color-options-container">
+                        </div>
+                </div>
+
                 <div class="action-buttons-container">
                     <button id="logout-btn" class="action-btn">Log Out</button>
                 </div>
@@ -893,8 +997,118 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     <script>
-        // Loading animation script (UPDATED)
+        // --- Color Utility Functions ---
+        // Converts an RGB string "r, g, b" to an array [r, g, b]
+        function parseRgb(rgbString) {
+            return rgbString.match(/\d+/g).map(Number);
+        }
+
+        // Adjusts an RGB color by a percentage
+        function adjustRgb(r, g, b, percent) {
+            const clamp = (val) => Math.min(255, Math.max(0, val));
+            return [
+                clamp(r + (r * percent) / 100),
+                clamp(g + (g * percent) / 100),
+                clamp(b + (b * percent) / 100)
+            ].map(Math.round).join(', ');
+        }
+        
+        // Defines color options - Reordered to rainbow
+        const THEME_COLORS = [
+            { name: "red", rgb: "200, 25, 25" },
+            { name: "orange", rgb: "255, 140, 0" },
+            { name: "yellow", rgb: "255, 215, 0" }, // Default Premium
+            { name: "green", rgb: "0, 175, 25" },
+            { name: "sky-blue", rgb: "0, 191, 255" },
+            { name: "blue", rgb: "0, 0, 200" },
+            { name: "purple", rgb: "128, 0, 128" },
+            { name: "pink", rgb: "255, 20, 147" },
+            { name: "grey", rgb: "128, 128, 128" },
+            { name: "black", rgb: "0, 0, 0" },
+        ];
+        
+        // NEW: Function to apply the selected theme color *only* to the premium card
+        function applyPremiumTheme(rgbString) {
+            const [r, g, b] = parseRgb(rgbString);
+            const card = document.getElementById("profile-card");
+            
+            if (!card) return;
+
+            // Calculate shades
+            const lighterShade = adjustRgb(r, g, b, 15);
+            const darkerShade = adjustRgb(r, g, b, -15);
+            
+            // Determine best text color for contrast
+            const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+            const textColor = brightness > 186 ? '#333' : '#fff'; // Use black text on light colors
+
+            // Apply shades to the card's CSS variables
+            card.style.setProperty('--premium-color-light', `rgb(${lighterShade})`);
+            card.style.setProperty('--premium-color-dark', `rgb(${darkerShade})`);
+            card.style.setProperty('--premium-text-color', textColor);
+            
+            // Store the chosen color
+            localStorage.setItem('premiumThemeRgb', rgbString);
+        }
+
+        // NEW: Function to reset to default yellow
+        function resetPremiumTheme() {
+            const card = document.getElementById("profile-card");
+            if (!card) return;
+            
+            card.style.removeProperty('--premium-color-light');
+            card.style.removeProperty('--premium-color-dark');
+            card.style.removeProperty('--premium-text-color');
+            
+            localStorage.removeItem('premiumThemeRgb');
+        }
+
+        // NEW: Function to populate and handle clicks on the color options
+        function setupColorOptions() {
+            const container = document.getElementById('color-options-container');
+            // Use 'premiumThemeRgb' for storage. Default to Yellow.
+            const defaultYellow = THEME_COLORS.find(c => c.name === 'yellow').rgb;
+            const storedRgb = localStorage.getItem('premiumThemeRgb') || defaultYellow;
+
+            container.innerHTML = ''; // Clear existing
+
+            THEME_COLORS.forEach(color => {
+                const option = document.createElement('div');
+                option.className = 'color-option';
+                option.dataset.colorName = color.name;
+                option.style.backgroundColor = `rgb(${color.rgb})`;
+
+                if (color.rgb === storedRgb) {
+                    option.classList.add('selected');
+                    option.innerHTML = '<i class="fas fa-check"></i>';
+                }
+
+                option.addEventListener('click', () => {
+                    // Update theme
+                    if (color.name === 'yellow') {
+                        resetPremiumTheme(); // Reset to CSS defaults
+                    } else {
+                        applyPremiumTheme(color.rgb);
+                    }
+                    
+                    // Update visual selection
+                    document.querySelectorAll('.color-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                        opt.innerHTML = '';
+                    });
+                    option.classList.add('selected');
+                    option.innerHTML = '<i class="fas fa-check"></i>';
+                });
+                container.appendChild(option);
+            });
+        }
+        
+        // --- Existing Script Logic ---
+        
         window.onload = function() {
+            // Setup color options (it will only be visible for premium users)
+            setupColorOptions();
+            
             setTimeout(function() {
                 document.getElementById('loadingOverlay').style.opacity = '0';
                 setTimeout(function() {
@@ -953,13 +1167,19 @@
         const newDisplayNameInput = document.getElementById("new-display-name");
         const saveNameBtn = document.getElementById("save-name-btn");
         const cancelNameBtn = document.getElementById("cancel-name-btn");
+        
+        // Theme changer visibility elements
+        const toggleThemeChangerBtn = document.getElementById("toggle-theme-changer-btn");
+        const themeChangerSection = document.getElementById("theme-changer-section");
+
 
         const premiumUsers = [
             "yusupovumarcr7@gmail.com",
             "premium@gmail.com",
             "shoxish@mail.ru",
             "nozimshavkiev@gmail.com",
-            "muhammadjonsh1243@gmail.com"
+            "muhammadjonsh1243@gmail.com",
+            "thezloy112@gmail.com"
         ];
 
         function showMessage(msg, color = "red", target = messageDiv) {
@@ -986,15 +1206,26 @@
                     profilePic.src = "image_b882a9.png";
                 }
 
-                // Check for premium access and apply styling
+                // Check for premium access
                 if (premiumUsers.includes(user.email)) {
                     profileCard.classList.add('premium');
-                    // Add the badge only if it's not already there
+                    
+                    // Show theme changer button
+                    toggleThemeChangerBtn.style.display = 'inline-block';
+
+                    // Apply stored theme if it exists
+                    const storedPremiumRgb = localStorage.getItem('premiumThemeRgb');
+                    if (storedPremiumRgb) {
+                        applyPremiumTheme(storedPremiumRgb);
+                    }
+                    
                     if (!usernameEl.querySelector('.premium-badge')) {
                         usernameEl.innerHTML += ' <i class="fas fa-star premium-badge"></i>';
                     }
                 } else {
                     profileCard.classList.remove('premium');
+                    toggleThemeChangerBtn.style.display = 'none'; // Hide for non-premium
+                    themeChangerSection.classList.remove("visible"); // Hide section if open
                     const badge = usernameEl.querySelector('.premium-badge');
                     if (badge) badge.remove();
                 }
@@ -1162,11 +1393,11 @@
                 showMessage("Failed to update username. Please try again.");
             }
         });
-        // Dropdown functionality for multiple dropdowns
+        // Dropdown functionality
         function toggleDropdown(id) {
             document.getElementById(id).classList.toggle("show");
         }
-        // Close the dropdown if the user clicks outside of it
+        
         window.onclick = function (event) {
             if (!event.target.matches('.dropbtn')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -1178,6 +1409,11 @@
                 }
             }
         }
+        
+        // --- Theme Changer Visibility Logic ---
+        toggleThemeChangerBtn.addEventListener("click", () => {
+            themeChangerSection.classList.toggle("visible");
+        });
     </script>
 </body>
 
