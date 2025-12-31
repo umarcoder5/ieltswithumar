@@ -21,8 +21,7 @@
             color: #333;
         }
 
-        
-        /* Loading Screen Styles (UPDATED) */
+        /* Loading Screen Styles */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -47,12 +46,8 @@
         }
 
         @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .site-container {
@@ -111,7 +106,6 @@
             display: inline-block;
         }
 
-        /* Updated .dropbtn to use flexbox */
         .dropdown .dropbtn {
             background-color: transparent;
             color: white;
@@ -124,9 +118,7 @@
             text-decoration: none;
             transition: background-color 0.3s ease;
             display: flex;
-            /* Use flexbox */
             align-items: center;
-            /* Center items vertically */
         }
 
         .dropdown .dropbtn:hover {
@@ -160,21 +152,11 @@
             background-color: rgb(0, 125, 25);
         }
 
-        .show {
-            display: block;
-        }
+        .show { display: block; }
 
-        /* Dropdown arrow symbol - adjusted to use a margin */
-        .dropdown .dropbtn span {
-            margin-left: 5px;
-            vertical-align: middle;
-            /* Adjusted vertical alignment */
-        }
+        .dropdown .dropbtn span { margin-left: 5px; vertical-align: middle; }
 
-        /* Highlight the active page link */
-        .active-link {
-            background-color: rgb(0, 150, 25);
-        }
+        .active-link { background-color: rgb(0, 150, 25); }
 
         .main-content {
             max-width: 1400px;
@@ -183,11 +165,47 @@
             padding: 20px;
         }
 
-        h1,
-        h2 {
+        h1, h2 {
             color: rgb(0, 200, 25);
             margin-top: 40px;
             letter-spacing: 0.05em;
+        }
+
+        /* Premium Offers Rectangle Styles */
+        .offers-rectangle {
+            background: #f9f9f9;
+            border: 2px solid rgb(0, 175, 25);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            display: inline-block;
+            text-align: left;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .offers-rectangle h2 {
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .offers-rectangle ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+
+        .offers-rectangle ul li {
+            font-weight: bold;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         /* Pricing Card Styles */
@@ -222,10 +240,7 @@
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .pricing-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-        }
+        .pricing-card h3 { font-size: 1.4rem; margin-bottom: 5px; }
 
         .pricing-card .price {
             font-size: 2.2rem;
@@ -234,36 +249,7 @@
             color: white;
         }
 
-        .pricing-card .price-info {
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .pricing-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 30px;
-            text-align: left;
-            flex-grow: 1;
-        }
-
-        .pricing-card ul li {
-            margin: 10px 0;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .pricing-card.highlight ul li {
-            color: white;
-        }
-
-        .pricing-card.highlight ul li:before {
-            color: white;
-        }
+        .pricing-card .price-info { font-size: 0.85rem; margin-bottom: 20px; color: white; }
 
         .pricing-card button {
             background-color: black;
@@ -277,21 +263,16 @@
             transition: background-color 0.3s ease;
         }
 
-        .pricing-card button:hover {
-            background-color: rgb(0, 200, 25);
-        }
+        .pricing-card button:hover { background-color: rgb(0, 200, 25); }
 
-        /* 12-Month Plan specific button styles */
         .twelve-month-plan button {
             background-color: black;
             color: #FFD700;
-            /* Gold color */
             border: 2px solid #FFD700;
         }
 
         .twelve-month-plan button:hover {
             background-color: #FFD700;
-            /* Gold color */
             color: black;
         }
 
@@ -316,13 +297,9 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s ease;
             background-color: transparent;
-            /* Default background */
         }
 
-        /* Class for premium styling */
-        .premium-user-info {
-            background-color: #FFD700 !important;
-        }
+        .premium-user-info { background-color: #FFD700 !important; }
 
         #user-photo {
             width: 40px;
@@ -333,39 +310,66 @@
             display: none;
         }
 
-        #user-display-name {
+        #user-display-name { color: white; font-weight: bold; font-size: 1.1rem; }
+
+        .premium-badge { font-size: 1.2rem; margin-left: 5px; vertical-align: middle; }
+        
+        .premium-badge i { color: #FFD700; text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+
+        /* Promocode Styling */
+        .promo-container {
+            margin: 50px auto;
+            max-width: 400px;
+            background: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .promo-container input {
+            padding: 10px;
+            width: 70%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .promo-container button {
+            padding: 10px 15px;
+            background: black;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Toast Notifications (FROM ESSAY CHECKER) */
+        #toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000;
+        }
+
+        .toast {
+            min-width: 250px;
+            padding: 15px 25px;
+            margin-top: 10px;
+            border-radius: 8px;
             color: white;
             font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        /* New CSS for the premium badge */
-        .premium-badge {
-            font-size: 1.2rem;
-            margin-left: 5px;
-            vertical-align: middle;
-            /* Adjusted vertical alignment */
-        }
-        
-        /* New CSS to style the Font Awesome star */
-        .premium-badge i {
-            color: #FFD700; /* Gold color */
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .table-container {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             display: flex;
-            gap: 20px;
-            justify-content: center;
+            align-items: center;
         }
 
-        .table-container table {
-            width: 45%;
-        }
+        .toast.show { transform: translateX(0); }
+        .toast.success { background-color: #28a745; }
+        .toast.error { background-color: #dc3545; }
 
-        
-
-        /* Footer Styles (UPDATED) */
+        /* Footer Styles */
         .footer {
             background-color: rgb(0, 150, 25);
             color: white;
@@ -381,12 +385,7 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
+        .footer-section { flex: 1; min-width: 250px; margin-bottom: 20px; text-align: left; }
 
         .footer-section h3 {
             color: white;
@@ -397,50 +396,27 @@
             font-weight: bold;
         }
 
-        .footer-section p {
-            font-size: 1rem;
-            line-height: 1.7;
-            margin: 0;
-            color: white;
-            font-weight: bold;
-        }
+        .footer-section p { font-size: 1rem; line-height: 1.7; margin: 0; color: white; font-weight: bold; }
 
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+        .footer-section ul { list-style: none; padding: 0; margin: 0; }
 
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
+        .footer-section ul li { margin-bottom: 10px; }
 
         .footer-section ul li a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, padding-left 0.3s ease;
+            transition: all 0.3s ease;
             display: inline-block;
             font-size: 1.05rem;
             font-weight: bold;
             padding: 5px 0;
             border-radius: 3px;
             position: relative;
-            padding-left: 0;
         }
 
         .footer-section ul li a:hover {
-            color: white;
             background-color: rgb(0, 100, 20);
-            transform: translateX(0);
             padding-left: 20px;
-        }
-
-        .footer-section ul li a:hover::before {
-            content: '>';
-            position: absolute;
-            left: 5px;
-            color: white;
-            font-weight: bold;
         }
 
         .footer-bottom {
@@ -454,13 +430,12 @@
             font-weight: bold;
         }
         
-        footer p {
-            text-align: left;
-        }
+        footer p { text-align: left; }
     </style>
 </head>
 
 <body>
+    <div id="toast-container"></div>
     <div class="site-container">
         <header>
             <a href="index.html"><img src="IELTS WITH UMAR LOGO.png" alt="IELTS WITH UMAR Logo"></a>
@@ -493,24 +468,28 @@
             <a href="myprofile.html">My Profile</a>
         </nav>
         <div class="main-content">
+
+            <div class="offers-rectangle">
+                <h2>IELTS WITH UMAR PREMIUM OFFERS</h2>
+                <ul>
+                    <li>⭐ Gold Profile</li>
+                    <li>🎧 Unlimited Reading Tests</li>
+                    <li>🎧 Unlimited Listening Tests</li>
+                    <li>📖 Downloadable Books (contact on Telegram)</li>
+                    <li>🎤 Exclusive Speaking Topics</li>
+                    <li>📝 Task 1 & 2 Sample Essays</li>
+                    <li>🎖️ Premium Badge</li>
+                    <li>✅ Essay Feedback</li>
+                    <li>🎁 Access to Giveaways</li>
+                </ul>
+            </div>
+
             <div class="pricing-container">
                 <div class="pricing-card">
                     <div>
                         <h3>1 Month Plan</h3>
                         <div class="price">15,000 UZS</div>
                         <div class="price-info">Original price</div>
-                        <div class="price-info"></div>
-                        <ul>
-                            <li>⭐ Gold Profile</li>
-                            <li>🎧 Unlimited Reading Tests</li>
-                            <li>🎧 Unlimited Listening Tests</li>
-                            <li>📖 Downloadable Books (To request a book, please contact me on Telegram.)</li>
-                            <li>🎤 Exclusive Speaking Topics</li>
-                            <li>📝 Writing Task 1 & 2 Sample Essays</li>
-                            <li>🎖️ Premium Badge</li>
-                            <li>✅ Essay Feedback</li>
-                            <li>🎁 Access to Giveaways</li>
-                        </ul>
                     </div>
                     <button onclick="contactTelegram('1 Month Plan')">SELECT PLAN</button>
                 </div>
@@ -520,17 +499,6 @@
                         <h3>3 Month Plan</h3>
                         <div class="price">40,000 UZS</div>
                         <div class="price-info">11.1% off original price</div>
-                        <ul>
-                            <li>⭐ Gold Profile</li>
-                            <li>🎧 Unlimited Reading Tests</li>
-                            <li>🎧 Unlimited Listening Tests</li>
-                            <li>📖 Downloadable Books (To request a book, please contact me on Telegram.)</li>
-                            <li>🎤 Exclusive Speaking Topics</li>
-                            <li>📝 Writing Task 1 & 2 Sample Essays</li>
-                            <li>🎖️ Premium Badge</li>
-                            <li>✅ Essay Feedback</li>
-                            <li>🎁 Access to Giveaways</li>
-                        </ul>
                     </div>
                     <button onclick="contactTelegram('3 Month Plan')">SELECT PLAN</button>
                 </div>
@@ -540,17 +508,6 @@
                         <h3>6 Month Plan</h3>
                         <div class="price">70,000 UZS</div>
                         <div class="price-info">22.2% off original price</div>
-                        <ul>
-                            <li>⭐ Gold Profile</li>
-                            <li>🎧 Unlimited Reading Tests</li>
-                            <li>🎧 Unlimited Listening Tests</li>
-                            <li>📖 Downloadable Books (To request a book, please contact me on Telegram.)</li>
-                            <li>🎤 Exclusive Speaking Topics</li>
-                            <li>📝 Writing Task 1 & 2 Sample Essays</li>
-                            <li>🎖️ Premium Badge</li>
-                            <li>✅ Essay Feedback</li>
-                            <li>🎁 Access to Giveaways</li>
-                        </ul>
                     </div>
                     <button onclick="contactTelegram('6 Month Plan')">SELECT PLAN</button>
                 </div>
@@ -561,21 +518,17 @@
                         <h3>12 Month Plan</h3>
                         <div class="price">100,000 UZS</div>
                         <div class="price-info">44.4% off original price</div>
-                        <ul>
-                            <li>⭐ Gold Profile</li>
-                            <li>🎧 Unlimited Reading Tests</li>
-                            <li>🎧 Unlimited Listening Tests</li>
-                            <li>📖 Downloadable Books (To request a book, please contact me on Telegram.)</li>
-                            <li>🎤 Exclusive Speaking Topics</li>
-                            <li>📝 Writing Task 1 & 2 Sample Essays</li>
-                            <li>🎖️ Premium Badge</li>
-                            <li>✅ Essay Feedback</li>
-                            <li>🎁 Access to Giveaways</li>
-                        </ul>
                     </div>
                     <button onclick="contactTelegram('12 Month Plan')">SELECT PLAN</button>
                 </div>
             </div>
+
+            <div class="promo-container">
+                <h3>Redeem Promocode</h3>
+                <input type="text" id="promoInput" placeholder="Enter promocode...">
+                <button id="redeemBtn" onclick="redeemPromo()">Redeem</button>
+            </div>
+
         </div>
     </div>
     <footer class="footer">
@@ -605,27 +558,13 @@
             &copy; 2025 IELTS WITH UMAR. All rights reserved.
         </div>
     </footer>
+    
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    
     <script>
-        // Dropdown functions
-        function toggleDropdown(id) {
-            document.getElementById(id).classList.toggle("show");
-        }
-
-        window.onclick = function (event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
-
-        // Firebase SDK
+        // Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyD8dHSHXeCW7FmEtVYZ-miAfhGlwqGTUGA",
             authDomain: "ielts-with-umar.firebaseapp.com",
@@ -636,64 +575,138 @@
         };
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Toast function from essay_checker.html
+        function showToast(message, type = "success") {
+            const container = document.getElementById("toast-container");
+            const toast = document.createElement("div");
+            toast.className = `toast ${type}`;
+            toast.innerHTML = message;
+            container.appendChild(toast);
+            setTimeout(() => { toast.classList.add("show"); }, 10);
+            setTimeout(() => {
+                toast.classList.remove("show");
+                setTimeout(() => { toast.remove(); }, 400); 
+            }, 5000);
+        }
+
+        // Real Promocode Logic using Firestore with Automatic Email Notifications
+        async function redeemPromo() {
+            const promoInput = document.getElementById('promoInput').value.trim();
+            const user = auth.currentUser;
+            const btn = document.getElementById('redeemBtn');
+
+            if (!user) {
+                showToast("Please log in first to redeem a promocode.", "error");
+                return;
+            }
+
+            if (promoInput.toLowerCase() === "happynewyear26") {
+                btn.disabled = true;
+                btn.innerText = "Checking...";
+                
+                const promoRef = db.collection("promocodes").doc("happynewyear26");
+
+                try {
+                    const doc = await promoRef.get();
+                    if (!doc.exists) {
+                        showToast("System Error: Promocode data not found in Firestore.", "error");
+                        return;
+                    }
+
+                    const data = doc.data();
+                    const usedCount = data.usedCount || 0;
+                    const usedUsers = data.users || [];
+
+                    if (usedCount >= 3) {
+                        showToast("This promocode has reached its limit of 3 uses.", "error");
+                        return;
+                    }
+
+                    if (usedUsers.includes(user.email)) {
+                        showToast("You have already redeemed this promocode.", "error");
+                        return;
+                    }
+
+                    // 1. Success: Update database count and user list
+                    await promoRef.update({
+                        usedCount: firebase.firestore.FieldValue.increment(1),
+                        users: firebase.firestore.FieldValue.arrayUnion(user.email)
+                    });
+
+                    // 2. AUTOMATIC EMAIL NOTIFICATION (Formspree)
+                    // This sends a hidden email to you notifying you of the redemption
+                    fetch("https://formspree.io/f/yusupovumarcr7@gmail.com", {
+                        method: "POST",
+                        body: JSON.stringify({
+                            subject: "PROMOCODE REDEEMED: " + promoInput,
+                            user_email: user.email,
+                            user_name: user.displayName || "Unknown",
+                            code: promoInput,
+                            date: new Date().toLocaleString()
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    }).catch(err => console.log("Email notification failed, but DB updated."));
+
+                    showToast("The promocode has been successfully redeemed! You have received 1 month IELTS WITH UMAR Premium.", "success");
+                    document.getElementById('promoInput').value = "";
+
+                } catch (error) {
+                    showToast("Network error. Please try again later.", "error");
+                } finally {
+                    btn.disabled = false;
+                    btn.innerText = "Redeem";
+                }
+            } else {
+                showToast("Invalid promocode. Please try again.", "error");
+            }
+        }
+
+        function toggleDropdown(id) { document.getElementById(id).classList.toggle("show"); }
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    if (dropdowns[i].classList.contains('show')) dropdowns[i].classList.remove('show');
+                }
+            }
+        }
 
         const userInfo = document.getElementById('user-info');
         const userPhoto = document.getElementById('user-photo');
         const userDisplayName = document.getElementById('user-display-name');
 
-        const premiumUsers = [
-            "yusupovumarcr7@gmail.com",
-            "premium@gmail.com",
-            "shoxish@mail.ru",
-            "nozimshavkiev@gmail.com",
-            "muhammadjonsh1243@gmail.com",
-            "thezloy112@gmail.com"
-        ];
+        const premiumUsers = ["yusupovumarcr7@gmail.com", "premium@gmail.com", "shoxish@mail.ru", "nozimshavkiev@gmail.com", "muhammadjonsh1243@gmail.com", "thezloy112@gmail.com", "shoilyosovshosamad@gmail.com", "saidumarjaxongirov@gmail.com"];
 
         auth.onAuthStateChanged(user => {
-            // Clear any existing badges and classes to prevent duplicates on state change
             const existingBadge = document.getElementById('premium-badge');
-            if (existingBadge) {
-                existingBadge.remove();
-            }
+            if (existingBadge) existingBadge.remove();
             userInfo.classList.remove('premium-user-info');
 
             if (user) {
-                if (user.photoURL) {
-                    userPhoto.src = user.photoURL;
-                    userPhoto.style.display = 'block';
-                } else {
-                    userPhoto.src = "IELTS WITH UMAR LOGO.png"; // Set a default image
-                    userPhoto.style.display = 'block';
-                }
+                userPhoto.src = user.photoURL || "IELTS WITH UMAR LOGO.png";
+                userPhoto.style.display = 'block';
                 userDisplayName.textContent = user.displayName || user.email;
 
-                // Check for premium access
                 if (premiumUsers.includes(user.email)) {
-                    // User is premium, apply gold background and badge
                     userInfo.classList.add('premium-user-info');
-
-                    // Change this line to use the Font Awesome icon
                     const badge = document.createElement('i');
                     badge.id = 'premium-badge';
-                    badge.className = 'fas fa-star premium-badge'; // Use Font Awesome classes
-                    // Append the badge to the right of the user's name
+                    badge.className = 'fas fa-star premium-badge'; 
                     userDisplayName.appendChild(badge);
                 }
-
             } else {
                 userPhoto.style.display = 'none';
                 userDisplayName.textContent = '';
-                userInfo.classList.remove('premium-user-info');
             }
         });
 
-        // Modified function to handle the Telegram link with a dynamic message
         function contactTelegram(plan) {
-            const telegramUsername = 'intrinix';
-            let message = `Hello, I would like to purchase the ${plan}.`;
-            const telegramURL = `https://t.me/${telegramUsername}?text=${encodeURIComponent(message)}`;
-            window.open(telegramURL, '_blank');
+            window.open(`https://t.me/intrinix?text=Hello, I want to purchase ${plan}.`, '_blank');
         }
     </script>
 </body>
